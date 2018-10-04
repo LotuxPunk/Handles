@@ -25,7 +25,7 @@ public class TardisInterface extends BlockContainer {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileTardisInterface(worldIn);
+        return new TileTardisInterface();
     }
 
     @Override

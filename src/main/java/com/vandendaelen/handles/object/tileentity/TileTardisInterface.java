@@ -25,14 +25,14 @@ import java.util.HashMap;
 import java.util.UUID;
 
 
-public class TileTardisInterface extends HandlesPeripheralBase {
+public class TileTardisInterface extends TileEntity implements IHandlesPeripheral {
 
     private World world;
     private String ownerID;
     private HashMap<IComputerAccess,Boolean> computers = new HashMap<IComputerAccess,Boolean>();
 
-    public TileTardisInterface(World world) {
-        this.world = world;
+    public TileTardisInterface() {
+        super();
     }
 
     @Nonnull
@@ -73,14 +73,15 @@ public class TileTardisInterface extends HandlesPeripheralBase {
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
         compound.setString("placer",ownerID);
-        return super.writeToNBT(compound);
+        return compound;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
-        ownerID = compound.getString("placer");
         super.readFromNBT(compound);
+        ownerID = compound.getString("placer");
     }
 
     public TileEntityTardis getTardis(){
