@@ -2,7 +2,9 @@ package com.vandendaelen.handles;
 
 import com.vandendaelen.handles.init.Registries;
 import com.vandendaelen.handles.proxy.IProxy;
+import com.vandendaelen.handles.utils.IHandlesPeripheral;
 import com.vandendaelen.handles.utils.Reference;
+import dan200.computercraft.api.ComputerCraftAPI;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,6 +29,6 @@ public class Handles {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
+        ComputerCraftAPI.registerPeripheralProvider(new IHandlesPeripheral.Provider());
     }
 }
