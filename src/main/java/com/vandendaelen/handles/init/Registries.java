@@ -1,6 +1,5 @@
 package com.vandendaelen.handles.init;
 
-import com.vandendaelen.handles.Handles;
 import com.vandendaelen.handles.object.block.TardisInterface;
 import com.vandendaelen.handles.object.tileentity.TileTardisInterface;
 import com.vandendaelen.handles.utils.Reference;

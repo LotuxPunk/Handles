@@ -2,7 +2,6 @@ package com.vandendaelen.handles.object.block;
 
 import com.vandendaelen.handles.object.tileentity.TileTardisInterface;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;

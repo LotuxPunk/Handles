@@ -1,27 +1,19 @@
 package com.vandendaelen.handles.object.tileentity;
 
-import com.vandendaelen.handles.object.block.TardisInterface;
 import com.vandendaelen.handles.utils.IHandlesPeripheral;
-import com.vandendaelen.handles.utils.Reference;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.helpers.TardisHelper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashMap;
 import java.util.UUID;
 
 
@@ -29,7 +21,6 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
 
     private World world;
     private String ownerID;
-    private HashMap<IComputerAccess,Boolean> computers = new HashMap<IComputerAccess,Boolean>();
 
     public TileTardisInterface(World world) {
         super();
@@ -45,7 +36,7 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     @Nonnull
     @Override
     public String[] getMethodNames() {
-        return new String[]{"getTardisPos"};
+        return new String[]{"getTardisPos", "setTardisPos"};
     }
 
     @Nullable
@@ -56,6 +47,16 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                 TileEntityTardis te = getTardis();
                 BlockPos tardisPos = te.getLocation();
                 return new Object[]{tardisPos.getX(), tardisPos.getY(), tardisPos.getZ()};
+            }
+            case 1:{
+                if (arguments.length < 4)
+                    throw new LuaException("Not enough argument : setTardisPos(x,y,z,dimensionID)");
+                if (arguments.length > 4)
+                    throw new LuaException("Too many arguments : setTardisPos(x,y,z,dimensionID)");
+
+                TileEntityTardis te = getTardis();
+                BlockPos pos = new BlockPos((Integer)arguments[0],(Integer)arguments[1],(Integer)arguments[2]);
+                te.setDesination(pos,(Integer)arguments[3]);
             }
             default:{
                 return new Object[0];
@@ -73,16 +74,18 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        super.writeToNBT(compound);
-        compound.setString("placer",ownerID);
-        return compound;
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        if (compound.hasKey("placer"))
+            ownerID = compound.getString("placer");
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound compound) {
-        super.readFromNBT(compound);
-        ownerID = compound.getString("placer");
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
+        if (ownerID != null)
+            compound.setString("placer",ownerID);
+        return compound;
     }
 
     public TileEntityTardis getTardis(){
