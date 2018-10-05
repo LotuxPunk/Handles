@@ -31,8 +31,9 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     private String ownerID;
     private HashMap<IComputerAccess,Boolean> computers = new HashMap<IComputerAccess,Boolean>();
 
-    public TileTardisInterface() {
+    public TileTardisInterface(World world) {
         super();
+        this.world = world;
     }
 
     @Nonnull
@@ -85,6 +86,8 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     }
 
     public TileEntityTardis getTardis(){
-        return (TileEntityTardis) world.getTileEntity(TardisHelper.getTardis(UUID.fromString(ownerID)));
+        BlockPos pos = TardisHelper.getTardis(UUID.fromString(ownerID));
+        TileEntityTardis te = (TileEntityTardis) world.getTileEntity(pos);
+        return te;
     }
 }
