@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 public class RendererInterface extends TileEntitySpecialRenderer<TileTardisInterface> {
 
     public ModelTardisInterface modelTardisInterface = new ModelTardisInterface();
-    public static final ResourceLocation TEXTURE =new ResourceLocation(Reference.MODID, "assets/handles/interface/tardis_interface.png");
+    public static final ResourceLocation TEXTURE =new ResourceLocation(Reference.MODID, "textures/block/tardis_interface.png");
     Minecraft mc;
 
     public RendererInterface() {
