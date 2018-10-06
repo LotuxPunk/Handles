@@ -19,8 +19,8 @@ import java.util.UUID;
 
 public class TileTardisInterface extends TileEntity implements IHandlesPeripheral {
 
-    private World world;
-    private String ownerID;
+    public World world;
+    private UUID ownerID = null;
 
     public TileTardisInterface(World world) {
         super();
@@ -55,8 +55,13 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                     throw new LuaException("Too many arguments : setTardisPos(x,y,z,dimensionID)");
 
                 TileEntityTardis te = getTardis();
-                BlockPos pos = new BlockPos((Integer)arguments[0],(Integer)arguments[1],(Integer)arguments[2]);
-                te.setDesination(pos,(Integer)arguments[3]);
+                Double x = (Double)arguments[0];
+                Double y = (Double)arguments[1];
+                Double z = (Double)arguments[2];
+                Double dimID = (Double)arguments[3];
+
+                BlockPos pos = new BlockPos(x,y,z);
+                te.setDesination(pos,dimID.intValue());
             }
             default:{
                 return new Object[0];
@@ -66,30 +71,31 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
 
     @Override
     public boolean equals(@Nullable IPeripheral other){
-        return this == other;
+        return super.equals(other);
     }
 
-    public void setOwnerID(String ownerID) {
+    public void setOwnerID(UUID ownerID) {
         this.ownerID = ownerID;
+        markDirty();
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if (compound.hasKey("placer"))
-            ownerID = compound.getString("placer");
+        if (compound.hasUniqueId("placer"))
+            ownerID = compound.getUniqueId("placer");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         if (ownerID != null)
-            compound.setString("placer",ownerID);
+            compound.setUniqueId("placer",ownerID);
         return compound;
     }
 
     public TileEntityTardis getTardis(){
-        BlockPos pos = TardisHelper.getTardis(UUID.fromString(ownerID));
+        BlockPos pos = TardisHelper.getTardis(ownerID);
         TileEntityTardis te = (TileEntityTardis) world.getTileEntity(pos);
         return te;
     }

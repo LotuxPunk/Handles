@@ -154,7 +154,7 @@ public final class ComputerCraftAPI
     }
 
     /**
-     * Registers a peripheral handler to convert blocks into {@link IPeripheral} implementations.
+     * Registers a peripheral handler to convert block into {@link IPeripheral} implementations.
      *
      * @param handler The peripheral provider to register.
      * @see dan200.computercraft.api.peripheral.IPeripheral
@@ -198,7 +198,7 @@ public final class ComputerCraftAPI
     }
 
     /**
-     * Registers a bundled redstone handler to provide bundled redstone output for blocks.
+     * Registers a bundled redstone handler to provide bundled redstone output for block.
      *
      * @param handler The bundled redstone provider to register.
      * @see dan200.computercraft.api.redstone.IBundledRedstoneProvider

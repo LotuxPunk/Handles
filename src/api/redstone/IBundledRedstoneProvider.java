@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 /**
- * This interface is used to provide bundled redstone output for blocks.
+ * This interface is used to provide bundled redstone output for block.
  *
  * @see dan200.computercraft.api.ComputerCraftAPI#registerBundledRedstoneProvider(IBundledRedstoneProvider)
  */

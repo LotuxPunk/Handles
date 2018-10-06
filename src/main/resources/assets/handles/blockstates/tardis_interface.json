@@ -1,0 +1,7 @@
+{
+  "variants":{
+    "normal":{
+      "model":"handles:tardis_interface"
+    }
+  }
+}

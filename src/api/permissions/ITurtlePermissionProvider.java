@@ -32,7 +32,7 @@ public interface ITurtlePermissionProvider
     /**
      * Determine whether a block can be modified by a turtle.
      *
-     * This includes breaking and placing blocks.
+     * This includes breaking and placing block.
      *
      * @param world The world the block exists in
      * @param pos   The location of the block.

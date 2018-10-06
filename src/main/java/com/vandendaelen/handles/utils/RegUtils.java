@@ -1,6 +1,5 @@
 package com.vandendaelen.handles.utils;
 
-import com.vandendaelen.handles.Handles;
 import com.vandendaelen.handles.init.Registries;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -9,8 +8,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.tardis.mod.common.blocks.interfaces.INeedItem;
-
-import static com.vandendaelen.handles.Handles.*;
 
 public class RegUtils {
 

@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * The interface that defines a peripheral. See {@link IPeripheralProvider} for how to associate blocks with peripherals.
+ * The interface that defines a peripheral. See {@link IPeripheralProvider} for how to associate block with peripherals.
  */
 public interface IPeripheral
 {
