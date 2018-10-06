@@ -34,7 +34,7 @@ public class TardisInterface extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileTardisInterface(world);
+        return new TileTardisInterface();
     }
 
     @Override
