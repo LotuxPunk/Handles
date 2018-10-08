@@ -19,13 +19,7 @@ import java.util.UUID;
 
 public class TileTardisInterface extends TileEntity implements IHandlesPeripheral {
 
-    public World world;
     private UUID ownerID = null;
-    
-    public TileTardisInterface(World world) {
-        super();
-        this.world = world;
-    }
 
     @Nonnull
     @Override
