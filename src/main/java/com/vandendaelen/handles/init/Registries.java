@@ -22,7 +22,7 @@ public class Registries {
     public static List<Block> BLOCKS = new ArrayList<Block>();
     public static List<Item> ITEMS = new ArrayList<>();
 
-    public static Block block_interface_tardis = RegUtils.createBlock(new TardisInterface(),"tardis_interface");
+    public final static Block block_interface_tardis = RegUtils.createBlock(new TardisInterface(),"tardis_interface");
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {

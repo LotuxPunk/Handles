@@ -30,5 +30,6 @@ public class Handles {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         ComputerCraftAPI.registerPeripheralProvider(new IHandlesPeripheral.Provider());
+        proxy.init();
     }
 }

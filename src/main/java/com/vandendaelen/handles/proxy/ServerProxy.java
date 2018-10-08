@@ -5,4 +5,9 @@ public class ServerProxy implements IProxy {
     public void preInit() {
 
     }
+
+    @Override
+    public void init() {
+
+    }
 }

@@ -8,7 +8,6 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.helpers.TardisHelper;
 
@@ -88,7 +87,7 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
         return compound;
     }
 
-    public TileEntityTardis getTardis(){
+    public TileEntityTardis getTardis() {
         BlockPos pos = TardisHelper.getTardis(ownerID);
         TileEntityTardis te = (TileEntityTardis) world.getTileEntity(pos);
         return te;

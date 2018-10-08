@@ -3,12 +3,9 @@
   "defaults":{
     "model":"handles:tardis_interface"
   },
-  "variants":{
-    "normal":[{}],
-    "inventory":[{}],
-    "facing=north":[{}],
-    "facing=east":[{}],
-    "facing=west":[{}],
-    "facing=south":[{}]
+  "variants": {
+    "normal": [
+      {}
+    ]
   }
 }
