@@ -29,7 +29,7 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     @Nonnull
     @Override
     public String[] getMethodNames() {
-        return new String[]{"getTardisPos", "setTardisPos","startFlight", "openDoors"};
+        return new String[]{"getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel"};
     }
 
     @Nullable
@@ -63,11 +63,31 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
             }
             case 3:{
                 if (arguments.length < 1)
-                    throw new LuaException("Not enough argument : openDoors(boolean)");
+                    throw new LuaException("Not enough argument : setDoors(boolean)");
                 if (arguments.length > 1)
-                    throw new LuaException("Too many arguments : openDoors(boolean)");
+                    throw new LuaException("Too many arguments : setDoors(boolean)");
                 TileEntityTardis te = getTardis();
                 te.getDoor().setOpen((boolean)arguments[0]);
+            }
+            case 4:{
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : isInFlight()");
+                TileEntityTardis te = getTardis();
+                return new Object[]{te.isInFlight()};
+            }
+            case 5:{
+                if (arguments.length < 1)
+                    throw new LuaException("Not enough argument : setFueling(boolean)");
+                if (arguments.length > 1)
+                    throw new LuaException("Too many arguments : setFueling(boolean)");
+                TileEntityTardis te = getTardis();
+                te.setFueling((boolean)arguments[0]);
+            }
+            case 6:{
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getFuel()");
+                TileEntityTardis te = getTardis();
+                return new Object[]{Math.round(te.fuel)};
             }
             default:{
                 return new Object[0];
