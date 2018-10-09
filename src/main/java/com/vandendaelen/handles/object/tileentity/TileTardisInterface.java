@@ -67,7 +67,7 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                 if (arguments.length > 1)
                     throw new LuaException("Too many arguments : openDoors(boolean)");
                 TileEntityTardis te = getTardis();
-                te.getDoor().setOpen((boolean)arguments[1]);
+                te.getDoor().setOpen((boolean)arguments[0]);
             }
             default:{
                 return new Object[0];
