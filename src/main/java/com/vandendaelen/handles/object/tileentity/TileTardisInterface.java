@@ -54,12 +54,14 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
 
                 BlockPos pos = new BlockPos(x,y,z);
                 te.setDesination(pos,dimID.intValue());
+                return new Object[0];
             }
             case 2:{
                 if (arguments.length >= 1)
                     throw new LuaException("Too many arguments : startFlight()");
                 TileEntityTardis te = getTardis();
                 te.startFlight();
+                return new Object[0];
             }
             case 3:{
                 if (arguments.length < 1)
@@ -68,6 +70,7 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                     throw new LuaException("Too many arguments : setDoors(boolean)");
                 TileEntityTardis te = getTardis();
                 te.getDoor().setOpen((boolean)arguments[0]);
+                return new Object[0];
             }
             case 4:{
                 if (arguments.length >= 1)
@@ -82,6 +85,7 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                     throw new LuaException("Too many arguments : setFueling(boolean)");
                 TileEntityTardis te = getTardis();
                 te.setFueling((boolean)arguments[0]);
+                return new Object[0];
             }
             case 6:{
                 if (arguments.length >= 1)
