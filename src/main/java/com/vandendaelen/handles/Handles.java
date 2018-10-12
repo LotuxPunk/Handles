@@ -1,6 +1,5 @@
 package com.vandendaelen.handles;
 
-import com.vandendaelen.handles.init.Registries;
 import com.vandendaelen.handles.proxy.IProxy;
 import com.vandendaelen.handles.utils.IHandlesPeripheral;
 import com.vandendaelen.handles.utils.Reference;
