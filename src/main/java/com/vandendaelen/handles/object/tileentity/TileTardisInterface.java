@@ -91,7 +91,8 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                 if (arguments.length >= 1)
                     throw new LuaException("Too many arguments : getFuel()");
                 TileEntityTardis te = getTardis();
-                return new Object[]{Math.round(te.fuel)};
+                Double result = new Float(te.fuel).doubleValue();
+                return new Object[]{result};
             }
             default:{
                 return new Object[0];
