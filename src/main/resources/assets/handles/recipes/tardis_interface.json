@@ -1,0 +1,23 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "pattern":[
+    "iri",
+    "rtr",
+    "iri"
+  ],
+  "key":{
+    "t":{
+      "item":"tardis:circuts"
+    },
+    "i":{
+      "item":"minecraft:iron_ingot"
+    },
+    "r":{
+      "item":"minecraft:redstone"
+    }
+  },
+  "result":{
+    "item":"handles:tardis_interface",
+    "count":1
+  }
+}
