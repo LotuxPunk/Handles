@@ -1,16 +1,16 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "handles",
+  "name": "Handles",
+  "description": "ComputerCraft integration for TARDIS Mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
+  "url": "https://github.com/LotuxPunk/Handles",
+  "updateUrl": "https://minecraft.curseforge.com/projects/handles",
+  "authorList": ["LotuxPunk"],
+  "credits": "TARDIS Team for theirs help and for the TARDIS Mod",
+  "logoFile": "Handles.png",
+  "screenshots": ["sc.png"],
+  "dependencies": ["Forge","New Tardis Mod"]
 }
 ]
