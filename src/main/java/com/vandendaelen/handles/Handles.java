@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MODID,name = Reference.MOD_NAME,version = Reference.VERSION,dependencies = Reference.DEP)
+@Mod(modid = Reference.MODID,name = Reference.MOD_NAME,version = Reference.VERSION.VERSION,dependencies = Reference.DEP)
 public class Handles {
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_NAME);
 
