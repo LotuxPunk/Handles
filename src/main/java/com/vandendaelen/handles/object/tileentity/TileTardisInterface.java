@@ -29,15 +29,15 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     @Nonnull
     @Override
     public String[] getMethodNames() {
-        return new String[]{"getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel"};
+        return new String[]{"getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime"};
     }
 
     @Nullable
     @Override
     public Object[] callMethod(@Nonnull IComputerAccess computer, @Nonnull ILuaContext context, int method, @Nonnull Object[] arguments) throws LuaException, InterruptedException {
+        TileEntityTardis te = getTardis();
         switch (method){
             case 0:{
-                TileEntityTardis te = getTardis();
                 BlockPos tardisPos = te.getLocation();
                 return new Object[]{tardisPos.getX(), tardisPos.getY(), tardisPos.getZ()};
             }
@@ -46,7 +46,6 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                     throw new LuaException("Not enough argument : setTardisPos(x,y,z,dimensionID)");
                 if (arguments.length > 4)
                     throw new LuaException("Too many arguments : setTardisPos(x,y,z,dimensionID)");
-                TileEntityTardis te = getTardis();
                 Double x = (Double)arguments[0];
                 Double y = (Double)arguments[1];
                 Double z = (Double)arguments[2];
@@ -59,7 +58,6 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
             case 2:{
                 if (arguments.length >= 1)
                     throw new LuaException("Too many arguments : startFlight()");
-                TileEntityTardis te = getTardis();
                 te.startFlight();
                 return new Object[0];
             }
@@ -68,14 +66,12 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                     throw new LuaException("Not enough argument : setDoors(boolean)");
                 if (arguments.length > 1)
                     throw new LuaException("Too many arguments : setDoors(boolean)");
-                TileEntityTardis te = getTardis();
                 te.getDoor().setOpen((boolean)arguments[0]);
                 return new Object[0];
             }
             case 4:{
                 if (arguments.length >= 1)
                     throw new LuaException("Too many arguments : isInFlight()");
-                TileEntityTardis te = getTardis();
                 return new Object[]{te.isInFlight()};
             }
             case 5:{
@@ -83,16 +79,30 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
                     throw new LuaException("Not enough argument : setFueling(boolean)");
                 if (arguments.length > 1)
                     throw new LuaException("Too many arguments : setFueling(boolean)");
-                TileEntityTardis te = getTardis();
                 te.setFueling((boolean)arguments[0]);
                 return new Object[0];
             }
             case 6:{
                 if (arguments.length >= 1)
                     throw new LuaException("Too many arguments : getFuel()");
-                TileEntityTardis te = getTardis();
                 Double result = new Float(te.fuel).doubleValue();
                 return new Object[]{result};
+            }
+            case 7:{
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : isDoorsOpenned()");
+                return new Object[]{te.getDoor().isOpen()};
+            }
+            case 8:{
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : canFly()");
+                return new Object[]{te.getCanFly()};
+            }
+            case 9:{
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getTravelTime()");
+                int timeLeftInSeconds = te.getTimeLeft() / 20;
+                return new Object[]{timeLeftInSeconds};
             }
             default:{
                 return new Object[0];
