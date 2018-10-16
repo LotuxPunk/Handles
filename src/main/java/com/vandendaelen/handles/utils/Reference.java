@@ -6,6 +6,7 @@ public class Reference {
     public static final String DEP = "after:tardis, computercraft; required-after:forge@[14.23.4.2768,)";
     public static final String CLIENT_PROXY_CLASS = "com.vandendaelen.handles.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "com.vandendaelen.handles.proxy.ServerProxy";
+    public static final String UPDATE_JSON = "https://raw.githubusercontent.com/LotuxPunk/Handles/master/update.json";
 
 
     public static class VERSION{
