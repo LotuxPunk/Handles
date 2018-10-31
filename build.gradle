@@ -45,15 +45,15 @@ repositories {
         url = 'http://cc.crzd.me/maven/'
     }
     // OpenComputer
-    //maven {
-     //   name = "OC repo"
-    //    url = "http://maven.cil.li/"
-   //}
+    maven {
+       name = "OC repo"
+       url = "http://maven.cil.li/"
+    }
 }
 
 dependencies {
     //OC
-   // provided "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
+    compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
     //TARDIS MOD
     //compile  "com.github.Spectre0987:TardisMod:${project.tardis_version}"
 }

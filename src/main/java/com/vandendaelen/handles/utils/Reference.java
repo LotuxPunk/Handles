@@ -8,6 +8,11 @@ public class Reference {
     public static final String SERVER_PROXY_CLASS = "com.vandendaelen.handles.proxy.ServerProxy";
     public static final String UPDATE_JSON = "https://raw.githubusercontent.com/LotuxPunk/Handles/master/update.json";
 
+    public static class Dependencies{
+        public static final String CC = "computercraft";
+        public static final String OC = "OpenComputers";
+    }
+
 
     public static class VERSION{
         public static final String MCVERSION = "1.12.2";
