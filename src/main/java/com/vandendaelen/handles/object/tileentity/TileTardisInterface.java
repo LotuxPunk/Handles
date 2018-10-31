@@ -10,8 +10,7 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.ManagedPeripheral;
-import li.cil.oc.api.network.SimpleComponent;
+import li.cil.oc.api.network.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -31,6 +30,7 @@ import java.util.UUID;
 public class TileTardisInterface extends TileEntity implements IHandlesPeripheral, SimpleComponent, ManagedPeripheral {
 
     private UUID ownerID = null;
+    protected Node node = null;
     private static String peripheralName = "tardis_interface";
     private static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime");
 
@@ -52,13 +52,13 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
     }
 
     @Override
-    @Optional.Method(modid = "OpenComputers")
+    @Optional.Method(modid = Reference.Dependencies.OC)
     public String[] methods() {
         return METHODS.toArray(new String[0]);
     }
 
     @Override
-    @Optional.Method(modid = "OpenComputers")
+    @Optional.Method(modid = Reference.Dependencies.OC)
     public Object[] invoke(String method, Context context, Arguments arguments) throws Exception {
         TileEntityTardis te = getTardis();
         switch (METHODS.indexOf(method)){
@@ -183,6 +183,4 @@ public class TileTardisInterface extends TileEntity implements IHandlesPeriphera
         TileEntityTardis te = (TileEntityTardis) world.getTileEntity(pos);
         return te;
     }
-
-
 }

@@ -10,7 +10,7 @@ public class Reference {
 
     public static class Dependencies{
         public static final String CC = "computercraft";
-        public static final String OC = "OpenComputers";
+        public static final String OC = "opencomputers";
     }
 
 
