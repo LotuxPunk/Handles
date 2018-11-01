@@ -1,1 +1,2 @@
-tile.handles:tardis_interface.name=Interface de TARDIS
+tile.handles:tardis_interface_cc.name=Interface de TARDIS (CC)
+tile.handles:tardis_interface_oc.name=Interface de TARDIS (OC)

@@ -1,6 +1,7 @@
 package com.vandendaelen.handles.object.block;
 
-import com.vandendaelen.handles.object.tileentity.TileTardisInterface;
+import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceBase;
+import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceCC;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -14,16 +15,17 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.tardis.mod.Tardis;
 
 import javax.annotation.Nullable;
 
-public class TardisInterface extends Block {
+public abstract class TardisInterfaceBase extends Block {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    public TardisInterface() {
+    public TardisInterfaceBase() {
         super(Material.WOOD);
-        this.setCreativeTab(CreativeTabs.MISC);
+        this.setCreativeTab(Tardis.tab);
     }
 
     @Override
@@ -34,12 +36,12 @@ public class TardisInterface extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileTardisInterface();
+        return null;
     }
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        TileTardisInterface te = (TileTardisInterface)worldIn.getTileEntity(pos);
+        TileTardisInterfaceBase te = (TileTardisInterfaceBase) worldIn.getTileEntity(pos);
         te.setOwnerID(placer.getUniqueID());
     }
 

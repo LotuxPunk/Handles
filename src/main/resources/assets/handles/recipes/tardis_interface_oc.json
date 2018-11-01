@@ -1,0 +1,15 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "pattern":[
+    "t"
+  ],
+  "key":{
+    "t":{
+      "item":"handles:tardis_interface_cc"
+    }
+  },
+  "result":{
+    "item":"handles:tardis_interface_oc",
+    "count":1
+  }
+}

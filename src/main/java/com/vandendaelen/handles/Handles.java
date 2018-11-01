@@ -1,9 +1,15 @@
 package com.vandendaelen.handles;
 
+import com.vandendaelen.handles.init.Registries;
+import com.vandendaelen.handles.object.block.TardisInterfaceCC;
+import com.vandendaelen.handles.object.block.TardisInterfaceOC;
 import com.vandendaelen.handles.proxy.IProxy;
 import com.vandendaelen.handles.utils.IHandlesPeripheral;
 import com.vandendaelen.handles.utils.Reference;
+import com.vandendaelen.handles.utils.RegUtils;
 import dan200.computercraft.api.ComputerCraftAPI;
+import net.minecraft.block.Block;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,12 +31,20 @@ public class Handles {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
+        if(Loader.isModLoaded(Reference.Dependencies.CC)){
+            Registries.block_interface_tardis_cc = RegUtils.createBlock(new TardisInterfaceCC(),"tardis_interface_cc");
+        }
+        if (Loader.isModLoaded(Reference.Dependencies.OC)) {
+            Registries.block_interface_tardis_oc = RegUtils.createBlock(new TardisInterfaceOC(), "tardis_interface_oc");
+        }
         proxy.preInit();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        ComputerCraftAPI.registerPeripheralProvider(new IHandlesPeripheral.Provider());
+        if (Loader.isModLoaded(Reference.Dependencies.CC)){
+            ComputerCraftAPI.registerPeripheralProvider(new IHandlesPeripheral.Provider());
+        }
         proxy.init();
     }
 }

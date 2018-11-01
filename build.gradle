@@ -54,8 +54,6 @@ repositories {
 dependencies {
     //OC
     compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
-    //TARDIS MOD
-    //compile  "com.github.Spectre0987:TardisMod:${project.tardis_version}"
 }
 
 processResources {

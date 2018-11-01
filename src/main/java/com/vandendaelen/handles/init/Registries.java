@@ -1,7 +1,10 @@
 package com.vandendaelen.handles.init;
 
-import com.vandendaelen.handles.object.block.TardisInterface;
-import com.vandendaelen.handles.object.tileentity.TileTardisInterface;
+import com.vandendaelen.handles.object.block.TardisInterfaceBase;
+import com.vandendaelen.handles.object.block.TardisInterfaceCC;
+import com.vandendaelen.handles.object.block.TardisInterfaceOC;
+import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceCC;
+import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceOC;
 import com.vandendaelen.handles.utils.Reference;
 import com.vandendaelen.handles.utils.RegUtils;
 import net.minecraft.block.Block;
@@ -10,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -22,7 +26,8 @@ public class Registries {
     public static List<Block> BLOCKS = new ArrayList<Block>();
     public static List<Item> ITEMS = new ArrayList<>();
 
-    public final static Block block_interface_tardis = RegUtils.createBlock(new TardisInterface(),"tardis_interface");
+    public static Block block_interface_tardis_cc;
+    public static Block block_interface_tardis_oc;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
@@ -38,7 +43,8 @@ public class Registries {
     }
 
     private static void regTiles() {
-        RegUtils.addTile(TileTardisInterface.class, "TileTardisInterface");
+        if (Loader.isModLoaded(Reference.Dependencies.CC))RegUtils.addTile(TileTardisInterfaceCC.class, "TileTardisInterfaceCC");
+        if (Loader.isModLoaded(Reference.Dependencies.OC))RegUtils.addTile(TileTardisInterfaceOC.class, "TileTardisInterfaceOC");
     }
 
     @SubscribeEvent
