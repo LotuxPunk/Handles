@@ -1,6 +1,5 @@
 package com.vandendaelen.handles.object.tileentity;
 
-import com.vandendaelen.handles.Handles;
 import com.vandendaelen.handles.utils.IHandlesPeripheral;
 import com.vandendaelen.handles.utils.Reference;
 import dan200.computercraft.api.lua.ILuaContext;
@@ -8,9 +7,9 @@ import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import li.cil.oc.api.machine.Arguments;
-import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.*;
+import li.cil.oc.api.network.ManagedPeripheral;
+import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -30,8 +29,7 @@ import java.util.UUID;
 public class TileTardisInterface extends TileEntity implements IHandlesPeripheral, SimpleComponent, ManagedPeripheral {
 
     private UUID ownerID = null;
-    protected Node node = null;
-    private static String peripheralName = "tardis_interface";
+    private static String peripheralName = "tardisinterface";
     private static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime");
 
     @Override
