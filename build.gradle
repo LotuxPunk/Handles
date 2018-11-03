@@ -40,10 +40,8 @@ repositories {
     }
 
     // ComputerCraft
-    maven{
-        name = "computerCraft"
-        url = 'http://cc.crzd.me/maven/'
-    }
+    maven { url "https://cc.crzd.me/maven/" }
+
     // OpenComputer
     maven {
        name = "OC repo"
@@ -54,6 +52,8 @@ repositories {
 dependencies {
     //OC
     compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
+    //CC
+    compile "dan200.computercraft:ComputerCraft:${project.cc_version}-${project.cc_build}"
 }
 
 processResources {
