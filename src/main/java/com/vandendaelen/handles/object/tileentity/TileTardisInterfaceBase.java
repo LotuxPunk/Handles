@@ -8,6 +8,7 @@ import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
 import net.tardis.mod.util.helpers.TardisHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +16,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoints","setWaypoint");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoint","setWaypoint");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -101,18 +102,26 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getWaypoints(TileEntityTardis te){
-        List<Waypoint> waypoints = Arrays.asList();
-        int i = 0;
+        List<Waypoint> waypoints = new ArrayList<>();
         for (SpaceTimeCoord coord: te.saveCoords) {
             waypoints.add(new Waypoint(coord.getPos(),coord.getDimension()));
         }
-
         return waypoints.toArray();
     }
 
+    public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
+        if ((double)arguments[0] < te.saveCoords.size()){
+            int id = (int)Math.round((double)arguments[0]);
+            SpaceTimeCoord spaceTimeCoord = te.saveCoords.get(id);
+            return new Object[]{spaceTimeCoord.getPos().getX(),spaceTimeCoord.getPos().getY(),spaceTimeCoord.getPos().getZ(),spaceTimeCoord.getDimension()};
+        }
+        return new Object[]{null};
+    }
+
     public Object[] setWaypoint(Object[] arguments, TileEntityTardis te){
-        if ((int)arguments[0]> te.saveCoords.size()){
-            te.saveCoords.add((int)arguments[0],new SpaceTimeCoord(new BlockPos((double)arguments[1],(double)arguments[2],(double)arguments[3]),(int)arguments[4]));
+        if ((double)arguments[0]< te.saveCoords.size()){
+            SpaceTimeCoord spaceTimeCoord = new SpaceTimeCoord(new BlockPos((double)arguments[1],(double)arguments[2],(double)arguments[3]),(int)Math.round((double)arguments[4]));
+            te.saveCoords.set((int)Math.round((double)arguments[0]),spaceTimeCoord);
             return new Object[]{true};
         }
         return new Object[]{false};

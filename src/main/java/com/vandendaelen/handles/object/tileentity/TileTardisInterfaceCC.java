@@ -84,9 +84,11 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                 return getTravelTime(te);
             }
             case 10 :{
-                if (arguments.length >= 1)
-                    throw new LuaException("Too many arguments : getWaypoints()");
-                return getWaypoints(te);
+                if (arguments.length < 1)
+                    throw new LuaException("Not enough argument : getWaypoint(id)");
+                if (arguments.length > 1)
+                    throw new LuaException("Too many arguments : getWaypoint(id)");
+                return getWaypoint(arguments,te);
             }
             case 11:{
                 if (arguments.length < 5)
