@@ -147,4 +147,13 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] getTravelTime(Context context, Arguments args) {
         return getTravelTime(getTardis());
     }
+    @Callback
+    public Object[] getWaypoints(Context context, Arguments args) {
+        return getWaypoints(getTardis());
+    }
+    @Callback
+    public Object[] setWaypoint(Context context, Arguments args) {
+        return setWaypoint(args.toArray(),getTardis());
+    }
+
 }
