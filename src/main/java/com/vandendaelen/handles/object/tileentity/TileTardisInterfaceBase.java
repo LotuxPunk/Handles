@@ -4,6 +4,8 @@ import com.vandendaelen.handles.object.waypoint.Waypoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DimensionType;
+import net.minecraftforge.common.DimensionManager;
 import net.tardis.mod.common.systems.TardisSystems;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
@@ -17,7 +19,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoint","setWaypoint","getHealthComponent");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -107,7 +109,7 @@ public class TileTardisInterfaceBase extends TileEntity {
         for (SpaceTimeCoord coord: te.saveCoords) {
             waypoints.add(new Waypoint(coord.getPos(),coord.getDimension()));
         }
-        return waypoints.toArray();
+        return new Object[]{waypoints.toArray()};
     }
 
     public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
@@ -136,5 +138,13 @@ public class TileTardisInterfaceBase extends TileEntity {
         return new Object[]{null};
     }
 
+    public Object[] getDimensionsID(){
+        List<Object> ids = Arrays.asList(DimensionManager.getStaticDimensionIDs());
+        return new Object[]{ids.toArray()}; //TODO: Fix this
+    }
+
+    public Object[] getDimensionName(Object[] arguments){
+        return new Object[]{DimensionManager.getProviderType((int)Math.round((double)arguments[0])).getName()};
+    }
 
 }

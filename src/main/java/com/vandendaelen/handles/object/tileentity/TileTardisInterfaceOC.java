@@ -159,5 +159,14 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] getHealthComponent(Context context, Arguments args) {
         return getHealthComponent(args.toArray(),getTardis());
     }
+    @Callback
+    public Object[] getDimensionsID(Context context, Arguments args) {
+        return getDimensionsID();
+    }
+    @Callback
+    public Object[] getDimensionName(Context context, Arguments args) {
+        return getDimensionName(args.toArray());
+    }
+
 
 }
