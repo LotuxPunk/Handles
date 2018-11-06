@@ -1,12 +1,13 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/k9-mod",
   "promos": {
-    "1.12.2-latest": "1.12.2-1.2.0.0",
-    "1.12.2-recommended": "1.12.2-1.2.0.0"
+    "1.12.2-latest": "1.12.2-1.2.1.0",
+    "1.12.2-recommended": "1.12.2-1.2.1.0"
   },
   "1.12.2": {
     "1.12.2-1.1.1.1": "First release, fix crash at launch",
     "1.12.2-1.1.2.0": "New methods, Forge Update Checker",
-    "1.12.2-1.2.0.0": "OpenComputers integration, optimization"
+    "1.12.2-1.2.0.0": "OpenComputers integration, optimization",
+    "1.12.2-1.2.1.0": "Waypoint methods"
   }
 }
