@@ -155,5 +155,9 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] setWaypoint(Context context, Arguments args) {
         return setWaypoint(args.toArray(),getTardis());
     }
+    @Callback
+    public Object[] getHealthComponent(Context context, Arguments args) {
+        return getHealthComponent(args.toArray(),getTardis());
+    }
 
 }

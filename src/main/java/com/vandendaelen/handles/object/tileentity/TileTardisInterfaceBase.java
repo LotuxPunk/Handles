@@ -4,6 +4,7 @@ import com.vandendaelen.handles.object.waypoint.Waypoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.tardis.mod.common.systems.TardisSystems;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
 import net.tardis.mod.util.helpers.TardisHelper;
@@ -16,7 +17,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoint","setWaypoint");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoint","setWaypoint","getHealthComponent");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -125,6 +126,14 @@ public class TileTardisInterfaceBase extends TileEntity {
             return new Object[]{true};
         }
         return new Object[]{false};
+    }
+
+    public Object[] getHealthComponent(Object[] arguments, TileEntityTardis te){
+        TardisSystems.ISystem[] systems = te.systems;
+        if ((double)arguments[0] < systems.length){
+            return new Object[]{Double.valueOf(systems[(int)Math.round((double)arguments[0])].getHealth())};
+        }
+        return new Object[]{null};
     }
 
 
