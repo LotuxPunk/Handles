@@ -4,12 +4,11 @@ import com.vandendaelen.handles.object.waypoint.Waypoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 import net.tardis.mod.common.systems.TardisSystems;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
-import net.tardis.mod.util.helpers.TardisHelper;
+import net.tardis.mod.util.common.helpers.TardisHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -131,7 +130,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getHealthComponent(Object[] arguments, TileEntityTardis te){
-        TardisSystems.ISystem[] systems = te.systems;
+        TardisSystems.BaseSystem[] systems = te.systems;
         if ((double)arguments[0] < systems.length){
             return new Object[]{Double.valueOf(systems[(int)Math.round((double)arguments[0])].getHealth())};
         }
@@ -140,7 +139,7 @@ public class TileTardisInterfaceBase extends TileEntity {
 
     public Object[] getDimensionsID(){
         List<Object> ids = Arrays.asList(DimensionManager.getStaticDimensionIDs());
-        return new Object[]{ids.toArray()}; //TODO: Fix this
+        return ids.toArray();
     }
 
     public Object[] getDimensionName(Object[] arguments){
