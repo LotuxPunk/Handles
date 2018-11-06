@@ -16,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.tardis.mod.Tardis;
+import net.tardis.mod.client.creativetabs.TardisTabs;
 
 import javax.annotation.Nullable;
 
@@ -25,7 +26,7 @@ public abstract class TardisInterfaceBase extends Block {
 
     public TardisInterfaceBase() {
         super(Material.WOOD);
-        this.setCreativeTab(Tardis.tab);
+        this.setCreativeTab(TardisTabs.BLOCKS);
     }
 
     @Override
