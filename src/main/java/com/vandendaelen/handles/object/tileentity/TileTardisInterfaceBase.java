@@ -138,7 +138,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getDimensionsID(){
-        List<Object> ids = Arrays.asList(DimensionManager.getStaticDimensionIDs());
+        List<Object> ids = Arrays.asList((Object[])DimensionManager.getStaticDimensionIDs());
         return ids.toArray();
     }
 
