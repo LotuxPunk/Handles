@@ -33,6 +33,7 @@ public class Handles {
         if (Loader.isModLoaded(Reference.Dependencies.OC)) {
             Registries.block_interface_tardis_oc = RegUtils.createBlock(new TardisInterfaceOC(), "tardis_interface_oc");
         }
+        Registries.block_handles = RegUtils.createBlock(new com.vandendaelen.handles.object.block.Handles(),"handles");
         proxy.preInit();
     }
 

@@ -1,0 +1,14 @@
+{
+  "forge_marker":1,
+  "defaults":{
+    "model":"handles:handles"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory":[{}],
+    "facing=north":[{}],
+    "facing=east":[{}],
+    "facing=west":[{}],
+    "facing=south":[{}]
+  }
+}

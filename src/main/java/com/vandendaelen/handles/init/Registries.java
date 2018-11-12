@@ -1,8 +1,6 @@
 package com.vandendaelen.handles.init;
 
-import com.vandendaelen.handles.object.block.TardisInterfaceBase;
-import com.vandendaelen.handles.object.block.TardisInterfaceCC;
-import com.vandendaelen.handles.object.block.TardisInterfaceOC;
+import com.vandendaelen.handles.object.tileentity.TileHandles;
 import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceCC;
 import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceOC;
 import com.vandendaelen.handles.utils.Reference;
@@ -28,6 +26,7 @@ public class Registries {
 
     public static Block block_interface_tardis_cc;
     public static Block block_interface_tardis_oc;
+    public static Block block_handles;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
@@ -45,6 +44,7 @@ public class Registries {
     private static void regTiles() {
         if (Loader.isModLoaded(Reference.Dependencies.CC))RegUtils.addTile(TileTardisInterfaceCC.class, "TileTardisInterfaceCC");
         if (Loader.isModLoaded(Reference.Dependencies.OC))RegUtils.addTile(TileTardisInterfaceOC.class, "TileTardisInterfaceOC");
+        RegUtils.addTile(TileHandles.class, "TileHandles");
     }
 
     @SubscribeEvent
