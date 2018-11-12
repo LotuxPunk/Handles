@@ -50,17 +50,16 @@ public class TileTardisInterfaceBase extends TileEntity {
         return te;
     }
 
-    //Methods LUA
     public Object[] getTardisPos(TileEntityTardis te) {
         BlockPos tardisPos = te.getLocation();
         return new Object[]{tardisPos.getX(), tardisPos.getY(), tardisPos.getZ()};
     }
 
     public Object[] setTardisPos(Object[] arguments, TileEntityTardis te){
-        Double x = Double.valueOf((String)arguments[0]);
-        Double y = Double.valueOf((String)arguments[1]);
-        Double z = Double.valueOf((String)arguments[2]);
-        Double dimID = Double.valueOf((String)arguments[3]);
+        Double x = (Double)arguments[0];
+        Double y = (Double)arguments[1];
+        Double z = (Double)arguments[2];
+        Double dimID = (Double)arguments[3];
 
         BlockPos pos = new BlockPos(x,y,z);
         te.setDesination(pos,dimID.intValue());
@@ -73,7 +72,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
    public Object[] setDoors(Object[] arguments, TileEntityTardis te){
-        te.getDoor().setOpen(Boolean.valueOf((String)arguments[0]));
+        te.getDoor().setOpen((boolean)arguments[0]);
         return new Object[0];
     }
 
@@ -87,7 +86,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setFueling(Object[] arguments, TileEntityTardis te){
-        te.setFueling(Boolean.valueOf((String)arguments[0]));
+        te.setFueling((boolean)arguments[0]);
         return new Object[0];
     }
 
@@ -113,8 +112,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
-        int id = Integer.valueOf((String)arguments[0]);
-        if (id < te.saveCoords.size()){
+        if ((double)arguments[0] < te.saveCoords.size()){
+            int id = (int)Math.round((double)arguments[0]);
             SpaceTimeCoord spaceTimeCoord = te.saveCoords.get(id);
             return new Object[]{spaceTimeCoord.getPos().getX(),spaceTimeCoord.getPos().getY(),spaceTimeCoord.getPos().getZ(),spaceTimeCoord.getDimension()};
         }
@@ -122,10 +121,9 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setWaypoint(Object[] arguments, TileEntityTardis te){
-        int id = Integer.valueOf((String)arguments[0]);
-        if ( id < te.saveCoords.size()){
-            SpaceTimeCoord spaceTimeCoord = new SpaceTimeCoord(new BlockPos(Double.valueOf((String)arguments[1]),Double.valueOf((String)arguments[2]),Double.valueOf((String)arguments[3])),Integer.valueOf((String) arguments[4]));
-            te.saveCoords.set(id,spaceTimeCoord);
+        if ((double)arguments[0]< te.saveCoords.size()){
+            SpaceTimeCoord spaceTimeCoord = new SpaceTimeCoord(new BlockPos((double)arguments[1],(double)arguments[2],(double)arguments[3]),(int)Math.round((double)arguments[4]));
+            te.saveCoords.set((int)Math.round((double)arguments[0]),spaceTimeCoord);
             return new Object[]{true};
         }
         return new Object[]{false};
@@ -133,9 +131,8 @@ public class TileTardisInterfaceBase extends TileEntity {
 
     public Object[] getHealthComponent(Object[] arguments, TileEntityTardis te){
         TardisSystems.BaseSystem[] systems = te.systems;
-        int id = Integer.valueOf((String)arguments[0]);
-        if (id < systems.length){
-            return new Object[]{Double.valueOf(systems[id].getHealth())};
+        if ((double)arguments[0] < systems.length){
+            return new Object[]{Double.valueOf(systems[(int)Math.round((double)arguments[0])].getHealth())};
         }
         return new Object[]{null};
     }
@@ -146,7 +143,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getDimensionName(Object[] arguments){
-        return new Object[]{DimensionManager.getProviderType(Integer.valueOf((String)arguments[0])).getName()};
+        return new Object[]{DimensionManager.getProviderType((int)Math.round((double)arguments[0])).getName()};
     }
 
 }
