@@ -17,7 +17,9 @@ public class RendererHandlesItem extends TileEntityItemStackRenderer {
     @Override
     public void renderByItem(ItemStack itemStackIn) {
         GlStateManager.pushMatrix();
-        mc.getTextureManager().bindTexture(RendererInterface.TEXTURE);
+        mc.getTextureManager().bindTexture(RendererHandles.TEXTURE);
+        GlStateManager.translate(0.5,-0.455F,0);
+        GlStateManager.rotate(0,0.0F, 0.0F, 0.0F);
         modelHandles.render(null, 0, 0, 0, 0, 0, 0.0625F);
         GlStateManager.popMatrix();
     }
