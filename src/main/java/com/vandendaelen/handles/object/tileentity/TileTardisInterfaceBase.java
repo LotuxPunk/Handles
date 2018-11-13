@@ -18,7 +18,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime","getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getWaypoints");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -108,7 +108,7 @@ public class TileTardisInterfaceBase extends TileEntity {
         for (SpaceTimeCoord coord: te.saveCoords) {
             waypoints.add(new Waypoint(coord.getPos(),coord.getDimension()));
         }
-        return new Object[]{waypoints.toArray()};
+        return waypoints.toArray();
     }
 
     public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
@@ -144,6 +144,18 @@ public class TileTardisInterfaceBase extends TileEntity {
 
     public Object[] getDimensionName(Object[] arguments){
         return new Object[]{DimensionManager.getProviderType((int)Math.round((double)arguments[0])).getName()};
+    }
+
+    public Object[] setRelativePos(Object[] arguments, TileEntityTardis te){
+        BlockPos pos = te.getDestination();
+        BlockPos relativePos = new BlockPos(pos.getX()+(double)arguments[0],pos.getY()+(double)arguments[1],pos.getZ()+(double)arguments[2]);
+        te.setDesination(relativePos,te.getTargetDim());
+        return new Object[] {null};
+    }
+
+    public Object[] setDimensionPos(Object[] arguments, TileEntityTardis te){
+        te.setDesination(te.getDestination(),(int)Math.round((double)arguments[0]));
+        return new Object[] {null};
     }
 
 }
