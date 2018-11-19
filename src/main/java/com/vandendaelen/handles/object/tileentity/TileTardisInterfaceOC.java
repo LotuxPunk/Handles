@@ -167,6 +167,18 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] getDimensionName(Context context, Arguments args) {
         return getDimensionName(args.toArray());
     }
+    @Callback
+    public Object[] setRelativePos(Context context, Arguments args) {
+        return setRelativePos(args.toArray(),getTardis());
+    }
+    @Callback
+    public Object[] setDimensionPos(Context context, Arguments args) {
+        return setDimensionPos(args.toArray(),getTardis());
+    }
+    @Callback
+    public Object[] getWaypoints(Context context, Arguments args) {
+        return getWaypoints(getTardis());
+    }
 
 
 }
