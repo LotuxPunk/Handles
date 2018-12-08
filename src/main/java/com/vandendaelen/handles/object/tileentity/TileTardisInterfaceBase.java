@@ -59,7 +59,11 @@ public class TileTardisInterfaceBase extends TileEntity {
         Double x = (Double)arguments[0];
         Double y = (Double)arguments[1];
         Double z = (Double)arguments[2];
-        Double dimID = (Double)arguments[3];
+        Double dimID;
+        if (arguments.length > 3)
+            dimID = (Double)arguments[3];
+        else
+            dimID = (double)te.dimension;
 
         BlockPos pos = new BlockPos(x,y,z);
         te.setDesination(pos,dimID.intValue());
