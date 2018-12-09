@@ -105,8 +105,13 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     }
 
     @Callback
-    public Object[] setTardisPos(Context context, Arguments args) {
-        return setTardisPos(args.toArray(),getTardis());
+    public Object[] setTardisDestination(Context context, Arguments args) {
+        return setTardisDestination(args.toArray(),getTardis());
+    }
+
+    @Callback
+    public Object[] getTardisDestination(Context context, Arguments args) {
+        return getTardisDestination(getTardis());
     }
 
     @Callback

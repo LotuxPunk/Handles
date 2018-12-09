@@ -18,7 +18,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisPos","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getWaypoints");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpenned","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getWaypoints", "getTardisDestination");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -55,7 +55,7 @@ public class TileTardisInterfaceBase extends TileEntity {
         return new Object[]{tardisPos.getX(), tardisPos.getY(), tardisPos.getZ()};
     }
 
-    public Object[] setTardisPos(Object[] arguments, TileEntityTardis te){
+    public Object[] setTardisDestination(Object[] arguments, TileEntityTardis te){
         Double x = (Double)arguments[0];
         Double y = (Double)arguments[1];
         Double z = (Double)arguments[2];
@@ -68,6 +68,12 @@ public class TileTardisInterfaceBase extends TileEntity {
         BlockPos pos = new BlockPos(x,y,z);
         te.setDesination(pos,dimID.intValue());
         return new Object[0];
+    }
+
+    public Object[] getTardisDestination(TileEntityTardis te){
+        BlockPos destination = te.getDestination();
+        int dimension = te.getTargetDim();
+        return new Object[]{destination.getX(), destination.getY(), destination.getZ(), dimension};
     }
 
     public Object[] startFlight(TileEntityTardis te){

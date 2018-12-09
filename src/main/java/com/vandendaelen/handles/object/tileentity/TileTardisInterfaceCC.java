@@ -36,10 +36,10 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
             }
             case 1:{
                 if (arguments.length < 4)
-                    throw new LuaException("Not enough argument : setTardisPos(x,y,z,dimensionID)");
+                    throw new LuaException("Not enough argument : setTardisDestination(x,y,z,[dimensionID])");
                 if (arguments.length > 4)
-                    throw new LuaException("Too many arguments : setTardisPos(x,y,z,dimensionID)");
-                return setTardisPos(arguments,te);
+                    throw new LuaException("Too many arguments : setTardisDestination(x,y,z,[dimensionID])");
+                return setTardisDestination(arguments,te);
             }
             case 2:{
                 if (arguments.length >= 1)
@@ -136,6 +136,11 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                 if (arguments.length >= 1)
                     throw new LuaException("Too many arguments : getWaypoints()");
                 return getWaypoints(te);
+            }
+            case 18:{ //getTardisDestination
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getTardisDestination()");
+                return getTardisDestination(te);
             }
             default:{
                 return new Object[0];
