@@ -52,7 +52,7 @@ public class TileTardisInterfaceBase extends TileEntity {
 
     public Object[] getTardisPos(TileEntityTardis te) {
         BlockPos tardisPos = te.getLocation();
-        return new Object[]{tardisPos.getX(), tardisPos.getY(), tardisPos.getZ()};
+        return new Object[]{tardisPos.getX(), tardisPos.getY(), tardisPos.getZ(), te.dimension};
     }
 
     public Object[] setTardisDestination(Object[] arguments, TileEntityTardis te){
