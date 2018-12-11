@@ -72,8 +72,8 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
             }
             case 7:{
                 if (arguments.length >= 1)
-                    throw new LuaException("Too many arguments : isDoorsOpenned()");
-                return isDoorsOpenned(te);
+                    throw new LuaException("Too many arguments : isDoorsOpened()");
+                return isDoorsOpened(te);
             }
             case 8:{
                 if (arguments.length >= 1)

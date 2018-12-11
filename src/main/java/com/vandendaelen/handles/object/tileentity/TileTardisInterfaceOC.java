@@ -140,8 +140,8 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     }
 
     @Callback
-    public Object[] isDoorsOpenned(Context context, Arguments args) {
-        return isDoorsOpenned(getTardis());
+    public Object[] isDoorsOpened(Context context, Arguments args) {
+        return isDoorsOpened(getTardis());
     }
 
     @Callback
