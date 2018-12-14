@@ -125,14 +125,14 @@ public class TileTardisInterfaceBase extends TileEntity {
         if ((double)arguments[0] < te.saveCoords.size()){
             int id = (int)Math.round((double)arguments[0]);
             SpaceTimeCoord spaceTimeCoord = te.saveCoords.get(id);
-            return new Object[]{spaceTimeCoord.getPos().getX(),spaceTimeCoord.getPos().getY(),spaceTimeCoord.getPos().getZ(),spaceTimeCoord.getDimension()};
+            return new Object[]{spaceTimeCoord.getPos().getX(),spaceTimeCoord.getPos().getY(),spaceTimeCoord.getPos().getZ(),spaceTimeCoord.getDimension(), spaceTimeCoord.name};
         }
         return new Object[]{null};
     }
 
     public Object[] setWaypoint(Object[] arguments, TileEntityTardis te){
         if ((double)arguments[0]< te.saveCoords.size()){
-            SpaceTimeCoord spaceTimeCoord = new SpaceTimeCoord(new BlockPos((double)arguments[1],(double)arguments[2],(double)arguments[3]),(int)Math.round((double)arguments[4]));
+            SpaceTimeCoord spaceTimeCoord = new SpaceTimeCoord(new BlockPos((double)arguments[1],(double)arguments[2],(double)arguments[3]),(int)Math.round((double)arguments[4]), (String)arguments[5]);
             te.saveCoords.set((int)Math.round((double)arguments[0]),spaceTimeCoord);
             return new Object[]{true};
         }
