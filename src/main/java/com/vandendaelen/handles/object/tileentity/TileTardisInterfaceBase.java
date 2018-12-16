@@ -1,6 +1,5 @@
 package com.vandendaelen.handles.object.tileentity;
 
-import com.vandendaelen.handles.object.waypoint.Waypoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -114,11 +113,16 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getWaypoints(TileEntityTardis te){
-        List<Waypoint> waypoints = new ArrayList<>();
-        for (SpaceTimeCoord coord: te.saveCoords) {
-            waypoints.add(new Waypoint(coord.getPos(),coord.getDimension()));
+        Object[] waypoints = new Object[15];
+        int i = 0;
+        for (SpaceTimeCoord coord:te.saveCoords){
+            if (coord != null)
+                waypoints[i] = new Object[]{coord.getPos().getX(), coord.getPos().getY(), coord.getPos().getZ(), coord.getDimension(), coord.name};
+            else
+                waypoints[i] = new Object[]{SpaceTimeCoord.ORIGIN.getPos().getX(), SpaceTimeCoord.ORIGIN.getPos().getY(), SpaceTimeCoord.ORIGIN.getPos().getZ(), SpaceTimeCoord.ORIGIN.getDimension(), SpaceTimeCoord.ORIGIN.name};
+            i++;
         }
-        return waypoints.toArray();
+        return waypoints;
     }
 
     public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
