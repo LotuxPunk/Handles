@@ -98,7 +98,7 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
         }
     }
 
-    //Methods LUA
+    //LUA Methods
     @Callback
     public Object[] getTardisPos(Context context, Arguments args) {
         return getTardisPos(getTardis());
@@ -148,42 +148,44 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] canFly(Context context, Arguments args) {
         return canFly(getTardis());
     }
+
     @Callback
     public Object[] getTravelTime(Context context, Arguments args) {
         return getTravelTime(getTardis());
     }
+
     @Callback
     public Object[] getWaypoint(Context context, Arguments args) {
         return getWaypoint(args.toArray(),getTardis());
     }
+
     @Callback
     public Object[] setWaypoint(Context context, Arguments args) {
         return setWaypoint(args.toArray(),getTardis());
     }
+
     @Callback
     public Object[] getHealthComponent(Context context, Arguments args) {
         return getHealthComponent(args.toArray(),getTardis());
     }
+
     @Callback
     public Object[] getDimensionsID(Context context, Arguments args) {
         return getDimensionsID();
     }
+
     @Callback
     public Object[] getDimensionName(Context context, Arguments args) {
         return getDimensionName(args.toArray());
     }
+
     @Callback
     public Object[] setRelativePos(Context context, Arguments args) {
         return setRelativePos(args.toArray(),getTardis());
     }
+
     @Callback
     public Object[] setDimensionPos(Context context, Arguments args) {
         return setDimensionPos(args.toArray(),getTardis());
     }
-    @Callback
-    public Object[] getWaypoints(Context context, Arguments args) {
-        return getWaypoints(getTardis());
-    }
-
-
 }

@@ -17,7 +17,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getWaypoints", "getTardisDestination");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -110,19 +110,6 @@ public class TileTardisInterfaceBase extends TileEntity {
     public Object[] getTravelTime(TileEntityTardis te){
         int timeLeftInSeconds = te.getTimeLeft() / 20;
         return new Object[]{timeLeftInSeconds};
-    }
-
-    public Object[] getWaypoints(TileEntityTardis te){
-        Object[] waypoints = new Object[15];
-        int i = 0;
-        for (SpaceTimeCoord coord:te.saveCoords){
-            if (coord != null)
-                waypoints[i] = new Object[]{coord.getPos().getX(), coord.getPos().getY(), coord.getPos().getZ(), coord.getDimension(), coord.name};
-            else
-                waypoints[i] = new Object[]{SpaceTimeCoord.ORIGIN.getPos().getX(), SpaceTimeCoord.ORIGIN.getPos().getY(), SpaceTimeCoord.ORIGIN.getPos().getZ(), SpaceTimeCoord.ORIGIN.getDimension(), SpaceTimeCoord.ORIGIN.name};
-            i++;
-        }
-        return waypoints;
     }
 
     public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
