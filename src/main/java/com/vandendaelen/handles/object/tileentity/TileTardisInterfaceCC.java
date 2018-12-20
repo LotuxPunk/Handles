@@ -37,7 +37,7 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
             case 1:{
                 if (arguments.length < 3)
                     throw new LuaException("Not enough argument : setTardisDestination(x,y,z,[dimensionID])");
-                if (arguments.length > 3)
+                if (arguments.length > 4)
                     throw new LuaException("Too many arguments : setTardisDestination(x,y,z,[dimensionID])");
                 return setTardisDestination(arguments,te);
             }

@@ -2,7 +2,6 @@ package com.vandendaelen.handles.event;
 
 import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.init.Registries;
-import com.vandendaelen.handles.object.block.Handles;
 import com.vandendaelen.handles.utils.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
