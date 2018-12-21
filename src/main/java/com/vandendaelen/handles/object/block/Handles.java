@@ -1,6 +1,7 @@
 package com.vandendaelen.handles.object.block;
 
 import com.vandendaelen.handles.object.tileentity.TileHandles;
+import com.vandendaelen.handles.utils.BlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -10,6 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.tardis.mod.client.creativetabs.TardisTabs;
@@ -21,7 +23,10 @@ public class Handles extends Block {
 
     public Handles() {
         super(Material.IRON);
+        this.setRegistryName(new ResourceLocation(BlockNames.HANDLES));
+        this.setUnlocalizedName(BlockNames.HANDLES);
         this.setCreativeTab(TardisTabs.BLOCKS);
+        this.setResistance(3.0F);
     }
 
     @Override

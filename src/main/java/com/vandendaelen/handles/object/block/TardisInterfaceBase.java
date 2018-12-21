@@ -27,6 +27,7 @@ public abstract class TardisInterfaceBase extends Block {
     public TardisInterfaceBase() {
         super(Material.WOOD);
         this.setCreativeTab(TardisTabs.BLOCKS);
+        this.setResistance(3.0F);
     }
 
     @Override

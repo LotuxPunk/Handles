@@ -9,7 +9,6 @@ import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
 import net.tardis.mod.util.common.helpers.TardisHelper;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;

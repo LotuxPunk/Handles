@@ -1,12 +1,8 @@
 package com.vandendaelen.handles;
 
-import com.vandendaelen.handles.init.Registries;
 import com.vandendaelen.handles.integration.CCIntegration;
-import com.vandendaelen.handles.object.block.TardisInterfaceCC;
-import com.vandendaelen.handles.object.block.TardisInterfaceOC;
 import com.vandendaelen.handles.proxy.IProxy;
 import com.vandendaelen.handles.utils.Reference;
-import com.vandendaelen.handles.utils.RegUtils;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -27,19 +23,12 @@ public class Handles {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
-        if(Loader.isModLoaded(Reference.Dependencies.CC)){
-            Registries.block_interface_tardis_cc = RegUtils.createBlock(new TardisInterfaceCC(),"tardis_interface_cc");
-        }
-        if (Loader.isModLoaded(Reference.Dependencies.OC)) {
-            Registries.block_interface_tardis_oc = RegUtils.createBlock(new TardisInterfaceOC(), "tardis_interface_oc");
-        }
-        Registries.block_handles = RegUtils.createBlock(new com.vandendaelen.handles.object.block.Handles(),"handles");
         proxy.preInit();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        if (Loader.isModLoaded(Reference.Dependencies.CC)){
+        if (CCIntegration.isModLoaded()){
             CCIntegration.init();
         }
         proxy.init();

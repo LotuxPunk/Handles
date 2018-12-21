@@ -1,4 +1,10 @@
 package com.vandendaelen.handles.integration;
 
-public class OCIntegration {
+import com.vandendaelen.handles.utils.Reference;
+import net.minecraftforge.fml.common.Loader;
+
+public class OCIntegration{
+    public static boolean isModLoaded(){
+        return Loader.isModLoaded(Reference.Dependencies.OC);
+    }
 }
