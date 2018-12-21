@@ -23,17 +23,19 @@ import java.util.Random;
 public class CommonEvent {
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent e){
-        EntityPlayer player = e.player;
-        if (!player.world.isRemote){
-            ForgeVersion.CheckResult version = ForgeVersion.getResult(Loader.instance().activeModContainer());
-            if (version.status == ForgeVersion.Status.OUTDATED){
-                TextComponentString url = new TextComponentString(TextFormatting.DARK_AQUA + TextFormatting.BOLD.toString() + "UPDATE");
-                url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://minecraft.curseforge.com/projects/handles"));
-                url.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Open link")));
+        if (HandlesConfig.PROPERTIES.updateChecker){
+            EntityPlayer player = e.player;
+            if (!player.world.isRemote){
+                ForgeVersion.CheckResult version = ForgeVersion.getResult(Loader.instance().activeModContainer());
+                if (version.status == ForgeVersion.Status.OUTDATED){
+                    TextComponentString url = new TextComponentString(TextFormatting.DARK_AQUA + TextFormatting.BOLD.toString() + "UPDATE");
+                    url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://minecraft.curseforge.com/projects/handles"));
+                    url.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Open link")));
 
-                player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "[Handles] : ").appendSibling(url));
-                String changes = String.valueOf(version.changes).replace("{" + version.target + "=", "").replace("}", "");
-                player.sendMessage(new TextComponentString(TextFormatting.DARK_AQUA + "Changelog: " + TextFormatting.AQUA + changes));
+                    player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "[Handles] : ").appendSibling(url));
+                    String changes = String.valueOf(version.changes).replace("{" + version.target + "=", "").replace("}", "");
+                    player.sendMessage(new TextComponentString(TextFormatting.DARK_AQUA + "Changelog: " + TextFormatting.AQUA + changes));
+                }
             }
         }
     }
