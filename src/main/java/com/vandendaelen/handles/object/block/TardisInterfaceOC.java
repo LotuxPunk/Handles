@@ -13,7 +13,7 @@ public class TardisInterfaceOC extends TardisInterfaceBase {
     public TardisInterfaceOC() {
         super();
         this.setRegistryName(new ResourceLocation(BlockNames.TARDIS_LINK_OC));
-        this.setUnlocalizedName(BlockNames.TARDIS_LINK_OC);
+        this.setTranslationKey(BlockNames.TARDIS_LINK_OC);
     }
 
     @Nullable

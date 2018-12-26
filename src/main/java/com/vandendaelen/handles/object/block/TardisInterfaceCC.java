@@ -13,7 +13,7 @@ public class TardisInterfaceCC extends TardisInterfaceBase {
     public TardisInterfaceCC() {
         super();
         this.setRegistryName(new ResourceLocation(BlockNames.TARDIS_LINK_CC));
-        this.setUnlocalizedName(BlockNames.TARDIS_LINK_CC);
+        this.setTranslationKey(BlockNames.TARDIS_LINK_CC);
     }
 
     @Nullable

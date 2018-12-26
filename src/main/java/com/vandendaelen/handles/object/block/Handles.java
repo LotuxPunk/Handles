@@ -24,7 +24,7 @@ public class Handles extends Block {
     public Handles() {
         super(Material.IRON);
         this.setRegistryName(new ResourceLocation(BlockNames.HANDLES));
-        this.setUnlocalizedName(BlockNames.HANDLES);
+        this.setTranslationKey(BlockNames.HANDLES);
         this.setCreativeTab(TardisTabs.BLOCKS);
         this.setResistance(3.0F);
     }
@@ -57,7 +57,7 @@ public class Handles extends Block {
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 
     @Override

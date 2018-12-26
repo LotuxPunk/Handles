@@ -29,7 +29,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20171003"
+    mappings = "stable_39"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
@@ -47,6 +47,11 @@ repositories {
        name = "OC repo"
        url = "http://maven.cil.li/"
     }
+
+    maven {
+        name = "IC2"
+        url = "http://maven.ic2.player.to"
+    }
 }
 
 dependencies {
@@ -54,6 +59,10 @@ dependencies {
     compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
     //CC
     compile "dan200.computercraft:ComputerCraft:${project.cc_version}-${project.cc_build}"
+    //TARDIS Mod
+    deobfCompile "com.github.Spectre0987:TardisMod:${project.tardis_version}"
+    //IC²
+    compileOnly "net.industrial-craft:industrialcraft-2:${project.ic2ex_version}:api"
 }
 
 processResources {
