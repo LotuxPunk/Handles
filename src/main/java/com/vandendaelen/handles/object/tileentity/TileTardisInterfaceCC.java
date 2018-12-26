@@ -93,10 +93,10 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                 return getWaypoint(arguments,te);
             }
             case 11:{
-                if (arguments.length < 5)
-                    throw new LuaException("Not enough argument : setWaypoint(id,x,y,z,dimensionID)");
-                if (arguments.length > 5)
-                    throw new LuaException("Too many arguments : setWaypoint(id,x,y,z,dimensionID)");
+                if (arguments.length < 6)
+                    throw new LuaException("Not enough argument : setWaypoint(id,x,y,z,dimensionID, name)");
+                if (arguments.length > 6)
+                    throw new LuaException("Too many arguments : setWaypoint(id,x,y,z,dimensionID, name)");
                 return setWaypoint(arguments,te);
             }
             case 12:{
