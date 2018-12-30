@@ -1,8 +1,8 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/k9-mod",
   "promos": {
-    "1.12.2-latest": "1.12.2-1.4.7.7",
-    "1.12.2-recommended": "1.12.2-1.4.7.7"
+    "1.12.2-latest": "1.12.2-1.4.7.9",
+    "1.12.2-recommended": "1.12.2-1.4.7.9"
   },
   "1.12.2": {
     "1.12.2-1.1.1.1": "First release, fix crash at launch",
@@ -11,6 +11,7 @@
     "1.12.2-1.2.1.0": "Waypoint methods",
     "1.12.2-1.2.3.0": "Dimension methods, Compatibility with TARDIS Mod 0.0.8A",
     "1.12.2-1.3.6.7": "Bug fix with optional parameter in #setDestination()",
-    "1.12.2-1.4.7.7": "Code cleaning, optimizations,..."
+    "1.12.2-1.4.7.7": "Code cleaning, optimizations,...",
+    "1.12.2-1.4.7.9": "Bug fix"
   }
 }
