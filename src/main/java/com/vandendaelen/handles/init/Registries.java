@@ -39,30 +39,52 @@ public class Registries {
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
         IForgeRegistry<Block> reg = e.getRegistry();
 
-        //Blocks
-        reg.register(new TardisInterfaceCC());
-        reg.register(new TardisInterfaceOC());
+        //Handles
+        GameRegistry.registerTileEntity(TileHandles.class,new ResourceLocation(Reference.MODID,"TileHandles"));
         reg.register(new Handles());
 
-        //TE
-        if (CCIntegration.isModLoaded())GameRegistry.registerTileEntity(TileTardisInterfaceCC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceCC"));
-        if (OCIntegration.isModLoaded())GameRegistry.registerTileEntity(TileTardisInterfaceOC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceOC"));
-        GameRegistry.registerTileEntity(TileHandles.class,new ResourceLocation(Reference.MODID,"TileHandles"));
+        //CC
+        if (CCIntegration.isModLoaded()){
+            GameRegistry.registerTileEntity(TileTardisInterfaceCC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceCC"));
+            reg.register(new TardisInterfaceCC());
+        }
+
+        //OC
+        if (OCIntegration.isModLoaded()){
+            GameRegistry.registerTileEntity(TileTardisInterfaceOC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceOC"));
+            reg.register(new TardisInterfaceOC());
+        }
+
+
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         IForgeRegistry<Item> reg = e.getRegistry();
 
+        //Handles
         reg.register(new ItemHandles(block_handles));
-        reg.register(new ItemTardisInterface(block_interface_tardis_cc));
-        reg.register(new ItemTardisInterface(block_interface_tardis_oc));
+
+        //CC
+        if(CCIntegration.isModLoaded())
+            reg.register(new ItemTardisInterface(block_interface_tardis_cc));
+
+        //OC
+        if(OCIntegration.isModLoaded())
+            reg.register(new ItemTardisInterface(block_interface_tardis_oc));
     }
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_cc), 0, new ModelResourceLocation(block_interface_tardis_cc.getRegistryName(), "normal"));
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_oc), 0, new ModelResourceLocation(block_interface_tardis_oc.getRegistryName(), "normal"));
+        //Handles
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_handles), 0, new ModelResourceLocation(block_handles.getRegistryName(), "normal"));
+
+        //CC
+        if(CCIntegration.isModLoaded())
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_cc), 0, new ModelResourceLocation(block_interface_tardis_cc.getRegistryName(), "normal"));
+
+        //OC
+        if(OCIntegration.isModLoaded())
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_oc), 0, new ModelResourceLocation(block_interface_tardis_oc.getRegistryName(), "normal"));
     }
 }
