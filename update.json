@@ -12,6 +12,7 @@
     "1.12.2-1.2.3.0": "Dimension methods, Compatibility with TARDIS Mod 0.0.8A",
     "1.12.2-1.3.6.7": "Bug fix with optional parameter in #setDestination()",
     "1.12.2-1.4.7.7": "Code cleaning, optimizations,...",
-    "1.12.2-1.4.7.9": "Bug fix"
+    "1.12.2-1.4.7.9": "Bug fix",
+    "1.12.2-1.4.8.9": "More dimension & target methods"
   }
 }

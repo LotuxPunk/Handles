@@ -137,6 +137,16 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                     throw new LuaException("Too many arguments : getTardisDestination()");
                 return getTardisDestination(te);
             }
+            case 18:{ //getDimension
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getDimension()");
+                return getDimension(te);
+            }
+            case 19:{ //getTargetDim
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getTargetDimension()");
+                return getTargetDimension(te);
+            }
             default:{
                 return new Object[0];
             }
