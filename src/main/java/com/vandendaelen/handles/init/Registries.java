@@ -1,7 +1,6 @@
 package com.vandendaelen.handles.init;
 
-import com.vandendaelen.handles.integration.CCIntegration;
-import com.vandendaelen.handles.integration.OCIntegration;
+import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.object.block.Handles;
 import com.vandendaelen.handles.object.block.TardisInterfaceCC;
 import com.vandendaelen.handles.object.block.TardisInterfaceOC;
@@ -10,8 +9,6 @@ import com.vandendaelen.handles.object.item.ItemTardisInterface;
 import com.vandendaelen.handles.object.tileentity.TileHandles;
 import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceCC;
 import com.vandendaelen.handles.object.tileentity.TileTardisInterfaceOC;
-import com.vandendaelen.handles.object.tileentity.renderer.RendererHandlesItem;
-import com.vandendaelen.handles.object.tileentity.renderer.RendererInterfaceItem;
 import com.vandendaelen.handles.utils.BlockNames;
 import com.vandendaelen.handles.utils.Reference;
 import net.minecraft.block.Block;
@@ -44,13 +41,13 @@ public class Registries {
         reg.register(new Handles());
 
         //CC
-        if (CCIntegration.isModLoaded()){
+        if (Integrations.isCCLoaded()){
             GameRegistry.registerTileEntity(TileTardisInterfaceCC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceCC"));
             reg.register(new TardisInterfaceCC());
         }
 
         //OC
-        if (OCIntegration.isModLoaded()){
+        if (Integrations.isOCLoaded()){
             GameRegistry.registerTileEntity(TileTardisInterfaceOC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceOC"));
             reg.register(new TardisInterfaceOC());
         }
@@ -66,11 +63,11 @@ public class Registries {
         reg.register(new ItemHandles(block_handles));
 
         //CC
-        if(CCIntegration.isModLoaded())
+        if(Integrations.isCCLoaded())
             reg.register(new ItemTardisInterface(block_interface_tardis_cc));
 
         //OC
-        if(OCIntegration.isModLoaded())
+        if(Integrations.isOCLoaded())
             reg.register(new ItemTardisInterface(block_interface_tardis_oc));
     }
 
@@ -80,11 +77,11 @@ public class Registries {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_handles), 0, new ModelResourceLocation(block_handles.getRegistryName(), "normal"));
 
         //CC
-        if(CCIntegration.isModLoaded())
+        if(Integrations.isCCLoaded())
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_cc), 0, new ModelResourceLocation(block_interface_tardis_cc.getRegistryName(), "normal"));
 
         //OC
-        if(OCIntegration.isModLoaded())
+        if(Integrations.isOCLoaded())
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_oc), 0, new ModelResourceLocation(block_interface_tardis_oc.getRegistryName(), "normal"));
     }
 }

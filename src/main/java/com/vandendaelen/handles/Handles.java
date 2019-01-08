@@ -1,9 +1,9 @@
 package com.vandendaelen.handles;
 
 import com.vandendaelen.handles.integration.CCIntegration;
+import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.proxy.IProxy;
 import com.vandendaelen.handles.utils.Reference;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -28,7 +28,7 @@ public class Handles {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        if (CCIntegration.isModLoaded()){
+        if (Integrations.isCCLoaded()){
             CCIntegration.init();
         }
         proxy.init();
