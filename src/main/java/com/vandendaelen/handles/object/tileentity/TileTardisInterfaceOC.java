@@ -198,4 +198,9 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] getTargetDimension(Context context, Arguments args) {
         return getTargetDimension(getTardis());
     }
+
+    @Callback
+    public Object[] setRepairing(Context context, Arguments args){
+        return setRepairing(args.toArray(),getTardis());
+    }
 }

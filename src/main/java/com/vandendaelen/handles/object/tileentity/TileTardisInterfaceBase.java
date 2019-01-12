@@ -16,7 +16,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setRepairing");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -164,5 +164,10 @@ public class TileTardisInterfaceBase extends TileEntity {
 
     public Object[] getTargetDimension(TileEntityTardis te){
         return new Object[]{te.getTargetDim()};
+    }
+
+    public Object[] setRepairing(Object[] arguments, TileEntityTardis te){
+        te.setRepairing((boolean)arguments[0]);
+        return new Object[0];
     }
 }

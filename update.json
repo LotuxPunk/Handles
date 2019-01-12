@@ -14,6 +14,7 @@
     "1.12.2-1.4.7.7": "Code cleaning, optimizations,...",
     "1.12.2-1.4.7.9": "Bug fix",
     "1.12.2-1.4.8.9": "More dimension & target methods",
-    "1.12.2-1.4.8.10": "Bug fix if ComputerCraft not loaded"
+    "1.12.2-1.4.8.10": "Bug fix if ComputerCraft not loaded",
+    "1.12.2-1.4.9.10": "Repairing method"
   }
 }
