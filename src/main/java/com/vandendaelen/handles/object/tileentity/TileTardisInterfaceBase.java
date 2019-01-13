@@ -16,7 +16,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setRepairing");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setRepairing", "getHull");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -89,8 +89,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getFuel(TileEntityTardis te){
-        Double result = new Float(te.fuel).doubleValue();
-        return new Object[]{result};
+        return new Object[]{Float.valueOf(te.fuel).doubleValue()};
     }
 
     public Object[] setFueling(Object[] arguments, TileEntityTardis te){
@@ -107,8 +106,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getTravelTime(TileEntityTardis te){
-        int timeLeftInSeconds = te.getTimeLeft() / 20;
-        return new Object[]{timeLeftInSeconds};
+        return new Object[]{te.getTimeLeft() / 20};
     }
 
     public Object[] getWaypoint(Object[] arguments, TileEntityTardis te){
@@ -117,7 +115,7 @@ public class TileTardisInterfaceBase extends TileEntity {
             SpaceTimeCoord spaceTimeCoord = te.saveCoords.get(id);
             return new Object[]{spaceTimeCoord.getPos().getX(),spaceTimeCoord.getPos().getY(),spaceTimeCoord.getPos().getZ(),spaceTimeCoord.getDimension(), spaceTimeCoord.name};
         }
-        return new Object[]{null};
+        return new Object[]{0};
     }
 
     public Object[] setWaypoint(Object[] arguments, TileEntityTardis te){
@@ -130,9 +128,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getHealthComponent(Object[] arguments, TileEntityTardis te){
-        TardisSystems.BaseSystem[] systems = te.systems;
-        if ((double)arguments[0] < systems.length){
-            return new Object[]{Double.valueOf(systems[(int)Math.round((double)arguments[0])].getHealth())};
+        if ((double)arguments[0] < te.systems.length){
+            return new Object[]{Double.valueOf(te.systems[(int)Math.round((double)arguments[0])].getHealth())};
         }
         return new Object[]{null};
     }
@@ -169,5 +166,9 @@ public class TileTardisInterfaceBase extends TileEntity {
     public Object[] setRepairing(Object[] arguments, TileEntityTardis te){
         te.setRepairing((boolean)arguments[0]);
         return new Object[0];
+    }
+
+    public Object[] getHull(TileEntityTardis te){
+        return new Object[] {Float.valueOf(te.getHealth()).doubleValue()};
     }
 }

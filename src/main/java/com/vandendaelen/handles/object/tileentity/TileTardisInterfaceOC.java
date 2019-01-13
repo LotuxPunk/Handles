@@ -203,4 +203,9 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] setRepairing(Context context, Arguments args){
         return setRepairing(args.toArray(),getTardis());
     }
+
+    @Callback
+    public Object[] getHull(Context context, Arguments args){
+        return getHull(getTardis());
+    }
 }

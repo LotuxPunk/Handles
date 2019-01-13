@@ -154,6 +154,11 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                     throw new LuaException("Too many arguments : setRepairing(boolean)");
                 return setRepairing(arguments,te);
             }
+            case 21:{//getHull
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getHull()");
+                return getHull(te);
+            }
             default:{
                 return new Object[0];
             }
