@@ -5,6 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.DimensionManager;
 import net.tardis.mod.common.systems.TardisSystems;
+import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
 import net.tardis.mod.util.common.helpers.TardisHelper;
@@ -81,6 +82,8 @@ public class TileTardisInterfaceBase extends TileEntity {
 
    public Object[] setDoors(Object[] arguments, TileEntityTardis te){
         te.getDoor().setOpen((boolean)arguments[0]);
+        TileEntity doors = te.getWorld().getMinecraftServer().worlds[te.dimension].getTileEntity(te.getLocation().up());
+       ((TileEntityDoor)doors).setLocked((boolean)arguments[0]);
         return new Object[0];
     }
 

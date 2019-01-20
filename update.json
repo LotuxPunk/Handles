@@ -1,8 +1,8 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/k9-mod",
   "promos": {
-    "1.12.2-latest": "1.12.2-1.4.10.10",
-    "1.12.2-recommended": "1.12.2-1.4.10.10"
+    "1.12.2-latest": "1.12.2-1.4.10.11",
+    "1.12.2-recommended": "1.12.2-1.4.10.11"
   },
   "1.12.2": {
     "1.12.2-1.1.1.1": "First release, fix crash at launch",
@@ -16,6 +16,7 @@
     "1.12.2-1.4.8.9": "More dimension & target methods",
     "1.12.2-1.4.8.10": "Bug fix if ComputerCraft not loaded",
     "1.12.2-1.4.9.10": "Repairing method",
-    "1.12.2-1.4.10.10": "getHull method"
+    "1.12.2-1.4.10.10": "getHull method",
+    "1.12.2-1.4.10.11": "Bug fix with setDoors method"
   }
 }
