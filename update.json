@@ -1,7 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/handles",
   "promos": {
-    "1.12.2-latest": "1.12.2-1.4.10.11",
+    "1.12.2-latest": "1.12.2-1.4.11.11",
     "1.12.2-recommended": "1.12.2-1.4.10.11"
   },
   "1.12.2": {
@@ -17,6 +17,7 @@
     "1.12.2-1.4.8.10": "Bug fix if ComputerCraft not loaded",
     "1.12.2-1.4.9.10": "Repairing method",
     "1.12.2-1.4.10.10": "getHull method",
-    "1.12.2-1.4.10.11": "Bug fix with setDoors method"
+    "1.12.2-1.4.10.11": "Bug fix with setDoors method",
+    "1.12.2-1.4.11.11": "Fingers' snap"
   }
 }
