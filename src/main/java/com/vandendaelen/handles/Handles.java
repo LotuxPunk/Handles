@@ -2,6 +2,7 @@ package com.vandendaelen.handles;
 
 import com.vandendaelen.handles.integration.CCIntegration;
 import com.vandendaelen.handles.integration.Integrations;
+import com.vandendaelen.handles.network.NetworkHandler;
 import com.vandendaelen.handles.proxy.IProxy;
 import com.vandendaelen.handles.utils.Reference;
 import net.minecraftforge.fml.common.Mod;
@@ -32,5 +33,6 @@ public class Handles {
             CCIntegration.init();
         }
         proxy.init();
+        NetworkHandler.init();
     }
 }

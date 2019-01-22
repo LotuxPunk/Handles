@@ -1,0 +1,11 @@
+{
+  "snap": {
+    "category": "players",
+    "sounds": [
+      {
+        "name": "handles:snap",
+        "stream": false
+      }
+    ]
+  }
+}

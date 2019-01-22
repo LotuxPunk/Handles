@@ -1,5 +1,6 @@
 package com.vandendaelen.handles.proxy;
 
+import com.vandendaelen.handles.init.HandlesKeyBinds;
 import com.vandendaelen.handles.init.Registries;
 import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.object.tileentity.TileHandles;
@@ -23,5 +24,8 @@ public class ClientProxy implements IProxy {
         if (Integrations.isCCLoaded())Item.getItemFromBlock(Registries.block_interface_tardis_cc).setTileEntityItemStackRenderer(new RendererInterfaceItem());
         if (Integrations.isOCLoaded())Item.getItemFromBlock(Registries.block_interface_tardis_oc).setTileEntityItemStackRenderer(new RendererInterfaceItem());
         Item.getItemFromBlock(Registries.block_handles).setTileEntityItemStackRenderer(new RendererHandlesItem());
+
+        //Keybinds
+        HandlesKeyBinds.init();
     }
 }
