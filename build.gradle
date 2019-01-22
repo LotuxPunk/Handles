@@ -52,13 +52,18 @@ repositories {
         name = "IC2"
         url = "http://maven.ic2.player.to"
     }
+
+    maven {
+        name = "JEI"
+        url  = "http://dvs1.progwml6.com/files/maven"
+    }
 }
 
 dependencies {
     //OC
     compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
     //CC
-    compile "dan200.computercraft:ComputerCraft:${project.cc_version}-${project.cc_build}"
+    compile "com.github.SquidDev-CC:CC-Tweaked:${project.cc_version}"
     //TARDIS Mod
     deobfCompile "com.github.Spectre0987:TardisMod:${project.tardis_version}"
     //IC²
