@@ -4,11 +4,13 @@ import com.vandendaelen.handles.integration.CCIntegration;
 import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.network.NetworkHandler;
 import com.vandendaelen.handles.proxy.IProxy;
+import com.vandendaelen.handles.tardis.SystemApipotron;
 import com.vandendaelen.handles.utils.Reference;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.tardis.mod.common.systems.TardisSystems;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +27,7 @@ public class Handles {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         proxy.preInit();
+        TardisSystems.register("apipotron", SystemApipotron.class);
     }
 
     @Mod.EventHandler
