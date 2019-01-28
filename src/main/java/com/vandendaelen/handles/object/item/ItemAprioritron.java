@@ -5,9 +5,9 @@ import com.vandendaelen.handles.utils.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.tardis.mod.common.items.components.ItemComponent;
 
-public class ItemApipotron extends ItemComponent {
+public class ItemAprioritron extends ItemComponent {
 
-    public ItemApipotron() {
+    public ItemAprioritron() {
         super();
         ResourceLocation rl = new ResourceLocation(Reference.MODID,"apipotron");
         this.setTranslationKey(BlockNames.APIPOTRON);

@@ -4,7 +4,7 @@ import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.object.block.Handles;
 import com.vandendaelen.handles.object.block.TardisInterfaceCC;
 import com.vandendaelen.handles.object.block.TardisInterfaceOC;
-import com.vandendaelen.handles.object.item.ItemApipotron;
+import com.vandendaelen.handles.object.item.ItemAprioritron;
 import com.vandendaelen.handles.object.item.ItemHandles;
 import com.vandendaelen.handles.object.item.ItemTardisInterface;
 import com.vandendaelen.handles.object.tileentity.TileHandles;
@@ -73,7 +73,7 @@ public class Registries {
         if(Integrations.isOCLoaded())
             reg.register(new ItemTardisInterface(block_interface_tardis_oc));
 
-        reg.register(new ItemApipotron());
+        reg.register(new ItemAprioritron());
     }
 
     @SubscribeEvent
