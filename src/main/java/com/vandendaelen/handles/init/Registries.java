@@ -4,6 +4,7 @@ import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.object.block.Handles;
 import com.vandendaelen.handles.object.block.TardisInterfaceCC;
 import com.vandendaelen.handles.object.block.TardisInterfaceOC;
+import com.vandendaelen.handles.object.item.ItemApipotron;
 import com.vandendaelen.handles.object.item.ItemHandles;
 import com.vandendaelen.handles.object.item.ItemTardisInterface;
 import com.vandendaelen.handles.object.tileentity.TileHandles;
@@ -31,6 +32,8 @@ public class Registries {
     public static Block block_interface_tardis_oc;
     @GameRegistry.ObjectHolder(BlockNames.HANDLES)
     public static Block block_handles;
+    @GameRegistry.ObjectHolder(BlockNames.APIPOTRON)
+    public static Item apipotron;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
@@ -69,6 +72,8 @@ public class Registries {
         //OC
         if(Integrations.isOCLoaded())
             reg.register(new ItemTardisInterface(block_interface_tardis_oc));
+
+        reg.register(new ItemApipotron());
     }
 
     @SubscribeEvent
@@ -83,5 +88,7 @@ public class Registries {
         //OC
         if(Integrations.isOCLoaded())
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_oc), 0, new ModelResourceLocation(block_interface_tardis_oc.getRegistryName(), "normal"));
+
+        ModelLoader.setCustomModelResourceLocation(apipotron,0,new ModelResourceLocation(apipotron.getRegistryName(), "inventory"));
     }
 }
