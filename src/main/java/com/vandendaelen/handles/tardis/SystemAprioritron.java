@@ -24,7 +24,7 @@ public class SystemAprioritron extends TardisSystems.BaseSystem {
 
     @Override
     public String getNameKey() {
-        return "system.handles.apipotron";
+        return "system.handles.aprioritron";
     }
 
     @Override
@@ -36,4 +36,6 @@ public class SystemAprioritron extends TardisSystems.BaseSystem {
     public boolean shouldStopFlight() {
         return false;
     }
+
+
 }
