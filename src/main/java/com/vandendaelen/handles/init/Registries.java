@@ -32,8 +32,8 @@ public class Registries {
     public static Block block_interface_tardis_oc;
     @GameRegistry.ObjectHolder(BlockNames.HANDLES)
     public static Block block_handles;
-    @GameRegistry.ObjectHolder(BlockNames.APIPOTRON)
-    public static Item apipotron;
+    @GameRegistry.ObjectHolder(BlockNames.APRIORITRON)
+    public static ItemAprioritron aprioritron;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
@@ -89,6 +89,6 @@ public class Registries {
         if(Integrations.isOCLoaded())
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block_interface_tardis_oc), 0, new ModelResourceLocation(block_interface_tardis_oc.getRegistryName(), "normal"));
 
-        ModelLoader.setCustomModelResourceLocation(apipotron,0,new ModelResourceLocation(apipotron.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(aprioritron,0,new ModelResourceLocation(aprioritron.getRegistryName(), "inventory"));
     }
 }

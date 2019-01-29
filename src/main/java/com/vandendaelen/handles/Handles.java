@@ -27,7 +27,7 @@ public class Handles {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         proxy.preInit();
-        TardisSystems.register("apipotron", SystemAprioritron.class);
+        TardisSystems.register("aprioritron", SystemAprioritron.class);
     }
 
     @Mod.EventHandler

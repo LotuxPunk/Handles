@@ -9,8 +9,8 @@ public class ItemAprioritron extends ItemComponent {
 
     public ItemAprioritron() {
         super();
-        ResourceLocation rl = new ResourceLocation(Reference.MODID,"apipotron");
-        this.setTranslationKey(BlockNames.APIPOTRON);
+        ResourceLocation rl = new ResourceLocation(Reference.MODID,"aprioritron");
+        this.setTranslationKey(BlockNames.APRIORITRON);
         this.setRegistryName(rl);
     }
 }
