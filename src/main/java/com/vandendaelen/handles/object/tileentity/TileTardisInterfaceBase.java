@@ -1,10 +1,10 @@
 package com.vandendaelen.handles.object.tileentity;
 
+import com.vandendaelen.handles.tardis.SystemAprioritron;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.DimensionManager;
-import net.tardis.mod.common.systems.TardisSystems;
 import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
@@ -47,6 +47,10 @@ public class TileTardisInterfaceBase extends TileEntity {
         BlockPos pos = TardisHelper.getTardis(ownerID);
         TileEntityTardis te = (TileEntityTardis) world.getTileEntity(pos);
         return te;
+    }
+
+    public void damageAprioritron(){
+        getTardis().getSystem(SystemAprioritron.class).damage();
     }
 
     public Object[] getTardisPos(TileEntityTardis te) {
