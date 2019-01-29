@@ -1,5 +1,6 @@
 package com.vandendaelen.handles.object.tileentity;
 
+import com.vandendaelen.handles.tardis.SystemAprioritron;
 import li.cil.oc.api.Network;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
@@ -101,111 +102,177 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     //LUA Methods
     @Callback
     public Object[] getTardisPos(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getTardisPos(getTardis());
     }
 
     @Callback
     public Object[] setTardisDestination(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setTardisDestination(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getTardisDestination(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getTardisDestination(getTardis());
     }
 
     @Callback
     public Object[] startFlight(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return startFlight(getTardis());
     }
 
     @Callback
     public Object[] setDoors(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setDoors(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] isInFlight(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return isInFlight(getTardis());
     }
 
     @Callback
     public Object[] getFuel(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getFuel(getTardis());
     }
 
     @Callback
     public Object[] setFueling(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setFueling(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] isDoorsOpened(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return isDoorsOpened(getTardis());
     }
 
     @Callback
     public Object[] canFly(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return canFly(getTardis());
     }
 
     @Callback
     public Object[] getTravelTime(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getTravelTime(getTardis());
     }
 
     @Callback
     public Object[] getWaypoint(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getWaypoint(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] setWaypoint(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setWaypoint(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getHealthComponent(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getHealthComponent(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getDimensionsID(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getDimensionsID();
     }
 
     @Callback
     public Object[] getDimensionName(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getDimensionName(args.toArray());
     }
 
     @Callback
     public Object[] setRelativePos(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setRelativePos(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] setDimensionPos(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setDimensionPos(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getDimension(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getDimension(getTardis());
     }
 
     @Callback
     public Object[] getTargetDimension(Context context, Arguments args) {
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getTargetDimension(getTardis());
     }
 
     @Callback
     public Object[] setRepairing(Context context, Arguments args){
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return setRepairing(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getHull(Context context, Arguments args){
+        if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F)
+            return new Object[]{"Aprioritron broken"};
+        damageAprioritron();
         return getHull(getTardis());
     }
 }
