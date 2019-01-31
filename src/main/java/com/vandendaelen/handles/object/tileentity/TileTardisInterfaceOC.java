@@ -165,7 +165,7 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     }
 
     @Callback
-    public Object[] getHealthComponent(Context context, Arguments args) { ;
+    public Object[] getHealthComponent(Context context, Arguments args) {
         return getHealthComponent(args.toArray(),getTardis());
     }
 
