@@ -28,8 +28,6 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
     @Override
     public Object[] callMethod(@Nonnull IComputerAccess computer, @Nonnull ILuaContext context, int method, @Nonnull Object[] arguments) throws LuaException, InterruptedException {
         TileEntityTardis te = getTardis();
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
 
         switch (method){
             case 0:{

@@ -101,156 +101,111 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     //LUA Methods
     @Callback
     public Object[] getTardisPos(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getTardisPos(getTardis());
     }
 
     @Callback
     public Object[] setTardisDestination(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setTardisDestination(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getTardisDestination(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getTardisDestination(getTardis());
     }
 
     @Callback
     public Object[] startFlight(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return startFlight(getTardis());
     }
 
     @Callback
     public Object[] setDoors(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setDoors(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] isInFlight(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return isInFlight(getTardis());
     }
 
     @Callback
     public Object[] getFuel(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getFuel(getTardis());
     }
 
     @Callback
     public Object[] setFueling(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setFueling(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] isDoorsOpened(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return isDoorsOpened(getTardis());
     }
 
     @Callback
     public Object[] canFly(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return canFly(getTardis());
     }
 
     @Callback
     public Object[] getTravelTime(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getTravelTime(getTardis());
     }
 
     @Callback
     public Object[] getWaypoint(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getWaypoint(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] setWaypoint(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setWaypoint(args.toArray(),getTardis());
     }
 
     @Callback
-    public Object[] getHealthComponent(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
-        damageAprioritron();
+    public Object[] getHealthComponent(Context context, Arguments args) { ;
         return getHealthComponent(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getDimensionsID(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getDimensionsID();
     }
 
     @Callback
     public Object[] getDimensionName(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getDimensionName(args.toArray());
     }
 
     @Callback
     public Object[] setRelativePos(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setRelativePos(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] setDimensionPos(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setDimensionPos(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getDimension(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getDimension(getTardis());
     }
 
     @Callback
     public Object[] getTargetDimension(Context context, Arguments args) {
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getTargetDimension(getTardis());
     }
 
     @Callback
     public Object[] setRepairing(Context context, Arguments args){
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return setRepairing(args.toArray(),getTardis());
     }
 
     @Callback
     public Object[] getHull(Context context, Arguments args){
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
         return getHull(getTardis());
     }
 }

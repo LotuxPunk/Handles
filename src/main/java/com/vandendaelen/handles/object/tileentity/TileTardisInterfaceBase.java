@@ -73,6 +73,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setTardisDestination(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         Double x = (Double)arguments[0];
         Double y = (Double)arguments[1];
         Double z = (Double)arguments[2];
@@ -94,11 +96,15 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] startFlight(TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         te.startFlight();
         return new Object[0];
     }
 
    public Object[] setDoors(Object[] arguments, TileEntityTardis te){
+       if (!canRun())
+           return new Object[]{"Aprioritron broken"};
         te.getDoor().setOpen((boolean)arguments[0]);
         TileEntity doors = te.getWorld().getMinecraftServer().worlds[te.dimension].getTileEntity(te.getLocation().up());
        ((TileEntityDoor)doors).setLocked((boolean)arguments[0]);
@@ -114,6 +120,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setFueling(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         te.setFueling((boolean)arguments[0]);
         return new Object[0];
     }
@@ -140,6 +148,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setWaypoint(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         if ((double)arguments[0]< te.saveCoords.size()){
             SpaceTimeCoord spaceTimeCoord = new SpaceTimeCoord(new BlockPos((double)arguments[1],(double)arguments[2],(double)arguments[3]),(int)Math.round((double)arguments[4]), (String)arguments[5]);
             te.saveCoords.set((int)Math.round((double)arguments[0]),spaceTimeCoord);
@@ -165,6 +175,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setRelativePos(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         BlockPos pos = te.getDestination();
         BlockPos relativePos = new BlockPos(pos.getX()+(double)arguments[0],pos.getY()+(double)arguments[1],pos.getZ()+(double)arguments[2]);
         te.setDesination(relativePos,te.getTargetDim());
@@ -172,6 +184,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setDimensionPos(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         te.setDesination(te.getDestination(),(int)Math.round((double)arguments[0]));
         return new Object[] {null};
     }
@@ -185,6 +199,8 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] setRepairing(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
         te.setRepairing((boolean)arguments[0]);
         return new Object[0];
     }

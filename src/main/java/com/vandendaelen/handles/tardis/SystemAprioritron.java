@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import net.tardis.mod.common.systems.TardisSystems;
 
 public class SystemAprioritron extends TardisSystems.BaseSystem {
-    private static final float DAMAGE_PER_USE = 0.001F;
+    private static final float DAMAGE_PER_USE = 0.0005F;
 
     @Override
     public void onUpdate(World world, BlockPos consolePos) {
