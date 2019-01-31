@@ -1,5 +1,6 @@
 package com.vandendaelen.handles.object.tileentity;
 
+import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.tardis.SystemAprioritron;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -52,6 +53,19 @@ public class TileTardisInterfaceBase extends TileEntity {
     public void damageAprioritron(){
         getTardis().getSystem(SystemAprioritron.class).damage();
     }
+    /**
+     * @return boolean if the Tardis link can run (Subsystem or not)
+     */
+    protected boolean canRun(){
+        if (HandlesConfig.GAMEPLAY.subsystem){
+            if (getTardis().getSystem(SystemAprioritron.class).getHealth() <= 0.0F) {
+                return false;
+            }
+            damageAprioritron();
+        }
+        return true;
+    }
+
 
     public Object[] getTardisPos(TileEntityTardis te) {
         BlockPos tardisPos = te.getLocation();

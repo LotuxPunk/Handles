@@ -1,5 +1,6 @@
 package com.vandendaelen.handles;
 
+import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.integration.CCIntegration;
 import com.vandendaelen.handles.integration.Integrations;
 import com.vandendaelen.handles.network.NetworkHandler;
@@ -27,7 +28,8 @@ public class Handles {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         proxy.preInit();
-        TardisSystems.register("aprioritron", SystemAprioritron.class);
+        if (HandlesConfig.GAMEPLAY.subsystem)
+            TardisSystems.register("aprioritron", SystemAprioritron.class);
     }
 
     @Mod.EventHandler

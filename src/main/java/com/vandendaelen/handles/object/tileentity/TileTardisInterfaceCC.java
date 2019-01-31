@@ -1,6 +1,5 @@
 package com.vandendaelen.handles.object.tileentity;
 
-import com.vandendaelen.handles.tardis.SystemAprioritron;
 import com.vandendaelen.handles.utils.IHandlesPeripheral;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
@@ -29,10 +28,9 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
     @Override
     public Object[] callMethod(@Nonnull IComputerAccess computer, @Nonnull ILuaContext context, int method, @Nonnull Object[] arguments) throws LuaException, InterruptedException {
         TileEntityTardis te = getTardis();
-        if (te.getSystem(SystemAprioritron.class).getHealth() <= 0.0F){
+        if (!canRun())
             return new Object[]{"Aprioritron broken"};
-        }
-        damageAprioritron();
+
         switch (method){
             case 0:{
                 if (arguments.length >= 1)
