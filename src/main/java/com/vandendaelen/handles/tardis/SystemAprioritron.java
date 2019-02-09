@@ -3,8 +3,12 @@ package com.vandendaelen.handles.tardis;
 import com.vandendaelen.handles.init.Registries;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.tardis.mod.common.systems.SystemAntenna;
 import net.tardis.mod.common.systems.TardisSystems;
+
+import java.awt.*;
 
 public class SystemAprioritron extends TardisSystems.BaseSystem {
     private static final float DAMAGE_PER_USE = 0.0005F;
@@ -27,6 +31,11 @@ public class SystemAprioritron extends TardisSystems.BaseSystem {
     @Override
     public String getNameKey() {
         return "system.handles.aprioritron";
+    }
+
+    @Override
+    public String getUsage() {
+        return new TextComponentTranslation("tardis.aprioritron.usage").getUnformattedComponentText();
     }
 
     @Override

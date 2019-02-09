@@ -43,10 +43,12 @@ public class MessageSnap implements IMessage {
                     //Then, we can open the doors
                     ctx.getServerHandler().player.world.playSound(null, player.getPosition(), SoundHandler.snap, SoundCategory.AMBIENT, 1F, 1F);
                     TileEntity door = player.server.worlds[tardis.dimension].getTileEntity(tardis.getLocation().up());
-                    ((TileEntityDoor)door).toggleLockedNoKey(player);
-                    tardis.getDoor().setOpen(!((TileEntityDoor)door).isLocked);
 
-                    if (((TileEntityDoor)door).isLocked)
+                    boolean action = !tardis.getDoor().isOpen();
+                    tardis.getDoor().setOpen(action);
+                    tardis.getDoor().setOtherDoors(action);
+
+                    if (!action)
                         ctx.getServerHandler().player.world.playSound(null, player.getPosition(), TSounds.door_closed, SoundCategory.BLOCKS, 0.2F, 1F);
                     else
                         ctx.getServerHandler().player.world.playSound(null, player.getPosition(), TSounds.door_open, SoundCategory.BLOCKS, 0.2F, 1F);
