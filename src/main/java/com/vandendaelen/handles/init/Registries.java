@@ -54,8 +54,6 @@ public class Registries {
             GameRegistry.registerTileEntity(TileTardisInterfaceOC.class,new ResourceLocation(Reference.MODID,"TileTardisInterfaceOC"));
             reg.register(new TardisInterfaceOC());
         }
-
-
     }
 
     @SubscribeEvent
