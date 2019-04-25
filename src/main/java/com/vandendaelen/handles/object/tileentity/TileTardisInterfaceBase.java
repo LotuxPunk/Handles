@@ -6,7 +6,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.DimensionManager;
-import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
 import net.tardis.mod.util.common.helpers.TardisHelper;
@@ -106,8 +105,7 @@ public class TileTardisInterfaceBase extends TileEntity {
        if (!canRun())
            return new Object[]{"Aprioritron broken"};
         te.getDoor().setOpen((boolean)arguments[0]);
-        TileEntity doors = te.getWorld().getMinecraftServer().worlds[te.dimension].getTileEntity(te.getLocation().up());
-       ((TileEntityDoor)doors).setLocked((boolean)arguments[0]);
+        te.getDoor().setOtherDoors((boolean)arguments[0]);
         return new Object[0];
     }
 

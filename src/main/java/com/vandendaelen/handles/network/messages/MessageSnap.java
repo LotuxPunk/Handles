@@ -3,7 +3,6 @@ package com.vandendaelen.handles.network.messages;
 import com.vandendaelen.handles.init.SoundHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -11,7 +10,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.common.sounds.TSounds;
-import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.common.helpers.TardisHelper;
 
@@ -42,7 +40,6 @@ public class MessageSnap implements IMessage {
 
                     //Then, we can open the doors
                     ctx.getServerHandler().player.world.playSound(null, player.getPosition(), SoundHandler.snap, SoundCategory.AMBIENT, 1F, 1F);
-                    TileEntity door = player.server.worlds[tardis.dimension].getTileEntity(tardis.getLocation().up());
 
                     boolean action = !tardis.getDoor().isOpen();
                     tardis.getDoor().setOpen(action);
