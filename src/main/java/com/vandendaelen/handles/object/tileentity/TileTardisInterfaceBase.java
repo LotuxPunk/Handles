@@ -19,7 +19,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getArtron","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setField", "getField", "getSystemName", "setStealth", "getStealh", "setHADS", "getHADS");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getArtron","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setField", "getField", "getSystemName", "setStealth", "getStealh");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -242,16 +242,5 @@ public class TileTardisInterfaceBase extends TileEntity {
 
     public Object[] getStealth(TileEntityTardis te){
         return new Object[] {te.isStealthMode()};
-    }
-
-    public Object[] setHADS(Object[] arguments, TileEntityTardis te){
-        if (!canRun())
-            return new Object[]{"Aprioritron broken"};
-        te.setHADS((boolean)arguments[0]);
-        return new Object[] {null};
-    }
-
-    public Object[] getHADS(TileEntityTardis te){
-        return new Object[] {te.isHADSEnabled()};
     }
 }

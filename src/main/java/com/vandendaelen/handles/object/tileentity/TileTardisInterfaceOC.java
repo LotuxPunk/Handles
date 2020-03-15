@@ -223,14 +223,4 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     public Object[] getStealth(Context context, Arguments args){
         return getStealth(getTardis());
     }
-
-    @Callback
-    public Object[] setHADS(Context context, Arguments args){
-        return setHADS(args.toArray(),getTardis());
-    }
-
-    @Callback
-    public Object[] getHADS(Context context, Arguments args){
-        return getHADS(getTardis());
-    }
 }
