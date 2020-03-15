@@ -130,7 +130,7 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     }
 
     @Callback
-    public Object[] getFuel(Context context, Arguments args) {
+    public Object[] getArtron(Context context, Arguments args) {
         return getFuel(getTardis());
     }
 
@@ -200,12 +200,37 @@ public class TileTardisInterfaceOC extends TileTardisInterfaceBase implements En
     }
 
     @Callback
-    public Object[] setRepairing(Context context, Arguments args){
-        return setRepairing(args.toArray(),getTardis());
+    public Object[] setField(Context context, Arguments args){
+        return setField(args.toArray(),getTardis());
     }
 
     @Callback
-    public Object[] getHull(Context context, Arguments args){
-        return getHull(getTardis());
+    public Object[] getField(Context context, Arguments args){
+        return getField(getTardis());
+    }
+
+    @Callback
+    public Object[] getSystemName(Context context, Arguments args){
+        return getSystemName(args.toArray(),getTardis());
+    }
+
+    @Callback
+    public Object[] setStealth(Context context, Arguments args){
+        return setStealth(args.toArray(),getTardis());
+    }
+
+    @Callback
+    public Object[] getStealth(Context context, Arguments args){
+        return getStealth(getTardis());
+    }
+
+    @Callback
+    public Object[] setHADS(Context context, Arguments args){
+        return setHADS(args.toArray(),getTardis());
+    }
+
+    @Callback
+    public Object[] getHADS(Context context, Arguments args){
+        return getHADS(getTardis());
     }
 }

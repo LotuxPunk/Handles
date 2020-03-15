@@ -68,7 +68,7 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
             }
             case 6:{
                 if (arguments.length >= 1)
-                    throw new LuaException("Too many arguments : getFuel()");
+                    throw new LuaException("Too many arguments : getArtron()");
                 return getFuel(te);
             }
             case 7:{
@@ -148,20 +148,51 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                     throw new LuaException("Too many arguments : getTargetDimension()");
                 return getTargetDimension(te);
             }
-            case 20:{ //setRepairing
+            case 20:{ //setField
                 if (arguments.length < 1)
-                    throw new LuaException("Not enough argument : setRepairing(boolean)");
+                    throw new LuaException("Not enough argument : setField(boolean)");
                 if (arguments.length > 1)
-                    throw new LuaException("Too many arguments : setRepairing(boolean)");
-                return setRepairing(arguments,te);
+                    throw new LuaException("Too many arguments : setField(boolean)");
+                return setField(arguments, te);
             }
-            case 21:{//getHull
+            case 21:{ //getField
                 if (arguments.length >= 1)
-                    throw new LuaException("Too many arguments : getHull()");
-                return getHull(te);
+                    throw new LuaException("Too many arguments : getField()");
+                return getField(te);
+            }
+            case 22:{//getSystemName
+                if (arguments.length < 1)
+                    throw new LuaException("Not enough argument : getSystemName(id)");
+                if (arguments.length > 1)
+                    throw new LuaException("Too many arguments : getSystemName(id)");
+                return getSystemName(arguments,te);
+            }
+            case 23:{//setStealh
+                if (arguments.length < 1)
+                    throw new LuaException("Not enough argument : setStealth(boolean)");
+                if (arguments.length > 1)
+                    throw new LuaException("Too many arguments : setStealth(boolean)");
+                return setStealth(arguments, te);
+            }
+            case 24:{ //getStealth
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getStealth()");
+                return getStealth(te);
+            }
+            case 25:{//setHADS
+                if (arguments.length < 1)
+                    throw new LuaException("Not enough argument : setHADS(boolean)");
+                if (arguments.length > 1)
+                    throw new LuaException("Too many arguments : setHADS(boolean)");
+                return setHADS(arguments, te);
+            }
+            case 26:{ //getHADS
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getHADS()");
+                return getHADS(te);
             }
             default:{
-                return new Object[0];
+                throw new LuaException("No method found");
             }
         }
     }
