@@ -15,5 +15,4 @@ public class TileHandles extends TileEntity {
         super.writeToNBT(compound);
         return compound;
     }
-
 }

@@ -5,7 +5,9 @@ import com.vandendaelen.handles.tardis.SystemAprioritron;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
+import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.SpaceTimeCoord;
 import net.tardis.mod.util.common.helpers.TardisHelper;
@@ -17,7 +19,7 @@ import java.util.UUID;
 public class TileTardisInterfaceBase extends TileEntity {
     private UUID ownerID = null;
     public static final String peripheralName = "tardisinterface";
-    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getFuel","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setRepairing", "getHull");
+    public static final List<String> METHODS = Arrays.asList("getTardisPos", "setTardisDestination","startFlight", "setDoors", "isInFlight","setFueling", "getArtron","isDoorsOpened","canFly","getTravelTime", "getWaypoint","setWaypoint","getHealthComponent","getDimensionsID","getDimensionName","setRelativePos", "setDimensionPos", "getTardisDestination", "getDimension", "getTargetDimension", "setField", "getField", "getSystemName", "setStealth", "getStealh", "setHADS", "getHADS");
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -47,6 +49,19 @@ public class TileTardisInterfaceBase extends TileEntity {
         BlockPos pos = TardisHelper.getTardis(ownerID);
         TileEntityTardis te = (TileEntityTardis) world.getTileEntity(pos);
         return te;
+    }
+
+    public TileEntityDoor getTardisDoor(TileEntityTardis tardis){
+        if(!world.isRemote){
+            WorldServer ser = world.getMinecraftServer().getWorld(tardis.dimension);
+            if(ser != null){
+                TileEntity te = ser.getTileEntity(tardis.getLocation());
+                if (te instanceof TileEntityDoor){
+                    return (TileEntityDoor) te;
+                }
+            }
+        }
+        return null;
     }
 
     public void damageAprioritron(){
@@ -114,7 +129,7 @@ public class TileTardisInterfaceBase extends TileEntity {
     }
 
     public Object[] getFuel(TileEntityTardis te){
-        return new Object[]{Float.valueOf(te.fuel).doubleValue()};
+        return new Object[]{Float.valueOf(te.getArtron()).doubleValue()};
     }
 
     public Object[] setFueling(Object[] arguments, TileEntityTardis te){
@@ -196,14 +211,47 @@ public class TileTardisInterfaceBase extends TileEntity {
         return new Object[]{te.getTargetDim()};
     }
 
-    public Object[] setRepairing(Object[] arguments, TileEntityTardis te){
+    public Object[] setField(Object[] arguments, TileEntityTardis te){
         if (!canRun())
             return new Object[]{"Aprioritron broken"};
-        te.setRepairing((boolean)arguments[0]);
-        return new Object[0];
+        te.setForceFieldEnabled((boolean)arguments[0]);
+        TileEntityDoor td = getTardisDoor(te);
+        if(td != null){
+            td.setForcefield((boolean)arguments[0]);
+        }
+        return new Object[] {null};
     }
 
-    public Object[] getHull(TileEntityTardis te){
-        return new Object[] {Float.valueOf(te.getHealth()).doubleValue()};
+    public Object[] getField(TileEntityTardis te){
+        return new Object[] {te.isForceFieldEnabled()};
+    }
+
+    public Object[] getSystemName(Object[] arguments, TileEntityTardis te){
+        if ((double)arguments[0] < te.systems.length){
+            return new Object[]{te.systems[(int)Math.round((double)arguments[0])].getNameKey()};
+        }
+        return new Object[]{null};
+    }
+
+    public Object[] setStealth(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
+        te.setStealthMode((boolean)arguments[0]);
+        return new Object[] {null};
+    }
+
+    public Object[] getStealth(TileEntityTardis te){
+        return new Object[] {te.isStealthMode()};
+    }
+
+    public Object[] setHADS(Object[] arguments, TileEntityTardis te){
+        if (!canRun())
+            return new Object[]{"Aprioritron broken"};
+        te.setHADS((boolean)arguments[0]);
+        return new Object[] {null};
+    }
+
+    public Object[] getHADS(TileEntityTardis te){
+        return new Object[] {te.isHADSEnabled()};
     }
 }
