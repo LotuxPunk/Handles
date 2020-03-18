@@ -179,6 +179,18 @@ public class TileTardisInterfaceCC extends TileTardisInterfaceBase implements IH
                     throw new LuaException("Too many arguments : getStealth()");
                 return getStealth(te);
             }
+            case 25:{//setStabilizers
+                if (arguments.length < 1)
+                    throw new LuaException("Not enough argument : setStabilizers(boolean)");
+                if (arguments.length > 1)
+                    throw new LuaException("Too many arguments : setStabilizers(boolean)");
+                return setStabilizers(arguments, te);
+            }
+            case 26:{//getStabilizers
+                if (arguments.length >= 1)
+                    throw new LuaException("Too many arguments : getStabilizers()");
+                return getStabilizers(te);
+            }
             default:{
                 throw new LuaException("No method found");
             }
