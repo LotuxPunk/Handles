@@ -1,6 +1,0 @@
-tile.handles:tardis_interface_cc.name=Interface de TARDIS (CC)
-tile.handles:tardis_interface_oc.name=Interface de TARDIS (OC)
-tile.handles:handles.name=Cafetière
-system.handles.aprioritron=Circuits Aprioritron
-item.handles:aprioritron.name=Aprioritron
-tardis.aprioritron.usage=Permet d'utiliser le TARDIS Link

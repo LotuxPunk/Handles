@@ -1,43 +1,71 @@
 package com.vandendaelen.handles;
 
-import com.vandendaelen.handles.config.HandlesConfig;
-import com.vandendaelen.handles.integration.CCIntegration;
-import com.vandendaelen.handles.integration.Integrations;
-import com.vandendaelen.handles.network.NetworkHandler;
-import com.vandendaelen.handles.proxy.IProxy;
-import com.vandendaelen.handles.tardis.SystemAprioritron;
-import com.vandendaelen.handles.utils.Reference;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.tardis.mod.common.systems.TardisSystems;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MODID,name = Reference.MOD_NAME,version = Reference.VERSION.VERSION,dependencies = Reference.DEP, updateJSON = Reference.UPDATE_JSON)
-public class Handles {
-    public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_NAME);
+// The value here should match an entry in the META-INF/mods.toml file
+@Mod("handles")
+public class Handles
+{
+    // Directly reference a log4j logger.
+    public static final Logger LOGGER = LogManager.getLogger();
 
-    @Mod.Instance(Reference.MODID)
-    public static Handles instance;
+    public Handles() {
+        // Register the setup method for modloading
+//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+//        // Register the enqueueIMC method for modloading
+//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+//        // Register the processIMC method for modloading
+//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+//        // Register the doClientStuff method for modloading
+//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
-    @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
-    public static IProxy proxy;
-
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event){
-        proxy.preInit();
-        if (HandlesConfig.GAMEPLAY.subsystem)
-            TardisSystems.register("aprioritron", SystemAprioritron.class);
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-        if (Integrations.isCCLoaded()){
-            CCIntegration.init();
-        }
-        proxy.init();
-        NetworkHandler.init();
-    }
+//    private void setup(final FMLCommonSetupEvent event)
+//    {
+//        // some preinit code
+//        LOGGER.info("HELLO FROM PREINIT");
+//        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+//    }
+//
+//    private void doClientStuff(final FMLClientSetupEvent event) {
+//        // do something that can only be done on the client
+//        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+//    }
+//
+//    private void enqueueIMC(final InterModEnqueueEvent event)
+//    {
+//        // some example code to dispatch IMC to another mod
+//        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+//    }
+//
+//    private void processIMC(final InterModProcessEvent event)
+//    {
+//        // some example code to receive and process InterModComms from other mods
+//        LOGGER.info("Got IMC {}", event.getIMCStream().
+//                map(m->m.getMessageSupplier().get()).
+//                collect(Collectors.toList()));
+//    }
+//    // You can use SubscribeEvent and let the Event Bus discover methods to call
+//    @SubscribeEvent
+//    public void onServerStarting(FMLServerStartingEvent event) {
+//        // do something when the server starts
+//        LOGGER.info("HELLO from server starting");
+//    }
+//
+//    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
+//    // Event bus for receiving Registry Events)
+//    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+//    public static class RegistryEvents {
+//        @SubscribeEvent
+//        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+//            // register a new block here
+//            LOGGER.info("HELLO from Register Block");
+//        }
+//    }
 }
