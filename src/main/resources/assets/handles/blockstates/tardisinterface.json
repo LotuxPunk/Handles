@@ -1,0 +1,20 @@
+{
+  "variants":{
+    "facing=north":{
+      "model": "handles:block/tardisinterface",
+      "y": 0
+    },
+    "facing=east":{
+      "model": "handles:block/tardisinterface",
+      "y": 90
+    },
+    "facing=south":{
+      "model": "handles:block/tardisinterface",
+      "y": 180
+    },
+    "facing=west":{
+      "model": "handles:block/tardisinterface",
+      "y": 270
+    }
+  }
+}

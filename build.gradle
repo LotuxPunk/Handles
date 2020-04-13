@@ -27,7 +27,7 @@ repositories {
 
 minecraft {
 
-    mappings channel: 'snapshot', version: '20190719-1.14.3'
+    mappings channel: 'snapshot', version: '20200119-1.14.4'
 
     runs {
         client {
