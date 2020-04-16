@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
+
         jcenter()
         mavenCentral()
     }
@@ -13,17 +14,11 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.14.1-0.0.1'
+version = "${minecraft_version}-${mod_version}"
 group = 'com.vandendaelen.handles' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'handles'
+archivesBaseName = "${project.jar_name}_${minecraft_version}-${mod_version}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
-
-repositories {
-    maven { url 'https://jitpack.io' }
-    // ComputerCraft
-    maven { url "https://cc.crzd.me/maven/" }
-}
 
 minecraft {
 
@@ -82,14 +77,31 @@ minecraft {
     }
 }
 
-dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.2.3'
+repositories {
+    maven {
+        name "SquidDev"
+        url "https://squiddev.cc/maven"
+    }
+
+    maven { url 'https://jitpack.io' }
+
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+
 }
 
-// Example configuration to allow publishing using the maven-publish task
-// we define a custom artifact that is sourced from the reobfJar output task
-// and then declare that to be published
-// Note you'll need to add a repository here
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.14.4-28.2.3'
+    implementation fg.deobf("org.squiddev:cc-tweaked-${minecraft_version}:${cct_version}")
+    implementation "com.gitlab.Spectre0987:TardisMod-1-14:${tm_tag}"
+
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
+}
+
 def reobfFile = file("$buildDir/reobfJar/output.jar")
 def reobfArtifact = artifacts.add('default', reobfFile) {
     type 'jar'
