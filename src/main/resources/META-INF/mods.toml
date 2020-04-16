@@ -47,7 +47,7 @@ ComputerCraft integration for the New TARDIS Mod in 1.14.4
 [[dependencies.handles]]
     modId="tardis"
     mandatory=true
-    versionRange="[1.1.0,)"
+    versionRange="[0.1.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.handles]]
