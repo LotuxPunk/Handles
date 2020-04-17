@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xtx",
+    "rcr",
+    "xtx"
+  ],
+  "key": {
+    "x": {
+      "item": "tardis:xion_crystal"
+    },
+    "t": {
+      "item": "minecraft:redstone_torch"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "c": {
+      "item": "tardis:circuits"
+    }
+  },
+  "result": {
+    "item": "handles:tardisinterface"
+  }
+}
