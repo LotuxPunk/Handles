@@ -1,8 +1,9 @@
 package com.vandendaelen.handles;
 
-import com.vandendaelen.handles.blocks.ModBlocks;
+import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
 import com.vandendaelen.handles.setup.ClientProxy;
+import com.vandendaelen.handles.setup.HandlesSetup;
 import com.vandendaelen.handles.setup.IProxy;
 import com.vandendaelen.handles.setup.ServerProxy;
 import net.minecraft.block.Block;
@@ -21,7 +22,9 @@ import org.apache.logging.log4j.Logger;
 @Mod("handles")
 public class Handles {
     public static final Logger LOGGER = LogManager.getLogger();
+    public static final String MODID = "handles";
     public static IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
+    public static HandlesSetup setup = new HandlesSetup();
 
     public Handles() {
         // Register the setup method for modloading
@@ -29,7 +32,8 @@ public class Handles {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
+        setup.init();
+        proxy.init();
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -43,7 +47,9 @@ public class Handles {
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
-            itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.TARDISINTERFACEBLOCK, new Item.Properties()).setRegistryName("tardisinterface"));
+            Item.Properties properties = new Item.Properties()
+                    .group(setup.itemGroup);
+            itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.TARDISINTERFACEBLOCK, properties).setRegistryName("tardisinterface"));
         }
     }
 }

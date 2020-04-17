@@ -1,3 +1,6 @@
 {
-  "block.handles.tardisinterface": "Tardis Interface"
+  "block.handles.tardisinterface": "Tardis Interface",
+
+  "_comment": "Creative tabs",
+  "itemGroup.handles": "Handles"
 }

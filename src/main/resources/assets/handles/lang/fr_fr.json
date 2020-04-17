@@ -1,3 +1,6 @@
 {
-  "block.handles.tardisinterface": "Interface de TARDIS"
+  "block.handles.tardisinterface": "Interface de TARDIS",
+
+  "_comment": "Onglet créatif",
+  "itemGroup.handles": "Handles"
 }
