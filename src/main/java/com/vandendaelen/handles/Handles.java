@@ -2,6 +2,7 @@ package com.vandendaelen.handles;
 
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
+import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
 import com.vandendaelen.handles.setup.ClientProxy;
 import com.vandendaelen.handles.setup.HandlesSetup;
 import com.vandendaelen.handles.setup.IProxy;
@@ -9,6 +10,7 @@ import com.vandendaelen.handles.setup.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -50,6 +52,11 @@ public class Handles {
             Item.Properties properties = new Item.Properties()
                     .group(setup.itemGroup);
             itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.TARDISINTERFACEBLOCK, properties).setRegistryName("tardisinterface"));
+        }
+
+        @SubscribeEvent
+        public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> tileEntityRegistryEvent){
+            tileEntityRegistryEvent.getRegistry().register(TileEntityType.Builder.create(TardisInterfaceTile::new, HandlesBlocks.TARDISINTERFACEBLOCK).build(null).setRegistryName("tardisinterface"));
         }
     }
 }
