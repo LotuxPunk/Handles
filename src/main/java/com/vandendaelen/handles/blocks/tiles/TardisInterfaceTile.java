@@ -8,7 +8,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.dimension.DimensionType;
 import net.tardis.mod.helper.TardisHelper;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -40,7 +39,7 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
     }
 
     private ConsoleTile getTardis(){
-        return TardisHelper.getConsole(DimensionType.byName(dimension));
+        return (ConsoleTile)this.getWorld().getTileEntity(TardisHelper.TARDIS_POS);
     }
 
     public Object[] getTardisLocation(){
