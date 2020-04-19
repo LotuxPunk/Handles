@@ -10,7 +10,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.tardis.mod.dimensions.TDimensions;
-import net.tardis.mod.helper.TardisHelper;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 import javax.annotation.Nonnull;
@@ -34,11 +33,11 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
 
     private ConsoleTile getTardis() throws NotATardisException {
         if(this.getWorld().dimension.getType().equals(TDimensions.TARDIS)) throw new NotATardisException();
-        return (ConsoleTile)this.getWorld().getTileEntity(TardisHelper.TARDIS_POS);
+        return (ConsoleTile) world.loadedTileEntityList.stream().filter(tileEntity -> tileEntity instanceof ConsoleTile).findFirst().get();
     }
 
     public Object[] getTardisLocation() throws NotATardisException {
-        BlockPos pos = getTardis().getPos();
+        BlockPos pos = getTardis().getLocation();
         return new Object[]{pos.getX(), pos.getY(), pos.getZ()};
     }
 
