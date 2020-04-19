@@ -1,13 +1,15 @@
 package com.vandendaelen.handles.blocks.tiles;
 
 import com.vandendaelen.handles.blocks.HandlesBlocks;
+import com.vandendaelen.handles.exceptions.NotATardisException;
 import com.vandendaelen.handles.misc.TardisInterfacePeripheral;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralTile;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.tardis.mod.dimensions.TDimensions;
 import net.tardis.mod.helper.TardisHelper;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -15,7 +17,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
-    private ResourceLocation dimension;
 
     public TardisInterfaceTile() {
         super(HandlesBlocks.TARDISINTERFACE_TILE);
@@ -23,27 +24,22 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
 
     @Override
     public void read(CompoundNBT tag) {
-        dimension = new ResourceLocation(tag.getString("dimension"));
         super.read(tag);
     }
 
     @Override
     public CompoundNBT write(CompoundNBT tag) {
-        tag.putString("dimension", dimension.toString());
         return super.write(tag);
     }
 
-    public void setTileDimension(ResourceLocation dimension) {
-        this.dimension = dimension;
-        markDirty();
-    }
-
-    private ConsoleTile getTardis(){
+    private ConsoleTile getTardis() throws NotATardisException {
+        if(this.getWorld().dimension.getType().equals(TDimensions.TARDIS)) throw new NotATardisException();
         return (ConsoleTile)this.getWorld().getTileEntity(TardisHelper.TARDIS_POS);
     }
 
-    public Object[] getTardisLocation(){
-        return new Object[]{getTardis().getPos().getX(), getTardis().getPos().getY(), getTardis().getPos().getZ()};
+    public Object[] getTardisLocation() throws NotATardisException {
+        BlockPos pos = getTardis().getPos();
+        return new Object[]{pos.getX(), pos.getY(), pos.getZ()};
     }
 
     @Nullable

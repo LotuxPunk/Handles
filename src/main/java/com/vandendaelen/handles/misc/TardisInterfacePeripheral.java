@@ -1,6 +1,7 @@
 package com.vandendaelen.handles.misc;
 
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.exceptions.NotATardisException;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -34,12 +35,18 @@ public class TardisInterfacePeripheral implements IPeripheral {
     @Nullable
     @Override
     public Object[] callMethod(@Nonnull IComputerAccess iComputerAccess, @Nonnull ILuaContext iLuaContext, int method, @Nonnull Object[] objects) throws LuaException, InterruptedException {
-        switch (method){
-            case 0://getLocation
-                return tile.getTardisLocation();
-            default:
-                return null;
+        try{
+            switch (method){
+                case 0://getLocation
+                    return tile.getTardisLocation();
+                default:
+                    return null;
+            }
         }
+        catch (NotATardisException e) {
+            return null;
+        }
+
     }
 
     @Nonnull
