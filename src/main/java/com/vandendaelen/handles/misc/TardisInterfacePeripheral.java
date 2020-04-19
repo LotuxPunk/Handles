@@ -28,7 +28,11 @@ public class TardisInterfacePeripheral implements IPeripheral {
     @Override
     public String[] getMethodNames() {
         return new String[]{
-                "getLocation"
+                "getLocation",
+                "getDestination",
+                "setDestination",
+                "setDimension",
+                "getDimensions"
         };
     }
 
@@ -39,6 +43,14 @@ public class TardisInterfacePeripheral implements IPeripheral {
             switch (method){
                 case 0://getLocation
                     return tile.getTardisLocation();
+                case 1://getDestination
+                    return tile.getTardisDestination();
+                case 2://setDestination
+                    return tile.setTardisDestination((int)objects[0], (int)objects[1], (int)objects[2]);
+                case 3:
+                    return tile.setTardisDimensionDestination((int)objects[0]);
+                case 4:
+                    return tile.getDimensions();
                 default:
                     return null;
             }
