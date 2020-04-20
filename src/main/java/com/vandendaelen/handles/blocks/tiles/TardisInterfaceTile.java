@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.tardis.mod.controls.RefuelerControl;
 import net.tardis.mod.dimensions.TDimensions;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -47,17 +48,34 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return new Object[]{pos.getX(), pos.getY(), pos.getZ()};
     }
 
-    public Object[] setTardisDestination(int x, int y, int z) throws NotATardisException{
+    public Object[] setTardisDestination(double x, double y, double z) throws NotATardisException{
         ConsoleTile tardis = getTardis();
-        tardis.setDestination(tardis.getDestinationDimension(), new BlockPos(x, y, z));
+        if (!tardis.isInFlight())
+            tardis.setDestination(tardis.getDestinationDimension(), new BlockPos(x, y, z));
         return null;
     }
 
-    public Object[] setTardisDimensionDestination(int id) throws NotATardisException {
+    public Object[] setTardisDimensionDestination(double id) throws NotATardisException {
         ConsoleTile tardis = getTardis();
-        tardis.setDestination(DimensionHelper.getDimension(id), tardis.getDestination());
+        if (!tardis.isInFlight())
+            tardis.setDestination(DimensionHelper.getDimension((int)id), tardis.getDestination());
         return null;
     }
+
+    public Object[] startTardisFlight() throws NotATardisException {
+        ConsoleTile tardis = getTardis();
+        if (!tardis.isInFlight())
+            tardis.takeoff();
+        return null;
+    }
+
+    public Object[] setTardisRefuelMode(boolean status) throws NotATardisException {
+        ConsoleTile tardis = getTardis();
+        tardis.getControl(RefuelerControl.class).setRefuling(status);
+        return null;
+    }
+
+
 
     public Object[] getDimensions(){
         return DimensionHelper.getPrettyDimensionList().toArray();
