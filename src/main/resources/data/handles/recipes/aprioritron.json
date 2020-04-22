@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "grg",
+    "rcr",
+    "grg"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:gold_nugget"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "c": {
+      "item": "tardis:circuits"
+    }
+  },
+  "result": {
+    "item": "handles:aprioritron"
+  }
+}

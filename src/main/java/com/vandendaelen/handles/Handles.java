@@ -3,6 +3,7 @@ package com.vandendaelen.handles;
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.items.AprioritronItem;
 import com.vandendaelen.handles.setup.ClientProxy;
 import com.vandendaelen.handles.setup.HandlesSetup;
 import com.vandendaelen.handles.setup.IProxy;
@@ -52,6 +53,7 @@ public class Handles {
             Item.Properties properties = new Item.Properties()
                     .group(setup.itemGroup);
             itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.TARDISINTERFACEBLOCK, properties).setRegistryName("tardisinterface"));
+            itemRegistryEvent.getRegistry().register(new AprioritronItem());
         }
 
         @SubscribeEvent

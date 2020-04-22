@@ -4,6 +4,7 @@ import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.exceptions.NotATardisException;
 import com.vandendaelen.handles.helpers.DimensionHelper;
 import com.vandendaelen.handles.misc.TardisInterfacePeripheral;
+import com.vandendaelen.handles.tardis.subsystems.AprioritronSubsystem;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralTile;
 import net.minecraft.nbt.CompoundNBT;
@@ -35,7 +36,16 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
 
     private ConsoleTile getTardis() throws NotATardisException {
         if(this.getWorld().dimension.getType().equals(TDimensions.TARDIS)) throw new NotATardisException();
-        return (ConsoleTile) world.loadedTileEntityList.stream().filter(tileEntity -> tileEntity instanceof ConsoleTile).findFirst().get();
+        ConsoleTile tardis = (ConsoleTile) world.loadedTileEntityList.stream().filter(tileEntity -> tileEntity instanceof ConsoleTile).findFirst().get();
+        return tardis;
+    }
+
+    public void damageSubsystem() throws NotATardisException {
+        this.getTardis().getSubsystem(AprioritronSubsystem.class).damage(null, 1);
+    }
+
+    public boolean canBeUsed() throws NotATardisException {
+        return this.getTardis().getSubsystem(AprioritronSubsystem.class).canBeUsed();
     }
 
     public Object[] getTardisLocation() throws NotATardisException {
