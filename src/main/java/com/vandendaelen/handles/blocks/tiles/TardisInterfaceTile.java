@@ -85,8 +85,6 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return null;
     }
 
-
-
     public Object[] getDimensions(){
         return DimensionHelper.getPrettyDimensionList().toArray();
     }
