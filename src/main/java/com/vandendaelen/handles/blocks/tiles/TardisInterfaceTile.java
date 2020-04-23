@@ -12,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.tardis.mod.controls.RefuelerControl;
+import net.tardis.mod.controls.ThrottleControl;
 import net.tardis.mod.dimensions.TDimensions;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -94,6 +95,18 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
 
     public Object[] getDimensions(){
         return DimensionHelper.getPrettyDimensionList().toArray();
+    }
+
+    public Object[] getDimension() throws NotATardisException {
+        return new Object[]{DimensionHelper.getDimensionId(getTardis().getDimension())};
+    }
+
+    public Object[] setSpeed(double value) throws NotATardisException {
+        if(value > 1.0D){
+            value = 1.0D;
+        }
+        getTardis().getControl(ThrottleControl.class).setAmount((float) value);
+        return null;
     }
 
     @Nullable

@@ -15,10 +15,15 @@ public class DimensionHelper {
 
     public static ArrayList<String> getPrettyDimensionList(){
         ArrayList<DimensionType> dimensions = getTardisableDimensionList();
-        return (ArrayList<String>) dimensions.stream().map(dim -> MessageFormat.format("{0} - {1}", dimensions.indexOf(dim), dim.getRegistryName().toString())).collect(Collectors.toList());
+        return (ArrayList<String>) dimensions.stream().map(dim -> MessageFormat.format("{0} - {1}", getDimensionId(dim), dim.getRegistryName().toString())).collect(Collectors.toList());
     }
 
     public static ArrayList<DimensionType> getTardisableDimensionList(){
         return (ArrayList<DimensionType>) DimensionManager.getRegistry().stream().filter(Helper::canTravelToDimension).collect(Collectors.toList());
+    }
+
+    public static int getDimensionId(DimensionType dim){
+        ArrayList<DimensionType> dimensions = getTardisableDimensionList();
+        return dimensions.indexOf(dim);
     }
 }
