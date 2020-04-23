@@ -34,7 +34,8 @@ public class TardisInterfacePeripheral implements IPeripheral {
                 "setDimension",
                 "getDimensions",
                 "startFlight",
-                "setRefuel"
+                "setRefuel",
+                "setDestinationAndDimension"
         };
     }
 
@@ -59,6 +60,8 @@ public class TardisInterfacePeripheral implements IPeripheral {
                         return tile.startTardisFlight();
                     case 6://setRefuel
                         return tile.setTardisRefuelMode((boolean)objects[0]);
+                    case 7://setDestinationAndDimension
+                        return tile.setTardisDestinationAndDimension((double)objects[0], (double)objects[1], (double)objects[2], (double)objects[3]);
                     default:
                         return null;
                 }

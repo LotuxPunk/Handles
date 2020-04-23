@@ -72,6 +72,13 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return null;
     }
 
+    public Object[] setTardisDestinationAndDimension(double x, double y, double z, double id) throws NotATardisException{
+        ConsoleTile tardis = getTardis();
+        if (!tardis.isInFlight())
+            tardis.setDestination(DimensionHelper.getDimension((int)id), new BlockPos(x, y, z));
+        return null;
+    }
+
     public Object[] startTardisFlight() throws NotATardisException {
         ConsoleTile tardis = getTardis();
         if (!tardis.isInFlight())
