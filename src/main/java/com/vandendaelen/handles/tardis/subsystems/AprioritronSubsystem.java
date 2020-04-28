@@ -25,4 +25,19 @@ public class AprioritronSubsystem extends Subsystem {
     public boolean stopFlight() {
         return false;
     }
+
+    @Override
+    public void onTakeoff() {
+
+    }
+
+    @Override
+    public void onLand() {
+
+    }
+
+    @Override
+    public void onFlightSecond() {
+
+    }
 }
