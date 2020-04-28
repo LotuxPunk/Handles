@@ -94,7 +94,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.2.4'
+    minecraft 'net.minecraftforge:forge:1.14.4-28.2.5'
     implementation fg.deobf("org.squiddev:cc-tweaked-${minecraft_version}:${cct_version}")
     implementation fg.deobf("com.gitlab.Spectre0987:TardisMod-1-14:${tm_tag}")
 
