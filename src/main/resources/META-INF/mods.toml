@@ -18,7 +18,7 @@ displayURL="https://github.com/LotuxPunk/Handles" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="handles.png" #optional
 # A text field displayed in the mod UI
-credits="The New TARDIS Mod team, TheVale (Tardis Interface model & texture)" #optional
+credits="The New TARDIS Mod team, TheVale (Tardis Interface & Aprioritron models)" #optional
 # A text field displayed in the mod UI
 authors="LotuxPunk" #optional
 # The description text for the mod (multi line!) (#mandatory)
