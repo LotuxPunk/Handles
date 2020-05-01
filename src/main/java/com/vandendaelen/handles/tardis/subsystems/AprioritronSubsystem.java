@@ -22,7 +22,7 @@ public class AprioritronSubsystem extends Subsystem {
     }
 
     @Override
-    public boolean stopFlight() {
+    public boolean stopsFlight() {
         return false;
     }
 

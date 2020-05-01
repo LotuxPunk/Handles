@@ -1,6 +1,7 @@
 package com.vandendaelen.handles.blocks.tiles;
 
 import com.vandendaelen.handles.blocks.HandlesBlocks;
+import com.vandendaelen.handles.exceptions.NoSubsystemException;
 import com.vandendaelen.handles.exceptions.NotATardisException;
 import com.vandendaelen.handles.helpers.DimensionHelper;
 import com.vandendaelen.handles.misc.TardisInterfacePeripheral;
@@ -42,11 +43,11 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
     }
 
     public void damageSubsystem() throws NotATardisException {
-        this.getTardis().getSubsystem(AprioritronSubsystem.class).damage(null, 1);
+        this.getTardis().getSubsystem(AprioritronSubsystem.class).ifPresent(aprioritronSubsystem -> aprioritronSubsystem.damage(null, 1));
     }
 
-    public boolean canBeUsed() throws NotATardisException {
-        return this.getTardis().getSubsystem(AprioritronSubsystem.class).canBeUsed();
+    public boolean canBeUsed() throws NotATardisException, NoSubsystemException {
+        return this.getTardis().getSubsystem(AprioritronSubsystem.class).orElseThrow(NoSubsystemException::new).canBeUsed();
     }
 
     public Object[] getTardisLocation() throws NotATardisException {
