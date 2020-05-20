@@ -37,7 +37,13 @@ public class TardisInterfacePeripheral implements IPeripheral {
                 "startFlight",
                 "setRefuel",
                 "setDestinationAndDimension",
-                "getDimension"
+                "getDimension",
+                "setDoors",
+                "getDoors",
+                "setFacing",
+                "getFacing",
+                "getArtronBank",
+                "getTimeLeft"
         };
     }
 
@@ -66,6 +72,18 @@ public class TardisInterfacePeripheral implements IPeripheral {
                         return tile.setTardisDestinationAndDimension((double)objects[0], (double)objects[1], (double)objects[2], (double)objects[3]);
                     case 8://getDimension
                         return tile.getDimension();
+                    case 9://setDoors
+                        return tile.setDoors((String)objects[0]);
+                    case 10://getDoors
+                        return tile.getDoors();
+                    case 11://setFacing
+                        return tile.setFacing((String)objects[0]);
+                    case 12://getFacing
+                        return tile.getFacing();
+                    case 13://getArtronBank
+                        return tile.getArtronBank();
+                    case 14://getTimeLeft
+                        return tile.getTimeLeft();
                     default:
                         return null;
                 }

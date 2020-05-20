@@ -17,6 +17,7 @@ import net.tardis.mod.controls.RefuelerControl;
 import net.tardis.mod.controls.StabilizerControl;
 import net.tardis.mod.controls.ThrottleControl;
 import net.tardis.mod.dimensions.TDimensions;
+import net.tardis.mod.enums.EnumDoorState;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 import javax.annotation.Nonnull;
@@ -36,6 +37,12 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
     @Override
     public CompoundNBT write(CompoundNBT tag) {
         return super.write(tag);
+    }
+
+    @Nullable
+    @Override
+    public IPeripheral getPeripheral(@Nonnull Direction direction) {
+        return new TardisInterfacePeripheral(this);
     }
 
     private ConsoleTile getTardis() throws NotATardisException {
@@ -114,9 +121,33 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return new Object[]{DimensionHelper.getDimensionId(getTardis().getDimension())};
     }
 
-    @Nullable
-    @Override
-    public IPeripheral getPeripheral(@Nonnull Direction direction) {
-        return new TardisInterfacePeripheral(this);
+    public Object[] setDoors(String status) throws NotATardisException {
+        ConsoleTile tardis = getTardis();
+        this.getWorld().getServer().enqueue(new TickDelayedTask(1, ()->{
+            tardis.getDoor().setOpenState(EnumDoorState.valueOf(status));
+            tardis.getDoor().openOther();
+        }));
+        return null;
+    }
+
+    public Object[] getDoors() throws NotATardisException {
+        return new String[]{getTardis().getDoor().getOpenState().name()};
+    }
+
+    public Object[] setFacing(String status) throws NotATardisException {
+        getTardis().setDirection(Direction.valueOf(status));
+        return null;
+    }
+
+    public Object[] getFacing() throws NotATardisException {
+        return new String[]{getTardis().getDirection().name()};
+    }
+
+    public Object[] getArtronBank() throws NotATardisException {
+        return new Double[]{(double) getTardis().getArtron()};
+    }
+
+    public Object[] getTimeLeft() throws NotATardisException {
+        return new Integer[]{getTardis().getTimeLeft()};
     }
 }
