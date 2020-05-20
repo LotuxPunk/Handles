@@ -114,14 +114,6 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return new Object[]{DimensionHelper.getDimensionId(getTardis().getDimension())};
     }
 
-    public Object[] setSpeed(double value) throws NotATardisException {
-        if(value > 1.0D){
-            value = 1.0D;
-        }
-        getTardis().getControl(ThrottleControl.class).setAmount((float) value);
-        return null;
-    }
-
     @Nullable
     @Override
     public IPeripheral getPeripheral(@Nonnull Direction direction) {
