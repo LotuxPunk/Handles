@@ -11,8 +11,10 @@ import dan200.computercraft.api.peripheral.IPeripheralTile;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.concurrent.TickDelayedTask;
 import net.minecraft.util.math.BlockPos;
 import net.tardis.mod.controls.RefuelerControl;
+import net.tardis.mod.controls.StabilizerControl;
 import net.tardis.mod.controls.ThrottleControl;
 import net.tardis.mod.dimensions.TDimensions;
 import net.tardis.mod.tileentities.ConsoleTile;
@@ -81,10 +83,20 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return null;
     }
 
-    public Object[] startTardisFlight() throws NotATardisException {
+    public Object[] startTardisFlight(double speed) throws NotATardisException {
         ConsoleTile tardis = getTardis();
-        if (!tardis.isInFlight())
-            tardis.takeoff();
+        if(speed > 1.0D){
+            speed = 1.0D;
+        }
+
+        StabilizerControl stabilizer = tardis.getControl(StabilizerControl.class);
+        ThrottleControl throttle = tardis.getControl(ThrottleControl.class);
+
+        if (stabilizer != null && throttle != null && speed > 0){
+            stabilizer.setStabilized(true);
+            throttle.setAmount((float)speed);
+            this.getWorld().getServer().enqueue(new TickDelayedTask(1, tardis::takeoff));
+        }
         return null;
     }
 
