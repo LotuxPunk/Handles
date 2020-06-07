@@ -1,0 +1,20 @@
+{
+  "variants":{
+    "facing=north":{
+      "model": "handles:block/ambiguousmineralsprocessor",
+      "y": 0
+    },
+    "facing=east":{
+      "model": "handles:block/ambiguousmineralsprocessor",
+      "y": 90
+    },
+    "facing=south":{
+      "model": "handles:block/ambiguousmineralsprocessor",
+      "y": 180
+    },
+    "facing=west":{
+      "model": "handles:block/ambiguousmineralsprocessor",
+      "y": 270
+    }
+  }
+}

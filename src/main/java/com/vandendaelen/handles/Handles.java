@@ -1,7 +1,9 @@
 package com.vandendaelen.handles;
 
+import com.vandendaelen.handles.blocks.AmbiguousMineralsProcessorBlock;
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
+import com.vandendaelen.handles.blocks.tiles.AmbiguousMineralsProcessorTile;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
 import com.vandendaelen.handles.items.AprioritronItem;
 import com.vandendaelen.handles.setup.ClientProxy;
@@ -46,19 +48,22 @@ public class Handles {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             blockRegistryEvent.getRegistry().register(new TardisInterfaceBlock());
+            blockRegistryEvent.getRegistry().register(new AmbiguousMineralsProcessorBlock());
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
             Item.Properties properties = new Item.Properties()
                     .group(setup.itemGroup);
-            itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.TARDISINTERFACEBLOCK, properties).setRegistryName("tardisinterface"));
+            itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.TARDISINTERFACE_BLOCK, properties).setRegistryName("tardisinterface"));
             itemRegistryEvent.getRegistry().register(new AprioritronItem());
+            itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.AMBIGUOUSMINERALSPROCESSOR_BLOCK, properties).setRegistryName("ambiguousmineralsprocessor"));
         }
 
         @SubscribeEvent
         public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> tileEntityRegistryEvent){
-            tileEntityRegistryEvent.getRegistry().register(TileEntityType.Builder.create(TardisInterfaceTile::new, HandlesBlocks.TARDISINTERFACEBLOCK).build(null).setRegistryName("tardisinterface"));
+            tileEntityRegistryEvent.getRegistry().register(TileEntityType.Builder.create(TardisInterfaceTile::new, HandlesBlocks.TARDISINTERFACE_BLOCK).build(null).setRegistryName("tardisinterface"));
+            tileEntityRegistryEvent.getRegistry().register(TileEntityType.Builder.create(AmbiguousMineralsProcessorTile::new, HandlesBlocks.AMBIGUOUSMINERALSPROCESSOR_BLOCK).build(null).setRegistryName("ambiguousmineralsprocessor"));
         }
     }
 }
