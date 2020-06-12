@@ -40,7 +40,12 @@ public class AmbiguousMineralsProcessorTile extends TileEntity implements ITicka
             if (iinventory == null) {
                 DISPENSE_BEHAVIOR.dispense(proxyblocksource, itemStack);
             } else {
-                HopperTileEntity.putStackInInventoryAllSlots(null, iinventory, itemStack, direction.getOpposite());
+                ItemStack itemStack1;
+                itemStack1 = HopperTileEntity.putStackInInventoryAllSlots(null, iinventory, itemStack.copy().split(1), direction.getOpposite());
+                if (itemStack1.isEmpty()) {
+                    //The item was dispense
+                    //TODO : Remove ARTRON
+                }
             }
         }
     }
