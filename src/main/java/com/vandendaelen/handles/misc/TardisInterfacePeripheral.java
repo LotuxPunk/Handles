@@ -1,8 +1,6 @@
 package com.vandendaelen.handles.misc;
 
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
-import com.vandendaelen.handles.exceptions.NoSubsystemException;
-import com.vandendaelen.handles.exceptions.NotATardisException;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -90,7 +88,7 @@ public class TardisInterfacePeripheral implements IPeripheral {
             }
             return null;
         }
-        catch (NotATardisException | NoSubsystemException e) {
+        catch (Exception e) {
             return null;
         }
     }

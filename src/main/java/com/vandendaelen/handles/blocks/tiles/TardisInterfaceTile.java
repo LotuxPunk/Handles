@@ -124,14 +124,17 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
     public Object[] setDoors(String status) throws NotATardisException {
         ConsoleTile tardis = getTardis();
         this.getWorld().getServer().enqueue(new TickDelayedTask(1, ()->{
-            tardis.getDoor().setOpenState(EnumDoorState.valueOf(status));
-            tardis.getDoor().openOther();
+            tardis.getDoor().ifPresent(doorEntity -> {
+                doorEntity.setOpenState(EnumDoorState.valueOf(status));
+                doorEntity.openOther();
+            });
+
         }));
         return null;
     }
 
     public Object[] getDoors() throws NotATardisException {
-        return new String[]{getTardis().getDoor().getOpenState().name()};
+        return new String[]{getTardis().getDoor().orElseThrow(NullPointerException::new).getOpenState().name()};
     }
 
     public Object[] setFacing(String status) throws NotATardisException {
