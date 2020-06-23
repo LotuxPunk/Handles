@@ -94,10 +94,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.2.5'
+    minecraft 'net.minecraftforge:forge:1.14.4-28.2.19'
     implementation fg.deobf("org.squiddev:cc-tweaked-${minecraft_version}:${cct_version}")
-    //implementation fg.deobf("com.gitlab.Spectre0987:TardisMod-1-14:${tm_tag}")
-    implementation fg.deobf("com.gitlab.Spectre0987:TardisMod-1-14:master-SNAPSHOT")
+    implementation fg.deobf("com.gitlab.Spectre0987:TardisMod-1-14:${tm_tag}")
+    //implementation fg.deobf("com.gitlab.Spectre0987:TardisMod-1-14:master-SNAPSHOT")
 
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
@@ -116,4 +116,8 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
