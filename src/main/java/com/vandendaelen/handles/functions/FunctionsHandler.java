@@ -1,9 +1,11 @@
 package com.vandendaelen.handles.functions;
 
+import com.vandendaelen.handles.functions.handles.*;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 import java.util.HashMap;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class FunctionsHandler {
     private HashMap<String, IFunction> functions = new HashMap<>();
@@ -11,10 +13,27 @@ public class FunctionsHandler {
 
     public FunctionsHandler(ConsoleTile tardis) {
         this.tardis = tardis;
+        init();
     }
 
     private void init(){
-
+        registerAll(
+                new GetArtronBank(),
+                new GetCurrentDimension(),
+                new GetDimensions(),
+                new GetTardisDestination(),
+                new GetTardisDoors(),
+                new GetTardisFacing(),
+                new GetTardisLocation(),
+                new GetTimeLeft(),
+                new SetTardisDestination(),
+                new SetDimension(),
+                new SetRefuel(),
+                new SetTardisDestination(),
+                new SetTardisDoors(),
+                new SetTardisFacing(),
+                new StartFlight()
+        );
     }
 
     public void register(IFunction function){
@@ -25,6 +44,10 @@ public class FunctionsHandler {
         for (IFunction function : functions) {
             register(function);
         }
+    }
+
+    public String[] getFunctionsNames(){
+        return functions.entrySet().stream().map(entry -> entry.getKey()).toArray(String[]::new);
     }
 
     public Object[] run(String functionName, Object[] args){
