@@ -45,7 +45,7 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
         return new TardisInterfacePeripheral(this);
     }
 
-    private ConsoleTile getTardis() throws NotATardisException {
+    public ConsoleTile getTardis() throws NotATardisException {
         if(this.getWorld().dimension.getType().equals(TDimensions.TARDIS)) throw new NotATardisException();
         ConsoleTile tardis = (ConsoleTile) world.loadedTileEntityList.stream().filter(tileEntity -> tileEntity instanceof ConsoleTile).findFirst().get();
         return tardis;
