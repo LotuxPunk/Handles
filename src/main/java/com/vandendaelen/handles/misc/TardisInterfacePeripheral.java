@@ -34,16 +34,16 @@ public class TardisInterfacePeripheral implements IPeripheral {
     @Nonnull
     @Override
     public String[] getMethodNames() {
-        return this.handler.getFunctionsNames();
+        return FunctionsHandler.getFunctionsNames();
     }
 
     @Nullable
     @Override
     public Object[] callMethod(@Nonnull IComputerAccess iComputerAccess, @Nonnull ILuaContext iLuaContext, int method, @Nonnull Object[] objects) throws LuaException, InterruptedException {
         try{
-            if (tile.canBeUsed()){
+            if (handler != null && tile.canBeUsed()){
                 tile.damageSubsystem();
-                this.handler.run(this.handler.getFunctionsNames()[method], objects);
+                return this.handler.run(FunctionsHandler.getFunctionsNames()[method], objects);
             }
             return null;
         }
