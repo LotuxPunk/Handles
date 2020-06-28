@@ -10,10 +10,14 @@ import com.vandendaelen.handles.setup.HandlesSetup;
 import com.vandendaelen.handles.setup.IProxy;
 import com.vandendaelen.handles.setup.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -35,6 +39,7 @@ public class Handles {
     public Handles() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        MinecraftForge.EVENT_BUS.addListener(this::onPlayerLoggedIn);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, HandlesConfig.COMMON_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, HandlesConfig.CLIENT_SPEC);
     }
@@ -42,6 +47,12 @@ public class Handles {
     private void setup(final FMLCommonSetupEvent event) {
         setup.init();
         proxy.init();
+    }
+
+    private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        PlayerEntity player = event.getPlayer();
+        if (HandlesConfig.Client.getDiscordAdvertising())
+            player.sendMessage(ForgeHooks.newChatWithLinks("[§9Handles§r] Discord's server : https://discord.gg/6cq3skc"));
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
