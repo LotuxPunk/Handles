@@ -5,18 +5,16 @@ import net.tardis.mod.tileentities.ConsoleTile;
 
 import java.util.HashMap;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class FunctionsHandler {
-    private HashMap<String, IFunction> functions = new HashMap<>();
+    private static HashMap<String, IFunction> functions = new HashMap<>();
     private ConsoleTile tardis;
 
     public FunctionsHandler(ConsoleTile tardis) {
         this.tardis = tardis;
-        init();
     }
 
-    private void init(){
+    public static void init(){
         registerAll(
                 new GetArtronBank(),
                 new GetCurrentDimension(),
@@ -36,17 +34,17 @@ public class FunctionsHandler {
         );
     }
 
-    public void register(IFunction function){
+    public static void register(IFunction function){
         functions.put(function.getName(), function);
     }
 
-    public void registerAll(IFunction... functions){
+    public static void registerAll(IFunction... functions){
         for (IFunction function : functions) {
             register(function);
         }
     }
 
-    public String[] getFunctionsNames(){
+    public static String[] getFunctionsNames(){
         return functions.entrySet().stream().map(entry -> entry.getKey()).toArray(String[]::new);
     }
 
