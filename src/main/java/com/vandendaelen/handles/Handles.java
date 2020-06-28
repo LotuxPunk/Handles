@@ -3,6 +3,7 @@ package com.vandendaelen.handles;
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.FunctionsHandler;
 import com.vandendaelen.handles.items.AprioritronItem;
 import com.vandendaelen.handles.setup.ClientProxy;
@@ -10,13 +11,19 @@ import com.vandendaelen.handles.setup.HandlesSetup;
 import com.vandendaelen.handles.setup.IProxy;
 import com.vandendaelen.handles.setup.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -33,12 +40,21 @@ public class Handles {
     public Handles() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        MinecraftForge.EVENT_BUS.addListener(this::onPlayerLoggedIn);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, HandlesConfig.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, HandlesConfig.CLIENT_SPEC);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         setup.init();
         proxy.init();
         FunctionsHandler.init();
+    }
+
+    private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        PlayerEntity player = event.getPlayer();
+        if (HandlesConfig.Client.getDiscordAdvertising())
+            player.sendMessage(ForgeHooks.newChatWithLinks("[§9Handles§r] Discord's server : https://discord.gg/6cq3skc"));
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
