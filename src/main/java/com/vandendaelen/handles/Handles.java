@@ -3,6 +3,7 @@ package com.vandendaelen.handles;
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.items.AprioritronItem;
 import com.vandendaelen.handles.setup.ClientProxy;
 import com.vandendaelen.handles.setup.HandlesSetup;
@@ -15,7 +16,9 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -32,6 +35,8 @@ public class Handles {
     public Handles() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, HandlesConfig.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, HandlesConfig.CLIENT_SPEC);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
