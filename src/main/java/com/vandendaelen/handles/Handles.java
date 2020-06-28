@@ -3,6 +3,7 @@ package com.vandendaelen.handles;
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.functions.FunctionsHandler;
 import com.vandendaelen.handles.items.AprioritronItem;
 import com.vandendaelen.handles.setup.ClientProxy;
 import com.vandendaelen.handles.setup.HandlesSetup;
@@ -37,6 +38,7 @@ public class Handles {
     private void setup(final FMLCommonSetupEvent event) {
         setup.init();
         proxy.init();
+        FunctionsHandler.init();
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
