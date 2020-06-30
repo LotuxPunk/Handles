@@ -54,7 +54,7 @@ public class Handles {
     private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
         if (HandlesConfig.Client.getDiscordAdvertising())
-            player.sendMessage(ForgeHooks.newChatWithLinks("[§9Handles§r] Discord's server : https://discord.gg/6cq3skc"));
+            player.sendMessage(ForgeHooks.newChatWithLinks("[Handles] Discord's server : https://discord.gg/6cq3skc"));
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
