@@ -1,7 +1,6 @@
 package com.vandendaelen.handles.misc;
 
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
-import com.vandendaelen.handles.exceptions.NotATardisException;
 import com.vandendaelen.handles.functions.FunctionsHandler;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
@@ -12,17 +11,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TardisInterfacePeripheral implements IPeripheral {
-
     private final TardisInterfaceTile tile;
-    private FunctionsHandler handler;
+    private final FunctionsHandler handler;
 
-    public TardisInterfacePeripheral(TardisInterfaceTile tile) {
+    public TardisInterfacePeripheral(TardisInterfaceTile tile, FunctionsHandler functionsHandler) {
         this.tile = tile;
-        try {
-            this.handler = new FunctionsHandler(tile.getTardis());
-        } catch (NotATardisException e) {
-            this.handler = null;
-        }
+        this.handler = functionsHandler;
     }
 
     @Nonnull
