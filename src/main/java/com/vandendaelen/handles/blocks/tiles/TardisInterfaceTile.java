@@ -3,7 +3,6 @@ package com.vandendaelen.handles.blocks.tiles;
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.exceptions.NoSubsystemException;
 import com.vandendaelen.handles.exceptions.NotATardisException;
-import com.vandendaelen.handles.functions.FunctionsHandler;
 import com.vandendaelen.handles.misc.TardisInterfacePeripheral;
 import com.vandendaelen.handles.tardis.subsystems.AprioritronSubsystem;
 import dan200.computercraft.api.peripheral.IPeripheral;
@@ -36,12 +35,7 @@ public class TardisInterfaceTile extends TileEntity implements IPeripheralTile {
     @Nullable
     @Override
     public IPeripheral getPeripheral(@Nonnull Direction direction) {
-        try {
-            return new TardisInterfacePeripheral(this, new FunctionsHandler(getTardis()));
-        } catch (NotATardisException e) {
-            e.printStackTrace();
-            return new TardisInterfacePeripheral(this, null);
-        }
+        return new TardisInterfacePeripheral(this);
     }
 
     public ConsoleTile getTardis() throws NotATardisException {
