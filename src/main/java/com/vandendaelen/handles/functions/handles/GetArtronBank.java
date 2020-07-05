@@ -10,6 +10,11 @@ public class GetArtronBank implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         return new Double[]{(double) tardis.getArtron()};
     }

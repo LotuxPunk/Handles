@@ -39,8 +39,26 @@ public class HandlesConfig {
     }
 
     public static class Common {
+        public final ForgeConfigSpec.IntValue moodPenalty;
+        public final ForgeConfigSpec.IntValue loyaltyPenalty;
+
         public Common(ForgeConfigSpec.Builder builder) {
-            //builder.push("common");
+            builder.push("Common settings");
+            moodPenalty = builder
+                    .comment("Mood penalty when user use a setter function")
+                    .defineInRange("moodPenaltyOnSetter",10,0, Integer.MAX_VALUE);
+            loyaltyPenalty = builder
+                    .comment("Loyalty penalty when user use a setter function")
+                    .defineInRange("loyaltyPenaltyOnSetter", 2,0, Integer.MAX_VALUE);
+            builder.pop();
+        }
+
+        public static int getLoyaltyPenalty() {
+            return COMMON.loyaltyPenalty.get();
+        }
+
+        public static int getMoodPenalty() {
+            return COMMON.moodPenalty.get();
         }
     }
 }

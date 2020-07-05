@@ -11,6 +11,11 @@ public class GetTardisLocation implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         BlockPos pos = tardis.getLocation();
         return new Object[]{pos.getX(), pos.getY(), pos.getZ()};

@@ -10,6 +10,11 @@ public class GetTimeLeft implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         return new Integer[]{tardis.getTimeLeft()};
     }

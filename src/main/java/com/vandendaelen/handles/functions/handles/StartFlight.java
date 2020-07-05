@@ -13,6 +13,11 @@ public class StartFlight implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return true;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         double speed = (double)args[0];
         if(speed > 1.0D){

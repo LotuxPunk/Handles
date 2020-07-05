@@ -10,6 +10,11 @@ public class GetTardisFacing implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         return new String[]{tardis.getDirection().name()};
     }

@@ -10,6 +10,11 @@ public class GetTardisDoors implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         return new String[]{tardis.getDoor().orElseThrow(NullPointerException::new).getOpenState().name()};
     }

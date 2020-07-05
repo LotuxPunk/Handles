@@ -11,6 +11,11 @@ public class GetDimensions implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         return DimensionHelper.getPrettyDimensionList().toArray();
     }

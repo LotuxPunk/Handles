@@ -1,5 +1,6 @@
 package com.vandendaelen.handles.functions;
 
+import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.handles.*;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -45,11 +46,18 @@ public class FunctionsHandler {
     }
 
     public static String[] getFunctionsNames(){
-        return functions.entrySet().stream().map(entry -> entry.getKey()).toArray(String[]::new);
+        return functions.keySet().toArray(new String[0]);
     }
 
     public Object[] run(String functionName, Object[] args){
         Optional<IFunction> function = Optional.ofNullable(functions.get(functionName));
-        return function.map(iFunction -> iFunction.run(tardis, args)).orElse(null);
+        if (function.isPresent()){
+            if (function.get().impactMoodAndLoyalty()){
+                tardis.getEmotionHandler().addLoyalty(-HandlesConfig.Common.getLoyaltyPenalty());
+                tardis.getEmotionHandler().addMood(-HandlesConfig.Common.getMoodPenalty());
+            }
+            return function.get().run(tardis, args);
+        }
+        return null;
     }
 }

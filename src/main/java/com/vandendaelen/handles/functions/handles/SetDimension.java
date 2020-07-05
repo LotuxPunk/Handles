@@ -11,6 +11,11 @@ public class SetDimension implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return true;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         if (!tardis.isInFlight())
             tardis.setDestination(DimensionHelper.getDimension((int)args[0]), tardis.getDestination());

@@ -12,6 +12,11 @@ public class SetTardisDoors implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return true;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         String status = (String)args[0];
         tardis.getWorld().getServer().enqueue(new TickDelayedTask(1, ()->{

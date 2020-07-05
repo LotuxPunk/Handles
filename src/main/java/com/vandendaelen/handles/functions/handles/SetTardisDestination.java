@@ -11,6 +11,11 @@ public class SetTardisDestination implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return true;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         if (!tardis.isInFlight())
             tardis.setDestination(tardis.getDestinationDimension(), new BlockPos((double)args[0], (double)args[1], (double)args[2]));

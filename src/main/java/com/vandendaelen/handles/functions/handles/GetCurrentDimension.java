@@ -11,6 +11,11 @@ public class GetCurrentDimension implements IFunction {
     }
 
     @Override
+    public boolean impactMoodAndLoyalty() {
+        return false;
+    }
+
+    @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         return new Object[]{DimensionHelper.getDimensionId(tardis.getDimension())};
     }
