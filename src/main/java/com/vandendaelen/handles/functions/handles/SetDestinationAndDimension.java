@@ -19,7 +19,7 @@ public class SetDestinationAndDimension implements IFunction {
     @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
         if (!tardis.isInFlight())
-            tardis.setDestination(DimensionHelper.getDimension((int)args[0]), new BlockPos((double)args[1], (double)args[2], (double)args[3]));
+            tardis.setDestination(DimensionHelper.getDimension((int)args[3]), new BlockPos((double)args[0], (double)args[1], (double)args[2]));
         return null;
     }
 }
