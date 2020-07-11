@@ -31,7 +31,8 @@ public class FunctionsHandler {
                 new SetTardisDestination(),
                 new SetTardisDoors(),
                 new SetTardisFacing(),
-                new StartFlight()
+                new StartFlight(),
+                new GetLifeSigns()
         );
     }
 
