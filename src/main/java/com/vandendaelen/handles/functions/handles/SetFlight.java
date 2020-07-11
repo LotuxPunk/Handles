@@ -6,10 +6,10 @@ import net.tardis.mod.controls.StabilizerControl;
 import net.tardis.mod.controls.ThrottleControl;
 import net.tardis.mod.tileentities.ConsoleTile;
 
-public class StartFlight implements IFunction {
+public class SetFlight implements IFunction {
     @Override
     public String getName() {
-        return "startFlight";
+        return "setFlight";
     }
 
     @Override
