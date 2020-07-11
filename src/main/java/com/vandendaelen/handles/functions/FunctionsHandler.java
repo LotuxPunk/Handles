@@ -36,7 +36,9 @@ public class FunctionsHandler {
                 new GetHandbrake(),
                 new SetHandbrake(),
                 new SetSpeed(),
-                new GetSpeed()
+                new GetSpeed(),
+                new GetAlarm(),
+                new SetAlarm()
         );
     }
 
