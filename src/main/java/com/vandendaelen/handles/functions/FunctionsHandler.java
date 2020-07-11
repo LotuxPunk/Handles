@@ -34,7 +34,9 @@ public class FunctionsHandler {
                 new SetFlight(),
                 new GetLifeSigns(),
                 new GetHandbrake(),
-                new SetHandbrake()
+                new SetHandbrake(),
+                new SetSpeed(),
+                new GetSpeed()
         );
     }
 
