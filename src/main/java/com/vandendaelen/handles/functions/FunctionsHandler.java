@@ -32,7 +32,9 @@ public class FunctionsHandler {
                 new SetTardisDoors(),
                 new SetTardisFacing(),
                 new StartFlight(),
-                new GetLifeSigns()
+                new GetLifeSigns(),
+                new GetHandbrake(),
+                new SetHandbrake()
         );
     }
 
