@@ -17,7 +17,7 @@ public class SetSpeed implements IFunction {
 
     @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
-        tardis.getControl(ThrottleControl.class).setAmount((float)args[0]);
+        tardis.getControl(ThrottleControl.class).setAmount((float)((double)args[0]));
         return new Object[]{tardis.getControl(ThrottleControl.class).getAmount()};
     }
 }
