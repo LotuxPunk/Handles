@@ -28,7 +28,6 @@ public class FunctionsHandler {
                 new SetTardisDestination(),
                 new SetDimension(),
                 new SetRefuel(),
-                new SetTardisDestination(),
                 new SetTardisDoors(),
                 new SetTardisFacing(),
                 new SetFlight(),
@@ -38,7 +37,8 @@ public class FunctionsHandler {
                 new SetSpeed(),
                 new GetSpeed(),
                 new GetAlarm(),
-                new SetAlarm()
+                new SetAlarm(),
+                new SetDestinationAndDimension()
         );
     }
 
