@@ -16,6 +16,6 @@ public class GetTimeLeft implements IFunction {
 
     @Override
     public Object[] run(ConsoleTile tardis, Object[] args) {
-        return new Integer[]{tardis.getTimeLeft()};
+        return new Integer[]{tardis.getTimeLeft()/20};
     }
 }
