@@ -2,6 +2,7 @@ package com.vandendaelen.handles.functions;
 
 import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.handles.*;
+import dan200.computercraft.api.lua.LuaException;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 import java.util.HashMap;
@@ -56,7 +57,7 @@ public class FunctionsHandler {
         return functions.keySet().toArray(new String[0]);
     }
 
-    public Object[] run(String functionName, Object[] args){
+    public Object[] run(String functionName, Object[] args) throws LuaException {
         Optional<IFunction> function = Optional.ofNullable(functions.get(functionName));
         if (function.isPresent()){
             if (function.get().impactMoodAndLoyalty()){
