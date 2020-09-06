@@ -8,7 +8,7 @@ issueTrackerURL="https://github.com/LotuxPunk/Handles/issues" #optional
 # The modid of the mod
 modId="handles" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="3.1.0" #mandatory
+version="${file.jarVersion}" #mandatory
  # A display name for the mod
 displayName="Handles" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -32,7 +32,7 @@ ComputerCraft integration for the New TARDIS Mod in 1.14.4
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[28,)" #mandatory
+    versionRange="[28.2.23,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -47,7 +47,7 @@ ComputerCraft integration for the New TARDIS Mod in 1.14.4
 [[dependencies.handles]]
     modId="tardis"
     mandatory=true
-    versionRange="[1.3,)"
+    versionRange="[1.4,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.handles]]
