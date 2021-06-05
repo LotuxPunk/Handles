@@ -1,6 +1,10 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
+
+import dan200.computercraft.api.lua.IArguments;
+import dan200.computercraft.api.lua.LuaException;
+import dan200.computercraft.api.lua.MethodResult;
 import net.tardis.mod.controls.HandbrakeControl;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -16,8 +20,8 @@ public class SetHandbrake implements IFunction {
     }
 
     @Override
-    public Object[] run(ConsoleTile tardis, Object[] args) {
-        tardis.getControl(HandbrakeControl.class).setFree((boolean)args[0]);
-        return new Object[]{tardis.getControl(HandbrakeControl.class).isFree()};
+    public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
+        tardis.getControl(HandbrakeControl.class).get().setFree(args.getBoolean(0));
+        return MethodResult.of(tardis.getControl(HandbrakeControl.class).get().isFree());
     }
 }

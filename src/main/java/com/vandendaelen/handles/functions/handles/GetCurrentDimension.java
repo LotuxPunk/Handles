@@ -2,6 +2,9 @@ package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
 import com.vandendaelen.handles.helpers.DimensionHelper;
+
+import dan200.computercraft.api.lua.IArguments;
+import dan200.computercraft.api.lua.MethodResult;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 public class GetCurrentDimension implements IFunction {
@@ -16,7 +19,7 @@ public class GetCurrentDimension implements IFunction {
     }
 
     @Override
-    public Object[] run(ConsoleTile tardis, Object[] args) {
-        return new Object[]{DimensionHelper.getDimensionId(tardis.getDimension())};
+    public MethodResult run(ConsoleTile tardis, IArguments args) {
+        return MethodResult.of(DimensionHelper.getDimensionId(tardis.getCurrentDimension()));
     }
 }

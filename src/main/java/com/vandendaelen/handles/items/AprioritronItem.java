@@ -10,6 +10,5 @@ public class AprioritronItem extends Item {
                 .maxStackSize(1)
                 .maxDamage(2500)
                 .group(Handles.setup.itemGroup));
-        setRegistryName("aprioritron");
     }
 }

@@ -1,82 +1,56 @@
 package com.vandendaelen.handles;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.vandendaelen.handles.blocks.HandlesBlocks;
-import com.vandendaelen.handles.blocks.TardisInterfaceBlock;
-import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.blocks.HandlesTiles;
 import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.FunctionsHandler;
-import com.vandendaelen.handles.items.AprioritronItem;
-import com.vandendaelen.handles.setup.ClientProxy;
+import com.vandendaelen.handles.items.HandlesItems;
+import com.vandendaelen.handles.setup.ClientSetup;
 import com.vandendaelen.handles.setup.HandlesSetup;
-import com.vandendaelen.handles.setup.IProxy;
-import com.vandendaelen.handles.setup.ServerProxy;
-import net.minecraft.block.Block;
+import com.vandendaelen.handles.tardis.subsystems.HandlesSubsystems;
+
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod("handles")
 public class Handles {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "handles";
-    public static IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
     public static HandlesSetup setup = new HandlesSetup();
 
     public Handles() {
-        // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+    	IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+    	modBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerLoggedIn);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, HandlesConfig.COMMON_SPEC);
+        MinecraftForge.EVENT_BUS.register(new ClientSetup());
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, HandlesConfig.SERVER_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, HandlesConfig.CLIENT_SPEC);
+        HandlesBlocks.BLOCKS.register(modBus);
+        HandlesItems.ITEMS.register(modBus);
+        HandlesTiles.TILES.register(modBus);
+        HandlesSubsystems.SUBSYSTEMS.register(modBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         setup.init();
-        proxy.init();
         FunctionsHandler.init();
     }
 
     private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
         if (HandlesConfig.Client.getDiscordAdvertising())
-            player.sendMessage(ForgeHooks.newChatWithLinks("[Handles] Discord's server : https://discord.gg/6cq3skc"));
+            player.sendStatusMessage(ForgeHooks.newChatWithLinks("[Handles] Discord's server : https://discord.gg/6cq3skc"), false);
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            blockRegistryEvent.getRegistry().register(new TardisInterfaceBlock());
-        }
-
-        @SubscribeEvent
-        public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
-            Item.Properties properties = new Item.Properties()
-                    .group(setup.itemGroup);
-            itemRegistryEvent.getRegistry().register(new BlockItem(HandlesBlocks.TARDISINTERFACEBLOCK, properties).setRegistryName("tardisinterface"));
-            itemRegistryEvent.getRegistry().register(new AprioritronItem());
-        }
-
-        @SubscribeEvent
-        public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> tileEntityRegistryEvent){
-            tileEntityRegistryEvent.getRegistry().register(TileEntityType.Builder.create(TardisInterfaceTile::new, HandlesBlocks.TARDISINTERFACEBLOCK).build(null).setRegistryName("tardisinterface"));
-        }
-    }
 }

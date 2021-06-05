@@ -4,17 +4,17 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class HandlesConfig {
-    public static final Common COMMON;
-    public static final ForgeConfigSpec COMMON_SPEC;
+    public static final Server SERVER;
+    public static final ForgeConfigSpec SERVER_SPEC;
     public static final Client CLIENT;
     public static final ForgeConfigSpec CLIENT_SPEC;
 
 
 
     static {
-        Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
-        COMMON_SPEC = specPair.getRight();
-        COMMON = specPair.getLeft();
+        Pair<Server, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
+        SERVER_SPEC = specPair.getRight();
+        SERVER = specPair.getLeft();
 
         Pair<Client, ForgeConfigSpec> specClientPair = new ForgeConfigSpec.Builder().configure(Client::new);
         CLIENT_SPEC = specClientPair.getRight();
@@ -38,11 +38,11 @@ public class HandlesConfig {
         }
     }
 
-    public static class Common {
+    public static class Server {
         public final ForgeConfigSpec.IntValue moodPenalty;
         public final ForgeConfigSpec.IntValue loyaltyPenalty;
 
-        public Common(ForgeConfigSpec.Builder builder) {
+        public Server(ForgeConfigSpec.Builder builder) {
             builder.push("Common settings");
             moodPenalty = builder
                     .comment("Mood penalty when user use a setter function")
@@ -54,11 +54,11 @@ public class HandlesConfig {
         }
 
         public static int getLoyaltyPenalty() {
-            return COMMON.loyaltyPenalty.get();
+            return SERVER.loyaltyPenalty.get();
         }
 
         public static int getMoodPenalty() {
-            return COMMON.moodPenalty.get();
+            return SERVER.moodPenalty.get();
         }
     }
 }

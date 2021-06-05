@@ -1,0 +1,11 @@
+{
+	"type": "tardis:quantiscope",
+	"repair":false,
+	"ingredients":[
+		{"item":"minecraft:gold_nugget"},
+		{"item":"tardis:circuits"}
+	],
+	"result":{
+		"item":"handles:aprioritron"
+	}
+}

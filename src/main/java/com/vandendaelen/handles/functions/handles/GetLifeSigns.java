@@ -1,6 +1,9 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
+
+import dan200.computercraft.api.lua.IArguments;
+import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.world.server.ServerWorld;
@@ -18,7 +21,7 @@ public class GetLifeSigns implements IFunction {
     }
 
     @Override
-    public Object[] run(ConsoleTile tardis, Object[] args) {
-        return new Object[]{((ServerWorld) tardis.getWorld()).getEntities().filter(entity -> entity instanceof MobEntity || entity instanceof ServerPlayerEntity).count()};
+    public MethodResult run(ConsoleTile tardis, IArguments args) {
+        return MethodResult.of(((ServerWorld) tardis.getWorld()).getEntities().filter(entity -> entity instanceof MobEntity || entity instanceof ServerPlayerEntity).count());
     }
 }

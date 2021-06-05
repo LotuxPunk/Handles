@@ -9,7 +9,7 @@ public class HandlesSetup {
     public ItemGroup itemGroup = new ItemGroup(Handles.MODID) {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(HandlesBlocks.TARDISINTERFACEBLOCK);
+            return new ItemStack(HandlesBlocks.TARDISINTERFACEBLOCK.get());
         }
     };
     public void init(){
