@@ -23,6 +23,6 @@ public class SetDimension implements IFunction {
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         if (!tardis.isInFlight())
             tardis.setDestination(DimensionHelper.getDimension((int)Math.round(args.getDouble(0))), tardis.getDestinationPosition());
-        return null;
+        return MethodResult.of();
     }
 }

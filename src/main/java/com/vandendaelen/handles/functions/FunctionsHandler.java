@@ -88,20 +88,20 @@ public class FunctionsHandler {
         Optional<IFunction> function = Optional.ofNullable(functions.get(functionName));
         if (function.isPresent()){
             if (function.get().impactMoodAndLoyalty()){
-            	//Affect Loyalty values for all players being tracked by the Tardis' emotional handler
-            	for (UUID playerID : tardis.getEmotionHandler().getCrew()) {
-            		if (playerID != null) {
-                    	PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayerByUUID(playerID);
-                    	if (player != null) {
-                    		tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Server.getLoyaltyPenalty());
-                    	}
+                //Affect Loyalty values for all players being tracked by the Tardis' emotional handler
+                for (UUID playerID : tardis.getEmotionHandler().getLoyaltyTrackingCrew()) {
+                    if (playerID != null) {
+                        PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayerByUUID(playerID);
+                        if (player != null) {
+                            tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Server.getLoyaltyPenalty());
+                        }
                     }
-            	}
+                }
                 tardis.getEmotionHandler().addMood(-HandlesConfig.Server.getMoodPenalty());
             }
             return function.get().run(tardis, args);
         }
-        return null;
+        return MethodResult.of();
     }
 
 }

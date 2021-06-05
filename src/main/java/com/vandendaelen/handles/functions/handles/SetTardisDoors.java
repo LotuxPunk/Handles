@@ -39,6 +39,6 @@ public class SetTardisDoors implements IFunction {
             throw new LuaException(MessageFormat.format("Value \"{0}\" doesn't exist. Accepted values [{1}]", args.getString(0), Arrays.stream(EnumDoorState.values()).toArray()));
         }
 
-        return null;
+        return MethodResult.of();
     }
 }

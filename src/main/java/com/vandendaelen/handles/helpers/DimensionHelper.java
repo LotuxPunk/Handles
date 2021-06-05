@@ -10,7 +10,7 @@ import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import net.tardis.mod.helper.WorldHelper;
 
 public class DimensionHelper {
-	//TODO: Figure out if we should still use integer dimension ids
+	//TODO: Figure out if we should still use integer dimension ids or use resource locations
     public static RegistryKey<World> getDimension(int id){
         return getTardisableDimensionList().get(id);
     }

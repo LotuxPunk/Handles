@@ -23,6 +23,6 @@ public class SetTardisFacing implements IFunction {
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         String status = args.getString(0);
         tardis.setExteriorFacingDirection(Direction.valueOf(status));
-        return null;
+        return MethodResult.of();
     }
 }

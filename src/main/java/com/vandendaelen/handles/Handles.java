@@ -10,7 +10,7 @@ import com.vandendaelen.handles.functions.FunctionsHandler;
 import com.vandendaelen.handles.items.HandlesItems;
 import com.vandendaelen.handles.setup.ClientSetup;
 import com.vandendaelen.handles.setup.HandlesSetup;
-import com.vandendaelen.handles.tardis.subsystems.HandlesSubsystems;
+import com.vandendaelen.handles.tardis.upgrades.HandlesUpgrades;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.ForgeHooks;
@@ -39,7 +39,7 @@ public class Handles {
         HandlesBlocks.BLOCKS.register(modBus);
         HandlesItems.ITEMS.register(modBus);
         HandlesTiles.TILES.register(modBus);
-        HandlesSubsystems.SUBSYSTEMS.register(modBus);
+        HandlesUpgrades.UPGRADES.register(modBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {

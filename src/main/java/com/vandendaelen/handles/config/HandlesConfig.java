@@ -29,6 +29,7 @@ public class HandlesConfig {
         public Client(ForgeConfigSpec.Builder builder) {
             builder.push("Client settings");
             discordAdvertising = builder
+                    .translation("config.handles.client.discord_advertising")
                     .comment("Enable LotuxPunk's discord server advertising ?")
                     .define("discordAdvertising", true);
             builder.pop();
@@ -43,11 +44,13 @@ public class HandlesConfig {
         public final ForgeConfigSpec.IntValue loyaltyPenalty;
 
         public Server(ForgeConfigSpec.Builder builder) {
-            builder.push("Common settings");
+            builder.push("Server settings");
             moodPenalty = builder
+                    .translation("config.handles.server.mood_penalty")
                     .comment("Mood penalty when user use a setter function")
                     .defineInRange("moodPenaltyOnSetter",10,0, Integer.MAX_VALUE);
             loyaltyPenalty = builder
+                    .translation("config.handles.server.loyalty_penalty")
                     .comment("Loyalty penalty when user use a setter function")
                     .defineInRange("loyaltyPenaltyOnSetter", 2,0, Integer.MAX_VALUE);
             builder.pop();

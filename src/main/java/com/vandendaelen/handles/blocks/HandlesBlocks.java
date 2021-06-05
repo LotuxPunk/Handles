@@ -14,9 +14,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class HandlesBlocks {
-	
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Handles.MODID);
-    
+
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Handles.MODID);
+
     public static RegistryObject<Block> TARDISINTERFACEBLOCK = register("tardisinterface", () -> new TardisInterfaceBlock(), Handles.setup.itemGroup);
 
     /**
@@ -28,8 +28,8 @@ public class HandlesBlocks {
      * @return
      */
     private static <T extends Block> RegistryObject<T> register(String id, Supplier<T> blockSupplier, ItemGroup itemGroup){
-    	RegistryObject<T> registryObject = BLOCKS.register(id, blockSupplier);
-    	HandlesItems.ITEMS.register(id, () -> new BlockItem(registryObject.get(), new Item.Properties().group(itemGroup)));
-    	return registryObject;
+        RegistryObject<T> registryObject = BLOCKS.register(id, blockSupplier);
+        HandlesItems.ITEMS.register(id, () -> new BlockItem(registryObject.get(), new Item.Properties().group(itemGroup)));
+        return registryObject;
     }
 }

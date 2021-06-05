@@ -24,20 +24,20 @@ public class SetFlight implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
-    	double speed = args.getDouble(0);
+        double speed = args.getDouble(0);
         if(speed > 1.0D){
             speed = 1.0D;
         }
         ThrottleControl throttle = tardis.getControl(ThrottleControl.class).get();
         StabilizerSubsystem stabilizer = tardis.getSubsystem(StabilizerSubsystem.class).orElse(null);
-    	if (throttle != null & speed > 0) {
-    		if (stabilizer.canBeUsed()) {
-    			stabilizer.setControlActivated(!stabilizer.isActivated());
-    			throttle.setAmount((float)speed);
-    			tardis.getWorld().getServer().enqueue(new TickDelayedTask(1, tardis::takeoff));
-    		}
-    	}
+        if (throttle != null & speed > 0) {
+            if (stabilizer.canBeUsed()) {
+                stabilizer.setControlActivated(true); //Always set stabilisers to true
+                throttle.setAmount((float)speed);
+                tardis.getWorld().getServer().enqueue(new TickDelayedTask(1, tardis::takeoff));
+            }
+        }
         
-        return null;
+        return MethodResult.of();
     }
 }

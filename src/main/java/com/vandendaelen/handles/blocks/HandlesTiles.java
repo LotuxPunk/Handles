@@ -12,18 +12,18 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class HandlesTiles {
-	
-	public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Handles.MODID);
-	
-	public static RegistryObject<TileEntityType<TardisInterfaceTile>> TARDISINTERFACE_TILE = TILES.register("tardisinterface", () -> registerTiles(TardisInterfaceTile::new, HandlesBlocks.TARDISINTERFACEBLOCK.get())); 
-    
+
+    public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Handles.MODID);
+
+    public static RegistryObject<TileEntityType<TardisInterfaceTile>> TARDISINTERFACE_TILE = TILES.register("tardisinterface", () -> registerTiles(TardisInterfaceTile::new, HandlesBlocks.TARDISINTERFACEBLOCK.get()));
+
     private static <T extends TileEntity> TileEntityType<T> registerTiles(Supplier<T> tile, Block... validBlock) {
-		TileEntityType<T> type = TileEntityType.Builder.create(tile, validBlock).build(null);
-		for(Block block : validBlock) {
-			if(block instanceof TileBlock) {
-				((TileBlock)block).setTileEntity(type);
-			}
-		}
-		return type;
-	}
+        TileEntityType<T> type = TileEntityType.Builder.create(tile, validBlock).build(null);
+        for(Block block : validBlock) {
+            if(block instanceof TileBlock) {
+                ((TileBlock)block).setTileEntity(type);
+            }
+        }
+        return type;
+    }
 }

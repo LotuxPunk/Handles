@@ -23,6 +23,6 @@ public class SetTardisDestination implements IFunction {
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         if (!tardis.isInFlight())
             tardis.setDestination(tardis.getDestinationDimension(), new BlockPos(args.getDouble(0), args.getDouble(1), args.getDouble(2)));
-        return null;
+        return MethodResult.of();
     }
 }

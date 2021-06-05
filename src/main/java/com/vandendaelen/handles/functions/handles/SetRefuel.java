@@ -23,6 +23,6 @@ public class SetRefuel implements IFunction {
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         boolean status = args.getBoolean(0);
         tardis.getControl(RefuelerControl.class).get().setRefueling(status);
-        return null;
+        return MethodResult.of();
     }
 }

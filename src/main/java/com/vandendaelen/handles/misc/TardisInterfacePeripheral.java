@@ -44,7 +44,7 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
 	        throws LuaException {
         try{
             if (handler != null && tile.canBeUsed()){
-                tile.damageSubsystem();
+                tile.damageUpgrade();
                 return this.handler.run(FunctionsHandler.getFunctionsNames()[method], arguments);
             }
             return null;
