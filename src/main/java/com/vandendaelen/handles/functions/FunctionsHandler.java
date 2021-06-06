@@ -91,7 +91,7 @@ public class FunctionsHandler {
                 //Affect Loyalty values for all players being tracked by the Tardis' emotional handler
                 for (UUID playerID : tardis.getEmotionHandler().getLoyaltyTrackingCrew()) {
                     if (playerID != null) {
-                        PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayerByUUID(playerID);
+                        PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(playerID);
                         if (player != null) {
                             tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Server.getLoyaltyPenalty());
                         }

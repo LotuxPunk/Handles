@@ -11,7 +11,7 @@ public class TileBlock extends Block {
     TileEntityType<?> type;
 
     public TileBlock(Block.Properties prop) {
-        super(prop.notSolid().setSuffocates((blockState, reader, blockPos) -> false));
+        super(prop.noOcclusion().isSuffocating((blockState, reader, blockPos) -> false));
     }
 
     public void setTileEntity(TileEntityType<?> type) {
@@ -29,7 +29,7 @@ public class TileBlock extends Block {
     }
 
     @Override
-    public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public int getLightBlock(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return 0;
     }
 }

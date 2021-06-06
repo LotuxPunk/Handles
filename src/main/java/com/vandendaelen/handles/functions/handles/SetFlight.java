@@ -34,7 +34,7 @@ public class SetFlight implements IFunction {
             if (stabilizer.canBeUsed()) {
                 stabilizer.setControlActivated(true); //Always set stabilisers to true
                 throttle.setAmount((float)speed);
-                tardis.getWorld().getServer().enqueue(new TickDelayedTask(1, tardis::takeoff));
+                tardis.getLevel().getServer().addTickable(new TickDelayedTask(1, tardis::takeoff));
             }
         }
         

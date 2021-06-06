@@ -22,6 +22,6 @@ public class GetLifeSigns implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) {
-        return MethodResult.of(((ServerWorld) tardis.getWorld()).getEntities().filter(entity -> entity instanceof MobEntity || entity instanceof ServerPlayerEntity).count());
+        return MethodResult.of(((ServerWorld) tardis.getLevel()).getEntities().filter(entity -> entity instanceof MobEntity || entity instanceof ServerPlayerEntity).count());
     }
 }

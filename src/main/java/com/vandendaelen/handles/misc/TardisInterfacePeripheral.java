@@ -20,11 +20,9 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 
 public class TardisInterfacePeripheral implements IDynamicPeripheral {
     private final TardisInterfaceTile tile;
-    private final FunctionsHandler handler;
 
-    public TardisInterfacePeripheral(TardisInterfaceTile tile, FunctionsHandler functionsHandler) {
+    public TardisInterfacePeripheral(TardisInterfaceTile tile) {
         this.tile = tile;
-        this.handler = functionsHandler;
     }
 
     @Nonnull
@@ -44,16 +42,16 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
     public MethodResult callMethod(IComputerAccess computer, ILuaContext context, int method, IArguments arguments)
             throws LuaException {
         try{
-            if (handler != null && tile.canBeUsed()){
+            if (this.tile.getFunctionsHandler() != null && tile.canBeUsed()){
                 tile.damageUpgrade();
-                return this.handler.run(FunctionsHandler.getFunctionsNames()[method], arguments);
+                return this.tile.getFunctionsHandler().run(FunctionsHandler.getFunctionsNames()[method], arguments);
             }
             else {
                 throw new LuaException(new NoUpgradeException().getMessage());
             }
         }
         catch (Exception e) {
-            throw new LuaException(new NoUpgradeException().getMessage());
+            throw new LuaException(e.getMessage());
         }
     }
 

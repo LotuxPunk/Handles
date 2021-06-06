@@ -29,7 +29,7 @@ public class HandlesBlocks {
      */
     private static <T extends Block> RegistryObject<T> register(String id, Supplier<T> blockSupplier, ItemGroup itemGroup){
         RegistryObject<T> registryObject = BLOCKS.register(id, blockSupplier);
-        HandlesItems.ITEMS.register(id, () -> new BlockItem(registryObject.get(), new Item.Properties().group(itemGroup)));
+        HandlesItems.ITEMS.register(id, () -> new BlockItem(registryObject.get(), new Item.Properties().tab(itemGroup)));
         return registryObject;
     }
 }

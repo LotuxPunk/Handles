@@ -14,7 +14,7 @@ public class ClientSetup {
 	@SubscribeEvent
 	public void register(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			RenderTypeLookup.setRenderLayer(HandlesBlocks.TARDISINTERFACEBLOCK.get(), RenderType.getCutout());
+			RenderTypeLookup.setRenderLayer(HandlesBlocks.TARDISINTERFACEBLOCK.get(), RenderType.cutout());
 		});
 	}
 

@@ -12,9 +12,9 @@ public class AprioritronItem extends TardisPartItem {
 	public AprioritronItem(PartType type, boolean requiredForFlight, boolean requiresRepair,
 	        TranslationTextComponent dependentItem) {
 		super(new Item.Properties()
-              .maxStackSize(1)
-              .maxDamage(2500)
-              .group(Handles.setup.itemGroup), type, requiredForFlight, requiresRepair, dependentItem);
+              .stacksTo(1)
+              .durability(2500)
+              .tab(Handles.setup.itemGroup), type, requiredForFlight, requiresRepair, dependentItem);
 	}
 
     

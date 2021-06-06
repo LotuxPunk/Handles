@@ -1,20 +1,80 @@
 {
   "variants":{
-    "facing=north":{
-      "model": "handles:block/tardisinterface",
-      "y": 0
-    },
-    "facing=east":{
-      "model": "handles:block/tardisinterface",
-      "y": 90
-    },
-    "facing=south":{
-      "model": "handles:block/tardisinterface",
-      "y": 180
-    },
-    "facing=west":{
-      "model": "handles:block/tardisinterface",
-      "y": 270
-    }
+        "facing=north,up=true,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 0,
+			"x": 180
+		},
+		"facing=north,up=false,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 0
+		},
+		"facing=north,up=true,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 0,
+			"x": 90
+		},
+		"facing=north,up=false,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 0,
+			"x": 90
+		},
+		"facing=east,up=true,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 90,
+			"x": 180
+		},
+		"facing=east,up=false,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 90
+		},
+		"facing=east,up=false,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 90,
+			"x": 90
+		},
+		"facing=east,up=true,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 90,
+			"x": 90
+		},
+		"facing=south,up=true,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 180,
+			"x": 180
+		},
+		"facing=south,up=false,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 180
+		},
+		"facing=south,up=false,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 180,
+			"x": 90
+		},
+		"facing=south,up=true,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 180,
+			"x": 90
+		},
+		"facing=west,up=true,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 270,
+			"x": 180
+		},
+		"facing=west,up=false,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 270
+		},
+		"facing=west,up=false,down=false":{
+			"model":"handles:block/tardisinterface",
+			"y": 270,
+			"x": 90
+		},
+		"facing=west,up=true,down=true":{
+			"model":"handles:block/tardisinterface",
+			"y": 270,
+			"x": 90
+		}
   }
 }

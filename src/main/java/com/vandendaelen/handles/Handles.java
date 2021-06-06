@@ -50,7 +50,6 @@ public class Handles {
     private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
         if (HandlesConfig.Client.getDiscordAdvertising())
-            player.sendStatusMessage(ForgeHooks.newChatWithLinks("[Handles] Discord's server : https://discord.gg/6cq3skc"), false);
+            player.displayClientMessage(ForgeHooks.newChatWithLinks("[Handles] Discord's server : https://discord.gg/6cq3skc"), false);
     }
-
 }

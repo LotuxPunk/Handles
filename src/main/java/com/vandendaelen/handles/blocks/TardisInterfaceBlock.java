@@ -7,30 +7,29 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.Direction;
 
 public class TardisInterfaceBlock extends TileBlock {
     public TardisInterfaceBlock() {
-        super(Properties.create(Material.IRON)
+        super(Properties.of(Material.METAL)
                 .sound(SoundType.METAL)
-                .hardnessAndResistance(2.0f)
+                .strength(2.0f)
         );
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
+        Direction direction = context.getClickedFace();
+        Direction horizontalFacing = context.getPlayer().getDirection();
         return super.getStateForPlacement(context)
-                .with(BlockStateProperties.HORIZONTAL_FACING, context.getPlayer()
-                        .getHorizontalFacing().getOpposite());
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, horizontalFacing.getOpposite())
+                .setValue(BlockStateProperties.UP, direction.getOpposite() == Direction.DOWN ? false : true)
+                .setValue(BlockStateProperties.DOWN, direction.getOpposite() == Direction.UP ? false : true);
 
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(BlockStateProperties.HORIZONTAL_FACING);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.WATERLOGGED, BlockStateProperties.UP, BlockStateProperties.DOWN);
     }
-
-//    @Override
-//    public BlockRenderLayer getRenderLayer() {
-//        return BlockRenderLayer.CUTOUT;
-//    }
 }
