@@ -16,8 +16,7 @@ logoFile="handles.png" #optional
 credits="The New TARDIS Mod team, TheVale (Tardis Interface & Aprioritron models)" #optional
 authors="LotuxPunk" #optional
 description='''
-ComputerCraft integration for the New TARDIS Mod in 1.16
-'''
+An addon mod that adds ComputerCraft Integration for the New TARDIS Mod.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.handles]] #optional
     # the modid of the dependency
