@@ -42,18 +42,18 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
     @Nullable
     @Override
     public MethodResult callMethod(IComputerAccess computer, ILuaContext context, int method, IArguments arguments)
-	        throws LuaException {
+            throws LuaException {
         try{
             if (handler != null && tile.canBeUsed()){
                 tile.damageUpgrade();
                 return this.handler.run(FunctionsHandler.getFunctionsNames()[method], arguments);
             }
             else {
-            	throw new LuaException(new NoUpgradeException().getMessage());
+                throw new LuaException(new NoUpgradeException().getMessage());
             }
         }
         catch (Exception e) {
-        	throw new LuaException(new NoUpgradeException().getMessage());
+            throw new LuaException(new NoUpgradeException().getMessage());
         }
     }
 
