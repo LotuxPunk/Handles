@@ -9,7 +9,7 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 
-public class TardisInterfaceBlock extends TileBlock {
+public class TardisInterfaceBlock extends TileEnabledBlock {
     public TardisInterfaceBlock() {
         super(Properties.of(Material.METAL)
                 .sound(SoundType.METAL)

@@ -5,12 +5,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-
-public class TileBlock extends Block {
+/** Block that provides a TileEntity*/
+public class TileEnabledBlock extends Block {
 
     TileEntityType<?> type;
 
-    public TileBlock(Block.Properties prop) {
+    public TileEnabledBlock(Block.Properties prop) {
         super(prop.noOcclusion().isSuffocating((blockState, reader, blockPos) -> false));
     }
 

@@ -20,8 +20,8 @@ public class HandlesTiles {
     private static <T extends TileEntity> TileEntityType<T> registerTiles(Supplier<T> tile, Block... validBlock) {
         TileEntityType<T> type = TileEntityType.Builder.of(tile, validBlock).build(null);
         for(Block block : validBlock) {
-            if(block instanceof TileBlock) {
-                ((TileBlock)block).setTileEntity(type);
+            if(block instanceof TileEnabledBlock) {
+                ((TileEnabledBlock)block).setTileEntity(type);
             }
         }
         return type;

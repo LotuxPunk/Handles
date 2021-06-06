@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/LotuxPunk/Handles/issues" #optional
 
 [[mods]] #mandatory
 modId="handles" #mandatory
-version="${file.jarVersion}" #mandatory
+version="${version}" #mandatory
 displayName="Handles" #mandatory
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
