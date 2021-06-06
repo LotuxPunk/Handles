@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.exceptions.NoUpgradeException;
 import com.vandendaelen.handles.functions.FunctionsHandler;
 
 import dan200.computercraft.api.lua.IArguments;
@@ -47,10 +48,12 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
                 tile.damageUpgrade();
                 return this.handler.run(FunctionsHandler.getFunctionsNames()[method], arguments);
             }
-            return null;
+            else {
+            	throw new LuaException(new NoUpgradeException().getMessage());
+            }
         }
         catch (Exception e) {
-            return null;
+        	throw new LuaException(new NoUpgradeException().getMessage());
         }
     }
 

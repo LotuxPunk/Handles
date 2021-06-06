@@ -51,7 +51,8 @@ public class TardisInterfaceTile extends TileEntity{
     }
 
     public boolean canBeUsed() throws NotATardisException, NoUpgradeException {
-        return this.getTardis().getUpgrade(AprioritronUpgrade.class).orElseThrow(NoUpgradeException::new).isUsable();
+    	AprioritronUpgrade upgrade = this.getTardis().getUpgrade(AprioritronUpgrade.class).orElseThrow(NoUpgradeException::new);
+    	return upgrade.isUsable() && upgrade.isActivated();
     }
 
     @Override
