@@ -84,7 +84,7 @@ repositories {
     }
 
     maven { url 'https://jitpack.io' }
-
+    maven { url "https://www.cursemaven.com" }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -101,6 +101,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
     implementation fg.deobf("org.squiddev:cc-tweaked-${cct_mc_version}:${cct_version}")
+    implementation fg.deobf("curse.maven:configured-457570:${configured_version}")
 }
 
 // Stolen from Regen, sorry Suff :3
