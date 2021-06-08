@@ -1,30 +1,22 @@
 modLoader="javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
 loaderVersion="[28,)" #mandatory (28 is current forge version)
-# A URL to refer people to when problems occur with this mod
+license = "https://raw.githubusercontent.com/LotuxPunk/Handles/1.14.4/LICENSE"
 issueTrackerURL="https://github.com/LotuxPunk/Handles/issues" #optional
-# A list of mods - how many allowed here is determined by the individual mod loader
+
 [[mods]] #mandatory
-# The modid of the mod
 modId="handles" #mandatory
-# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="${file.jarVersion}" #mandatory
- # A display name for the mod
+version="${version}" #mandatory
 displayName="Handles" #mandatory
-# A URL to query for updates for this mod. See the JSON update specification <here>
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/LotuxPunk/Handles" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="handles.png" #optional
-# A text field displayed in the mod UI
-credits="The New TARDIS Mod team, TheVale (Tardis Interface & Aprioritron models)" #optional
-# A text field displayed in the mod UI
+credits="The New TARDIS Mod team, TheVale (Tardis Interface & Aprioritron models), 50ap5ud5 for the 1.16.5 port" #optional
 authors="LotuxPunk" #optional
-# The description text for the mod (multi line!) (#mandatory)
 description='''
-ComputerCraft integration for the New TARDIS Mod in 1.14.4
-'''
+An addon mod that adds ComputerCraft Integration for the New TARDIS Mod.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.handles]] #optional
     # the modid of the dependency
@@ -32,7 +24,7 @@ ComputerCraft integration for the New TARDIS Mod in 1.14.4
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[28.2.23,)" #mandatory
+    versionRange="[35.1.16,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -41,18 +33,18 @@ ComputerCraft integration for the New TARDIS Mod in 1.14.4
 [[dependencies.handles]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.4]"
+    versionRange="[1.16.5]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.handles]]
     modId="tardis"
     mandatory=true
-    versionRange="[1.4,)"
+    versionRange="[1.5,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.handles]]
     modId="computercraft"
     mandatory=true
-    versionRange="[1.14.4-1.89.2,)"
+    versionRange="[1.16.4-35.1.16,)"
     ordering="NONE"
     side="BOTH"

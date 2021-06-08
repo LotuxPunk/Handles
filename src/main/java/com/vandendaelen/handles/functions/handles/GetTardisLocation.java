@@ -1,6 +1,9 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
+
+import dan200.computercraft.api.lua.IArguments;
+import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.util.math.BlockPos;
 import net.tardis.mod.tileentities.ConsoleTile;
 
@@ -16,8 +19,8 @@ public class GetTardisLocation implements IFunction {
     }
 
     @Override
-    public Object[] run(ConsoleTile tardis, Object[] args) {
-        BlockPos pos = tardis.getLocation();
-        return new Object[]{pos.getX(), pos.getY(), pos.getZ()};
+    public MethodResult run(ConsoleTile tardis, IArguments args) {
+        BlockPos pos = tardis.getCurrentLocation();
+        return MethodResult.of(pos.getX(), pos.getY(), pos.getZ());
     }
 }

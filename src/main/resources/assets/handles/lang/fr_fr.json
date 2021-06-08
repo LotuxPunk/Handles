@@ -1,7 +1,12 @@
 {
   "block.handles.tardisinterface": "Interface de TARDIS",
-  "item.handles.aprioritron": "Aprioritron",
-
+  "config.handles.client.discord_advertising":"Publicité du serveur Discord",
+  "config.handles.server.mood_penalty":"Montant de la pénalité de l'humeur du Tardis",
+  "config.handles.server.loyalty_penalty":"Montant de la pénalité de loyauté du Tardis",
+  "error.handles.non_tardis_dimension":"Ce n'est pas une dimension du Tardis",
+  "error.handles.no_upgrade":"Aucune amélioration d'Aprioritron trouvée, ou l'amélioration n'est pas activée",
   "_comment": "Onglet créatif",
-  "itemGroup.handles": "Handles"
+  "item.handles.aprioritron": "Aprioritron",
+  "itemGroup.handles": "Handles",
+  "tooltip.part.aprioritron.description":"Description: \u00A77Permet aux ordinateurs ComputerCraft de s'interfacer avec le Tardis."
 }

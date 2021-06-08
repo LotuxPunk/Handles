@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 public class HandlesSetup {
     public ItemGroup itemGroup = new ItemGroup(Handles.MODID) {
         @Override
-        public ItemStack createIcon() {
-            return new ItemStack(HandlesBlocks.TARDISINTERFACEBLOCK);
+        public ItemStack makeIcon() {
+            return new ItemStack(HandlesBlocks.TARDISINTERFACEBLOCK.get());
         }
     };
     public void init(){

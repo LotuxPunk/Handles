@@ -1,6 +1,9 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
+
+import dan200.computercraft.api.lua.IArguments;
+import dan200.computercraft.api.lua.MethodResult;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 public class GetTardisFacing implements IFunction {
@@ -15,7 +18,7 @@ public class GetTardisFacing implements IFunction {
     }
 
     @Override
-    public Object[] run(ConsoleTile tardis, Object[] args) {
-        return new String[]{tardis.getDirection().name()};
+    public MethodResult run(ConsoleTile tardis, IArguments args) {
+        return MethodResult.of(tardis.getExteriorFacingDirection().name());
     }
 }
