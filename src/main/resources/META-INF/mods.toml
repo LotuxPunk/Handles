@@ -13,7 +13,7 @@ displayName="Handles" #mandatory
 displayURL="https://github.com/LotuxPunk/Handles" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="handles.png" #optional
-credits="The New TARDIS Mod team, TheVale (Tardis Interface & Aprioritron models)" #optional
+credits="The New TARDIS Mod team, TheVale (Tardis Interface & Aprioritron models), 50ap5ud5 for the 1.16.5 port" #optional
 authors="LotuxPunk" #optional
 description='''
 An addon mod that adds ComputerCraft Integration for the New TARDIS Mod.'''
