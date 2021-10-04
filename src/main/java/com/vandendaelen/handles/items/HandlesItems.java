@@ -6,11 +6,11 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.tardis.mod.constants.Constants;
+import net.tardis.mod.constants.TardisConstants;
 
 public class HandlesItems {
 	
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Handles.MODID);
 	
-	public static final RegistryObject<Item> APRIORITRON = ITEMS.register("aprioritron", () -> new AprioritronItem(Constants.Part.PartType.UPGRADE, false, true, Constants.Translations.DEMAT_CIRCUIT));
+	public static final RegistryObject<Item> APRIORITRON = ITEMS.register("aprioritron", () -> new AprioritronItem(TardisConstants.Part.PartType.UPGRADE, false, true, TardisConstants.Translations.DEMAT_CIRCUIT));
 }
