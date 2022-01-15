@@ -21,7 +21,8 @@ public class SetHandbrake implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
-        tardis.getControl(HandbrakeControl.class).get().setFree(args.getBoolean(0));
-        return MethodResult.of(tardis.getControl(HandbrakeControl.class).get().isFree());
+        final HandbrakeControl handbrakeControl = tardis.getControl(HandbrakeControl.class).get();
+        handbrakeControl.setFree(!args.getBoolean(0));
+        return MethodResult.of(!handbrakeControl.isFree());
     }
 }

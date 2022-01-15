@@ -33,7 +33,7 @@ public class SetFlight implements IFunction {
          */
         if (throttle != null & speed > 0) { 
             throttle.setAmount((float)speed);
-            tardis.getLevel().getServer().addTickable(new TickDelayedTask(1, tardis::takeoff)); //Schedule by 1 tick to allow the throttle animation to play correctly.
+            tardis.getLevel().getServer().tell(new TickDelayedTask(1, tardis::takeoff)); //Schedule by 1 tick to allow the throttle animation to play correctly.
         }
         return MethodResult.of();
     }
