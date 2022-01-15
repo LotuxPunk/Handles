@@ -23,6 +23,6 @@ public class GetCurrentDimension implements IFunction {
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) {
         final RegistryKey<World> currentDimension = tardis.getCurrentDimension();
-        return MethodResult.of(DimensionHelper.getDimensionId(tardis.getCurrentDimension()), currentDimension.location().getPath());
+        return MethodResult.of(DimensionHelper.getDimensionId(currentDimension), currentDimension.location().getPath());
     }
 }
