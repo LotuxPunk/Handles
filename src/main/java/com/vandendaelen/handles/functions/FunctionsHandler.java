@@ -8,6 +8,7 @@ import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.handles.GetAlarm;
 import com.vandendaelen.handles.functions.handles.GetArtronBank;
 import com.vandendaelen.handles.functions.handles.GetCurrentDimension;
+import com.vandendaelen.handles.functions.handles.GetDestinationDimension;
 import com.vandendaelen.handles.functions.handles.GetDimensions;
 import com.vandendaelen.handles.functions.handles.GetHandbrake;
 import com.vandendaelen.handles.functions.handles.GetLifeSigns;
@@ -47,6 +48,7 @@ public class FunctionsHandler {
         registerAll(
                 new GetArtronBank(),
                 new GetCurrentDimension(),
+                new GetDestinationDimension(),
                 new GetDimensions(),
                 new GetTardisDestination(),
                 new GetTardisDoors(),

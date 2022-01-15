@@ -20,6 +20,6 @@ public class GetHandbrake implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) {
-        return MethodResult.of(tardis.getControl(HandbrakeControl.class).get().isFree());
+        return MethodResult.of(!(tardis.getControl(HandbrakeControl.class).get().isFree()));
     }
 }

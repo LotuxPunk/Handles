@@ -28,7 +28,7 @@ public class SetTardisDoors implements IFunction {
         EnumDoorState status;
         try{
             status = EnumDoorState.valueOf(args.getString(0));
-            tardis.getLevel().getServer().addTickable(new TickDelayedTask(1, ()->{
+            tardis.getLevel().getServer().tell(new TickDelayedTask(1, ()->{
                 tardis.getDoor().ifPresent(doorEntity -> {
                     doorEntity.setOpenState(status);
                     doorEntity.openAndUpdateExteriorDoor();
