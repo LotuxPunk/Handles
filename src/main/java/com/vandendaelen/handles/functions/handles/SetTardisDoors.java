@@ -1,10 +1,6 @@
 package com.vandendaelen.handles.functions.handles;
 
-import java.text.MessageFormat;
-import java.util.Arrays;
-
 import com.vandendaelen.handles.functions.IFunction;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -12,15 +8,13 @@ import net.minecraft.util.concurrent.TickDelayedTask;
 import net.tardis.mod.enums.EnumDoorState;
 import net.tardis.mod.tileentities.ConsoleTile;
 
+import java.text.MessageFormat;
+import java.util.Arrays;
+
 public class SetTardisDoors implements IFunction {
     @Override
     public String getName() {
         return "setDoors";
-    }
-
-    @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
     }
 
     @Override

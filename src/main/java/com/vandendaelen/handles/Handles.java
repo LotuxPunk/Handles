@@ -32,7 +32,8 @@ public class Handles {
     	modBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerLoggedIn);
         MinecraftForge.EVENT_BUS.register(new ClientSetup());
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, HandlesConfig.SERVER_SPEC);
+        FunctionsHandler.init();
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, HandlesConfig.COMMON_CONFIG);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, HandlesConfig.CLIENT_SPEC);
         HandlesBlocks.BLOCKS.register(modBus);
         HandlesItems.ITEMS.register(modBus);
@@ -42,7 +43,6 @@ public class Handles {
 
     private void setup(final FMLCommonSetupEvent event) {
         setup.init();
-        FunctionsHandler.init();
     }
 
     private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {

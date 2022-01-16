@@ -1,7 +1,6 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -12,11 +11,6 @@ public class SetTardisDestination implements IFunction {
     @Override
     public String getName() {
         return "setDestination";
-    }
-
-    @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
     }
 
     @Override

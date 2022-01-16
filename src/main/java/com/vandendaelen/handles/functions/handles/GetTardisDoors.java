@@ -13,11 +13,6 @@ public class GetTardisDoors implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return false;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         return MethodResult.of(tardis.getDoor().orElseThrow(() -> new LuaException("doors not found")).getOpenState().name());
     }

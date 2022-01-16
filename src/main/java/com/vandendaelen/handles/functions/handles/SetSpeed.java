@@ -14,11 +14,6 @@ public class SetSpeed implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         final ThrottleControl throttleControl = tardis.getControl(ThrottleControl.class).orElseThrow(() -> new LuaException("throttleControl not found"));
         throttleControl.setAmount((float)(args.getDouble(0)));

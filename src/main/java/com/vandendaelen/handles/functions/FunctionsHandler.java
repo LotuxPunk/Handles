@@ -1,9 +1,5 @@
 package com.vandendaelen.handles.functions;
 
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.UUID;
-
 import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.handles.GetAlarm;
 import com.vandendaelen.handles.functions.handles.GetArtronBank;
@@ -28,13 +24,16 @@ import com.vandendaelen.handles.functions.handles.SetSpeed;
 import com.vandendaelen.handles.functions.handles.SetTardisDestination;
 import com.vandendaelen.handles.functions.handles.SetTardisDoors;
 import com.vandendaelen.handles.functions.handles.SetTardisFacing;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import net.tardis.mod.tileentities.ConsoleTile;
+
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.UUID;
 
 public class FunctionsHandler {
     private static HashMap<String, IFunction> functions = new HashMap<>();
@@ -89,18 +88,15 @@ public class FunctionsHandler {
     public MethodResult run(String functionName, IArguments args) throws LuaException {
         Optional<IFunction> function = Optional.ofNullable(functions.get(functionName));
         if (function.isPresent()){
-            if (function.get().impactMoodAndLoyalty()){
-                //Affect Loyalty values for all players being tracked by the Tardis' emotional handler
-                for (UUID playerID : tardis.getEmotionHandler().getLoyaltyTrackingCrew()) {
-                    if (playerID != null) {
-                        PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(playerID);
-                        if (player != null) {
-                            tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Server.getLoyaltyPenalty());
-                        }
+            for (UUID playerID : tardis.getEmotionHandler().getLoyaltyTrackingCrew()) {
+                if (playerID != null) {
+                    PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(playerID);
+                    if (player != null) {
+                        tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Common.getLoyaltyPenalty(functionName));
                     }
                 }
-                tardis.getEmotionHandler().addMood(-HandlesConfig.Server.getMoodPenalty());
             }
+            tardis.getEmotionHandler().addMood(-HandlesConfig.Common.getMoodPenalty(functionName));
             return function.get().run(tardis, args);
         }
         return MethodResult.of();

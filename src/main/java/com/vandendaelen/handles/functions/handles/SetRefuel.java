@@ -14,11 +14,6 @@ public class SetRefuel implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         boolean status = args.getBoolean(0);
         tardis.getControl(RefuelerControl.class).orElseThrow(() -> new LuaException("refuelerControl not found")).setRefueling(status);

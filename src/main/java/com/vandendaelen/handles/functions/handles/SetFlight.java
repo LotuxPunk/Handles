@@ -17,11 +17,6 @@ public class SetFlight implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         double speed = args.getDouble(0);
         if(speed > 1.0D){

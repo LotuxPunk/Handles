@@ -14,11 +14,6 @@ public class SetHandbrake implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         final HandbrakeControl handbrakeControl = tardis.getControl(HandbrakeControl.class).orElseThrow(() -> new LuaException("handbrakeControl not found"));
         handbrakeControl.setFree(!args.getBoolean(0));

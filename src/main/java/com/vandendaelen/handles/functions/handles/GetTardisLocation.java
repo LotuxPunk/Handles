@@ -1,7 +1,6 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.util.math.BlockPos;
@@ -11,11 +10,6 @@ public class GetTardisLocation implements IFunction {
     @Override
     public String getName() {
         return "getLocation";
-    }
-
-    @Override
-    public boolean impactMoodAndLoyalty() {
-        return false;
     }
 
     @Override
