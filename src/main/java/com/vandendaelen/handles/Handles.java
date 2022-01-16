@@ -1,8 +1,5 @@
 package com.vandendaelen.handles;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.vandendaelen.handles.blocks.HandlesBlocks;
 import com.vandendaelen.handles.blocks.HandlesTiles;
 import com.vandendaelen.handles.config.HandlesConfig;
@@ -11,7 +8,6 @@ import com.vandendaelen.handles.items.HandlesItems;
 import com.vandendaelen.handles.setup.ClientSetup;
 import com.vandendaelen.handles.setup.HandlesSetup;
 import com.vandendaelen.handles.tardis.upgrades.HandlesUpgrades;
-
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,6 +18,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod("handles")
 public class Handles {
@@ -49,7 +47,8 @@ public class Handles {
 
     private void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
-        if (HandlesConfig.Client.getDiscordAdvertising())
+        if (HandlesConfig.Client.getDiscordAdvertising()){
             player.displayClientMessage(ForgeHooks.newChatWithLinks("[Handles] Discord's server : https://discord.gg/6cq3skc"), false);
+        }
     }
 }

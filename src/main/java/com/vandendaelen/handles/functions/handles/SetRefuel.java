@@ -1,7 +1,6 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -22,7 +21,7 @@ public class SetRefuel implements IFunction {
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         boolean status = args.getBoolean(0);
-        tardis.getControl(RefuelerControl.class).get().setRefueling(status);
+        tardis.getControl(RefuelerControl.class).orElseThrow(() -> new LuaException("refuelerControl not found")).setRefueling(status);
         return MethodResult.of();
     }
 }

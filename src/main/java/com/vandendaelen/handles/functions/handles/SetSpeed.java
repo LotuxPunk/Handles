@@ -1,7 +1,6 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -21,7 +20,8 @@ public class SetSpeed implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
-        tardis.getControl(ThrottleControl.class).get().setAmount((float)(args.getDouble(0)));
-        return MethodResult.of(tardis.getControl(ThrottleControl.class).get().getAmount());
+        final ThrottleControl throttleControl = tardis.getControl(ThrottleControl.class).orElseThrow(() -> new LuaException("throttleControl not found"));
+        throttleControl.setAmount((float)(args.getDouble(0)));
+        return MethodResult.of(throttleControl.getAmount());
     }
 }
