@@ -19,10 +19,14 @@ public class SetSubSystemStatus implements IFunction {
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         final String subSystemPath = args.getString(0);
         final boolean status = args.getBoolean(1);
-        final Subsystem subsystem = FunctionHelper.getSubsystem(tardis, subSystemPath);
 
-        tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> subsystem.setActivated(status)));
-
-        return MethodResult.of();
+        try {
+            final Subsystem subsystem = FunctionHelper.getSubsystem(tardis, subSystemPath);
+            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> subsystem.setActivated(status)));
+        }
+        catch (IllegalArgumentException ignored){
+            return MethodResult.of(false);
+        }
+        return MethodResult.of(true);
     }
 }

@@ -9,12 +9,12 @@ public class FunctionHelper {
     public static Subsystem getSubsystem(ConsoleTile tardis, String subSystemPath) throws LuaException {
         final Subsystem subsystem = tardis.getSubSystems()
                 .stream()
-                .filter(it -> it.getEntry().getRegistryName().getPath() == subSystemPath)
+                .filter(it -> it.getEntry().getRegistryName().getPath().equals(subSystemPath))
                 .findFirst().orElseThrow(() ->new LuaException("SubSystem " + subSystemPath + " not found"));
         return subsystem;
     }
 
-    public static <T extends AbstractControl> T getTardisControl(ConsoleTile tardis, Class<T> clazz) throws LuaException {
-        return tardis.getControl(clazz).orElseThrow(() -> new LuaException(clazz.getName() + " not found"));
+    public static <T extends AbstractControl> T getTardisControl(ConsoleTile tardis, Class<T> clazz) throws IllegalArgumentException {
+        return tardis.getControl(clazz).orElseThrow(() -> new IllegalArgumentException(clazz.getName() + " not found"));
     }
 }
