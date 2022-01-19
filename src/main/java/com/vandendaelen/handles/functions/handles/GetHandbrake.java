@@ -1,6 +1,7 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
+import com.vandendaelen.handles.helpers.FunctionHelper;
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -15,6 +16,6 @@ public class GetHandbrake implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
-        return MethodResult.of(!(tardis.getControl(HandbrakeControl.class).orElseThrow(() -> new LuaException("handbrakeControl not found")).isFree()));
+        return MethodResult.of(!FunctionHelper.getTardisControl(tardis, HandbrakeControl.class).isFree());
     }
 }

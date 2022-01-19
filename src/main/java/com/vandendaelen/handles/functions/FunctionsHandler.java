@@ -9,6 +9,9 @@ import com.vandendaelen.handles.functions.handles.GetDimensions;
 import com.vandendaelen.handles.functions.handles.GetHandbrake;
 import com.vandendaelen.handles.functions.handles.GetLifeSigns;
 import com.vandendaelen.handles.functions.handles.GetSpeed;
+import com.vandendaelen.handles.functions.handles.GetSubSystemHealth;
+import com.vandendaelen.handles.functions.handles.GetSubSystemStatus;
+import com.vandendaelen.handles.functions.handles.GetSubSystems;
 import com.vandendaelen.handles.functions.handles.GetTardisDestination;
 import com.vandendaelen.handles.functions.handles.GetTardisDoors;
 import com.vandendaelen.handles.functions.handles.GetTardisFacing;
@@ -21,6 +24,7 @@ import com.vandendaelen.handles.functions.handles.SetFlight;
 import com.vandendaelen.handles.functions.handles.SetHandbrake;
 import com.vandendaelen.handles.functions.handles.SetRefuel;
 import com.vandendaelen.handles.functions.handles.SetSpeed;
+import com.vandendaelen.handles.functions.handles.SetSubSystemStatus;
 import com.vandendaelen.handles.functions.handles.SetTardisDestination;
 import com.vandendaelen.handles.functions.handles.SetTardisDoors;
 import com.vandendaelen.handles.functions.handles.SetTardisFacing;
@@ -67,7 +71,11 @@ public class FunctionsHandler {
                 new GetSpeed(),
                 new GetAlarm(),
                 new SetAlarm(),
-                new SetDestinationAndDimension()
+                new SetDestinationAndDimension(),
+                new GetSubSystems(),
+                new GetSubSystemStatus(),
+                new GetSubSystemHealth(),
+                new SetSubSystemStatus()
         );
     }
 
