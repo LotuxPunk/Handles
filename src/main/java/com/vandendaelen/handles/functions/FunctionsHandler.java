@@ -7,6 +7,7 @@ import com.vandendaelen.handles.functions.handles.GetCurrentDimension;
 import com.vandendaelen.handles.functions.handles.GetDestinationDimension;
 import com.vandendaelen.handles.functions.handles.GetDimensions;
 import com.vandendaelen.handles.functions.handles.GetHandbrake;
+import com.vandendaelen.handles.functions.handles.GetRefuel;
 import com.vandendaelen.handles.functions.handles.GetLifeSigns;
 import com.vandendaelen.handles.functions.handles.GetSpeed;
 import com.vandendaelen.handles.functions.handles.GetSubSystemHealth;
@@ -60,6 +61,7 @@ public class FunctionsHandler {
                 new GetTimeLeft(),
                 new SetTardisDestination(),
                 new SetDimension(),
+                new GetRefuel(),
                 new SetRefuel(),
                 new SetTardisDoors(),
                 new SetTardisFacing(),
