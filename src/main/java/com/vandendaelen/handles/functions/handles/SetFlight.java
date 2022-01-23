@@ -29,9 +29,16 @@ public class SetFlight implements IFunction {
         /* 50ap5ud5: As requested, make the Tardis takeoff regardless of stabilisers.
          * This is to allow for users to manually set subsystem values in the future when we add the Subsystem State Modification feature.
          */
-        if (speed > 0 && !tardis.isInFlight() && !handbrakeControl.isFree()) {
+        if (speed > 0 && !tardis.isInFlight()) {
             throttle.setAmount((float)speed);
-            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> handbrakeControl.onRightClicked(tardis, null))); //Schedule by 1 tick to allow the throttle animation to play correctly.
+            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> {
+                if (!handbrakeControl.isFree()) {
+                    handbrakeControl.onRightClicked(tardis, null);
+                }
+                else {
+                    tardis.takeoff();
+                }
+            })); //Schedule by 1 tick to allow the throttle animation to play correctly.
         }
         return MethodResult.of();
     }
