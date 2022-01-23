@@ -19,7 +19,9 @@ public class GetUpgradeHealth implements IFunction {
         final String upgradePath = args.getString(0);
         try {
             final Upgrade upgrade = FunctionHelper.getUpgrade(tardis, upgradePath);
-            return MethodResult.of(upgrade.getStack().getDamageValue()/(float)upgrade.getStack().getMaxDamage());
+            final int maxHealth = upgrade.getStack().getMaxDamage();
+            final int damageValue = upgrade.getStack().getDamageValue();
+            return MethodResult.of((maxHealth - damageValue)/(float)maxHealth);
         }
         catch (IllegalArgumentException exception){
             return MethodResult.of(0F);
