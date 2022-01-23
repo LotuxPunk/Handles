@@ -18,6 +18,8 @@ import com.vandendaelen.handles.functions.handles.GetTardisDoors;
 import com.vandendaelen.handles.functions.handles.GetTardisFacing;
 import com.vandendaelen.handles.functions.handles.GetTardisLocation;
 import com.vandendaelen.handles.functions.handles.GetTimeLeft;
+import com.vandendaelen.handles.functions.handles.GetUpgradeHealth;
+import com.vandendaelen.handles.functions.handles.GetUpgradeStatus;
 import com.vandendaelen.handles.functions.handles.GetUpgrades;
 import com.vandendaelen.handles.functions.handles.SetAlarm;
 import com.vandendaelen.handles.functions.handles.SetDestinationAndDimension;
@@ -30,6 +32,7 @@ import com.vandendaelen.handles.functions.handles.SetSubSystemStatus;
 import com.vandendaelen.handles.functions.handles.SetTardisDestination;
 import com.vandendaelen.handles.functions.handles.SetTardisDoors;
 import com.vandendaelen.handles.functions.handles.SetTardisFacing;
+import com.vandendaelen.handles.functions.handles.SetUpgradeStatus;
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -80,9 +83,9 @@ public class FunctionsHandler {
                 new GetSubSystemHealth(),
                 new SetSubSystemStatus(),
                 new GetUpgrades(),
-                new GetSubSystemHealth(),
-                new GetSubSystemStatus(),
-                new SetSubSystemStatus()
+                new GetUpgradeHealth(),
+                new GetUpgradeStatus(),
+                new SetUpgradeStatus()
         );
     }
 
