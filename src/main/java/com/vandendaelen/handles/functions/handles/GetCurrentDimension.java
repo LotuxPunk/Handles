@@ -2,7 +2,6 @@ package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
 import com.vandendaelen.handles.helpers.DimensionHelper;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.util.RegistryKey;
@@ -13,11 +12,6 @@ public class GetCurrentDimension implements IFunction {
     @Override
     public String getName() {
         return "getCurrentDimension";
-    }
-
-    @Override
-    public boolean impactMoodAndLoyalty() {
-        return false;
     }
 
     @Override

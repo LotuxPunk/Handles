@@ -2,7 +2,6 @@ package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
 import com.vandendaelen.handles.helpers.DimensionHelper;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -12,11 +11,6 @@ public class SetDimension implements IFunction {
     @Override
     public String getName() {
         return "setDimension";
-    }
-
-    @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
     }
 
     @Override

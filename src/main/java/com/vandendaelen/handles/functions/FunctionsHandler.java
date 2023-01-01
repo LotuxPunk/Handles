@@ -1,9 +1,5 @@
 package com.vandendaelen.handles.functions;
 
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.UUID;
-
 import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.functions.handles.GetAlarm;
 import com.vandendaelen.handles.functions.handles.GetArtronBank;
@@ -12,12 +8,19 @@ import com.vandendaelen.handles.functions.handles.GetDestinationDimension;
 import com.vandendaelen.handles.functions.handles.GetDimensions;
 import com.vandendaelen.handles.functions.handles.GetHandbrake;
 import com.vandendaelen.handles.functions.handles.GetLifeSigns;
+import com.vandendaelen.handles.functions.handles.GetRefuel;
 import com.vandendaelen.handles.functions.handles.GetSpeed;
+import com.vandendaelen.handles.functions.handles.GetSubSystemHealth;
+import com.vandendaelen.handles.functions.handles.GetSubSystemStatus;
+import com.vandendaelen.handles.functions.handles.GetSubSystems;
 import com.vandendaelen.handles.functions.handles.GetTardisDestination;
 import com.vandendaelen.handles.functions.handles.GetTardisDoors;
 import com.vandendaelen.handles.functions.handles.GetTardisFacing;
 import com.vandendaelen.handles.functions.handles.GetTardisLocation;
 import com.vandendaelen.handles.functions.handles.GetTimeLeft;
+import com.vandendaelen.handles.functions.handles.GetUpgradeHealth;
+import com.vandendaelen.handles.functions.handles.GetUpgradeStatus;
+import com.vandendaelen.handles.functions.handles.GetUpgrades;
 import com.vandendaelen.handles.functions.handles.SetAlarm;
 import com.vandendaelen.handles.functions.handles.SetDestinationAndDimension;
 import com.vandendaelen.handles.functions.handles.SetDimension;
@@ -25,16 +28,21 @@ import com.vandendaelen.handles.functions.handles.SetFlight;
 import com.vandendaelen.handles.functions.handles.SetHandbrake;
 import com.vandendaelen.handles.functions.handles.SetRefuel;
 import com.vandendaelen.handles.functions.handles.SetSpeed;
+import com.vandendaelen.handles.functions.handles.SetSubSystemStatus;
 import com.vandendaelen.handles.functions.handles.SetTardisDestination;
 import com.vandendaelen.handles.functions.handles.SetTardisDoors;
 import com.vandendaelen.handles.functions.handles.SetTardisFacing;
-
+import com.vandendaelen.handles.functions.handles.SetUpgradeStatus;
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import net.tardis.mod.tileentities.ConsoleTile;
+
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.UUID;
 
 public class FunctionsHandler {
     private static HashMap<String, IFunction> functions = new HashMap<>();
@@ -57,6 +65,7 @@ public class FunctionsHandler {
                 new GetTimeLeft(),
                 new SetTardisDestination(),
                 new SetDimension(),
+                new GetRefuel(),
                 new SetRefuel(),
                 new SetTardisDoors(),
                 new SetTardisFacing(),
@@ -68,7 +77,15 @@ public class FunctionsHandler {
                 new GetSpeed(),
                 new GetAlarm(),
                 new SetAlarm(),
-                new SetDestinationAndDimension()
+                new SetDestinationAndDimension(),
+                new GetSubSystems(),
+                new GetSubSystemStatus(),
+                new GetSubSystemHealth(),
+                new SetSubSystemStatus(),
+                new GetUpgrades(),
+                new GetUpgradeHealth(),
+                new GetUpgradeStatus(),
+                new SetUpgradeStatus()
         );
     }
 
@@ -89,18 +106,15 @@ public class FunctionsHandler {
     public MethodResult run(String functionName, IArguments args) throws LuaException {
         Optional<IFunction> function = Optional.ofNullable(functions.get(functionName));
         if (function.isPresent()){
-            if (function.get().impactMoodAndLoyalty()){
-                //Affect Loyalty values for all players being tracked by the Tardis' emotional handler
-                for (UUID playerID : tardis.getEmotionHandler().getLoyaltyTrackingCrew()) {
-                    if (playerID != null) {
-                        PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(playerID);
-                        if (player != null) {
-                            tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Server.getLoyaltyPenalty());
-                        }
+            for (UUID playerID : tardis.getEmotionHandler().getLoyaltyTrackingCrew()) {
+                if (playerID != null) {
+                    PlayerEntity player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(playerID);
+                    if (player != null) {
+                        tardis.getEmotionHandler().addLoyalty(player, -HandlesConfig.Common.getLoyaltyPenalty(functionName));
                     }
                 }
-                tardis.getEmotionHandler().addMood(-HandlesConfig.Server.getMoodPenalty());
             }
+            tardis.getEmotionHandler().addMood(-HandlesConfig.Common.getMoodPenalty(functionName));
             return function.get().run(tardis, args);
         }
         return MethodResult.of();

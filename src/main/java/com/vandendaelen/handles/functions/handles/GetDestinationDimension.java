@@ -15,11 +15,6 @@ public class GetDestinationDimension implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return false;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) {
         final RegistryKey<World> destinationDimension = tardis.getDestinationDimension();
         return MethodResult.of(DimensionHelper.getDimensionId(destinationDimension), destinationDimension.location().getPath());

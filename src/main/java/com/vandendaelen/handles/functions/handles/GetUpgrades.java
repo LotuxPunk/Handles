@@ -6,14 +6,16 @@ import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
 import net.tardis.mod.tileentities.ConsoleTile;
 
-public class GetTardisDoors implements IFunction {
+import java.util.stream.Collectors;
+
+public class GetUpgrades implements IFunction {
     @Override
     public String getName() {
-        return "getDoors";
+        return "getUpgrades";
     }
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
-        return MethodResult.of(tardis.getDoor().orElseThrow(() -> new LuaException("doors not found")).getOpenState().name());
+        return MethodResult.of(tardis.getUpgrades().stream().map(upgrade -> upgrade.getEntry().getRegistryName().getPath()).collect(Collectors.toSet()));
     }
 }

@@ -1,14 +1,11 @@
 package com.vandendaelen.handles.blocks.tiles;
 
-import static dan200.computercraft.shared.Capabilities.CAPABILITY_PERIPHERAL;
-
 import com.vandendaelen.handles.blocks.HandlesTiles;
 import com.vandendaelen.handles.exceptions.NoUpgradeException;
 import com.vandendaelen.handles.exceptions.NotATardisException;
 import com.vandendaelen.handles.functions.FunctionsHandler;
 import com.vandendaelen.handles.misc.TardisInterfacePeripheral;
 import com.vandendaelen.handles.tardis.upgrades.AprioritronUpgrade;
-
 import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
@@ -22,6 +19,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.tardis.mod.tileentities.ConsoleTile;
 import net.tardis.mod.upgrades.Upgrade.DamageType;
 import net.tardis.mod.world.dimensions.TDimensions;
+
+import static dan200.computercraft.shared.Capabilities.CAPABILITY_PERIPHERAL;
 
 public class TardisInterfaceTile extends TileEntity{
     private LazyOptional<IPeripheral> peripheral;
@@ -50,8 +49,14 @@ public class TardisInterfaceTile extends TileEntity{
     }
 
     public void damageUpgrade() throws NotATardisException {
-        this.getTardis().getUpgrade(AprioritronUpgrade.class).ifPresent(aprioritron -> aprioritron.damage(1, DamageType.ITEM, null));
+        damageUpgrade(1);
     }
+
+    public void damageUpgrade(int damage) throws NotATardisException {
+        this.getTardis().getUpgrade(AprioritronUpgrade.class).ifPresent(aprioritron -> aprioritron.damage(damage, DamageType.ITEM, null));
+    }
+
+
 
     public boolean canBeUsed() throws NotATardisException, NoUpgradeException {
         AprioritronUpgrade upgrade = this.getTardis().getUpgrade(AprioritronUpgrade.class).orElseThrow(NoUpgradeException::new);

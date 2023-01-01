@@ -1,6 +1,7 @@
 package com.vandendaelen.handles.functions.handles;
 
 import com.vandendaelen.handles.functions.IFunction;
+import com.vandendaelen.handles.helpers.FunctionHelper;
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
@@ -17,24 +18,27 @@ public class SetFlight implements IFunction {
     }
 
     @Override
-    public boolean impactMoodAndLoyalty() {
-        return true;
-    }
-
-    @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         double speed = args.getDouble(0);
+        final ThrottleControl throttle = FunctionHelper.getTardisControl(tardis, ThrottleControl.class);
+        final HandbrakeControl handbrakeControl = FunctionHelper.getTardisControl(tardis, HandbrakeControl.class);
+
         if(speed > 1.0D){
             speed = 1.0D;
         }
-        ThrottleControl throttle = tardis.getControl(ThrottleControl.class).orElseThrow(() -> new LuaException("throttleControl not found"));
-        HandbrakeControl handbrakeControl = tardis.getControl(HandbrakeControl.class).orElseThrow(() -> new LuaException("handbrakeControl not found"));
         /* 50ap5ud5: As requested, make the Tardis takeoff regardless of stabilisers.
          * This is to allow for users to manually set subsystem values in the future when we add the Subsystem State Modification feature.
          */
-        if (speed > 0 && !tardis.isInFlight() && !handbrakeControl.isFree()) {
+        if (speed > 0 && !tardis.isInFlight()) {
             throttle.setAmount((float)speed);
-            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> handbrakeControl.onRightClicked(tardis, null))); //Schedule by 1 tick to allow the throttle animation to play correctly.
+            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> {
+                if (!handbrakeControl.isFree()) {
+                    handbrakeControl.onRightClicked(tardis, null);
+                }
+                else {
+                    tardis.takeoff();
+                }
+            })); //Schedule by 1 tick to allow the throttle animation to play correctly.
         }
         return MethodResult.of();
     }

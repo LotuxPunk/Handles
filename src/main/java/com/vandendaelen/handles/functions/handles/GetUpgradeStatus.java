@@ -5,20 +5,24 @@ import com.vandendaelen.handles.helpers.FunctionHelper;
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
-import net.tardis.mod.controls.HandbrakeControl;
 import net.tardis.mod.tileentities.ConsoleTile;
+import net.tardis.mod.upgrades.Upgrade;
 
-public class SetHandbrake implements IFunction {
+public class GetUpgradeStatus implements IFunction {
     @Override
     public String getName() {
-        return "setHandbrake";
+        return "getUpgradeStatus";
     }
 
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
-        final HandbrakeControl handbrakeControl = FunctionHelper.getTardisControl(tardis, HandbrakeControl.class);
-        handbrakeControl.setFree(args.getBoolean(0));
-        handbrakeControl.onRightClicked(tardis, null);
-        return MethodResult.of(!handbrakeControl.isFree());
+        final String upgradePath = args.getString(0);
+        try {
+            final Upgrade upgrade = FunctionHelper.getUpgrade(tardis, upgradePath);
+            return MethodResult.of(upgrade.isActivated());
+        }
+        catch (IllegalArgumentException exception){
+            return MethodResult.of(0F);
+        }
     }
 }

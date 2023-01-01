@@ -1,14 +1,9 @@
 package com.vandendaelen.handles.misc;
 
-import java.util.Arrays;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
+import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.exceptions.NoUpgradeException;
 import com.vandendaelen.handles.functions.FunctionsHandler;
-
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.ILuaCallback;
 import dan200.computercraft.api.lua.ILuaContext;
@@ -17,6 +12,10 @@ import dan200.computercraft.api.lua.MethodResult;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IDynamicPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheral;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class TardisInterfacePeripheral implements IDynamicPeripheral {
     private final TardisInterfaceTile tile;
@@ -43,8 +42,9 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
             throws LuaException {
         try{
             if (this.tile.getFunctionsHandler() != null && tile.canBeUsed()){
-                tile.damageUpgrade();
-                return this.tile.getFunctionsHandler().run(FunctionsHandler.getFunctionsNames()[method], arguments);
+                final String functionName = FunctionsHandler.getFunctionsNames()[method];
+                tile.damageUpgrade(HandlesConfig.Common.getDamage(functionName));
+                return this.tile.getFunctionsHandler().run(functionName, arguments);
             }
             else {
                 throw new LuaException(new NoUpgradeException().getMessage());

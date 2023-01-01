@@ -8,8 +8,6 @@ import net.tardis.mod.tileentities.ConsoleTile;
 public interface IFunction {
 	/** Defines the method name and registry id. E.g. setDestination*/
     public String getName();
-    /** If this function should cause mood and loyalty impacts*/
-    public boolean impactMoodAndLoyalty();
     /** The logic to run when this function is executed. If we don't want to return anything, return an empty {@linkplain MethodResult} to prevent NPE*/
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException;
 }
