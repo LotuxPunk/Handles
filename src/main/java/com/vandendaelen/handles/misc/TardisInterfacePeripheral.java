@@ -1,5 +1,6 @@
 package com.vandendaelen.handles.misc;
 
+import com.vandendaelen.handles.Handles;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
 import com.vandendaelen.handles.config.HandlesConfig;
 import com.vandendaelen.handles.exceptions.NoUpgradeException;
@@ -16,9 +17,12 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class TardisInterfacePeripheral implements IDynamicPeripheral {
     private final TardisInterfaceTile tile;
+    private final Set<IComputerAccess> connectedComputers = new LinkedHashSet<>();
 
     public TardisInterfacePeripheral(TardisInterfaceTile tile) {
         this.tile = tile;
@@ -65,7 +69,26 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
     public boolean equals(@Nullable IPeripheral other) {
         return this == other || other instanceof TardisInterfacePeripheral && ((TardisInterfacePeripheral) other).tile == tile;
     }
-    
+
+	public void queueEvent(String eventName, Object... var2)
+	{
+        connectedComputers.forEach(computer -> computer.queueEvent(eventName, var2));
+    }
+
+    @Override
+    public void attach(@Nonnull IComputerAccess computer)
+    {
+        IDynamicPeripheral.super.attach(computer);
+        connectedComputers.add(computer);
+    }
+
+    @Override
+    public void detach(@Nonnull IComputerAccess computer)
+    {
+        IDynamicPeripheral.super.detach(computer);
+        connectedComputers.remove(computer);
+    }
+
     /**
      * Copy of dan200.computercraft.core.asm.TaskCallback as suggested on https://github.com/SquidDev-CC/CC-Tweaked/discussions/728 due to there not being a
      * method via the API to do this. Ideally eventually it will be replaced by a method on ILuaContext that we can just call
