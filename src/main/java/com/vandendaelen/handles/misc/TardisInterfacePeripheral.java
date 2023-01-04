@@ -70,21 +70,18 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
         return this == other || other instanceof TardisInterfacePeripheral && ((TardisInterfacePeripheral) other).tile == tile;
     }
 
-	public void queueEvent(String eventName, Object... var2)
-	{
+    public void queueEvent(String eventName, Object... var2) {
         connectedComputers.forEach(computer -> computer.queueEvent(eventName, var2));
     }
 
     @Override
-    public void attach(@Nonnull IComputerAccess computer)
-    {
+    public void attach(@Nonnull IComputerAccess computer) {
         IDynamicPeripheral.super.attach(computer);
         connectedComputers.add(computer);
     }
 
     @Override
-    public void detach(@Nonnull IComputerAccess computer)
-    {
+    public void detach(@Nonnull IComputerAccess computer) {
         IDynamicPeripheral.super.detach(computer);
         connectedComputers.remove(computer);
     }

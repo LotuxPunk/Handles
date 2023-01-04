@@ -107,8 +107,7 @@ public class TardisInterfaceTile extends TileEntity{
     }
 
     @Override
-    public void onLoad()
-    {
+    public void onLoad() {
         super.onLoad();
 
         if (this.level == null || this.level.isClientSide) {
@@ -128,8 +127,7 @@ public class TardisInterfaceTile extends TileEntity{
     }
 
     @Override
-    public void setRemoved()
-    {
+    public void setRemoved() {
         super.setRemoved();
 
         if (this.level == null || this.level.isClientSide) {
