@@ -33,7 +33,7 @@ public class AprioritronUpgrade extends Upgrade {
 			tile.getCapability(CAPABILITY_PERIPHERAL, null).ifPresent(iPeripheral -> {
 				TardisInterfacePeripheral tardisInterface = (TardisInterfacePeripheral) iPeripheral;
 				final BlockPos blockPos = getConsole().getCurrentLocation();
-				tardisInterface.queueEvent("onLandTardis", blockPos.getX(), blockPos.getY(), blockPos.getZ());
+				tardisInterface.queueEvent("onTardisLand", blockPos.getX(), blockPos.getY(), blockPos.getZ());
 			});
 		}
 	}
@@ -44,7 +44,17 @@ public class AprioritronUpgrade extends Upgrade {
 			tile.getCapability(CAPABILITY_PERIPHERAL, null).ifPresent(iPeripheral -> {
 				TardisInterfacePeripheral tardisInterface = (TardisInterfacePeripheral) iPeripheral;
 				final BlockPos blockPos = getConsole().getDestinationPosition();
-				tardisInterface.queueEvent("onTakeoffTardis", blockPos.getX(), blockPos.getY(), blockPos.getZ());
+				tardisInterface.queueEvent("onTardisTakeoff", blockPos.getX(), blockPos.getY(), blockPos.getZ());
+			});
+		}
+	}
+
+	@Override
+	public void onBreak() {
+		for(TardisInterfaceTile tile : activeInterfaces) {
+			tile.getCapability(CAPABILITY_PERIPHERAL, null).ifPresent(iPeripheral -> {
+				TardisInterfacePeripheral tardisInterface = (TardisInterfacePeripheral) iPeripheral;
+				tardisInterface.queueEvent("onTardisAprioritronBreak");
 			});
 		}
 	}
