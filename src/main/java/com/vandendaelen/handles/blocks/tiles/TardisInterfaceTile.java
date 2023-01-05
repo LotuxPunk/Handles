@@ -106,4 +106,52 @@ public class TardisInterfaceTile extends TileEntity{
         return this.functionsHandler;
     }
 
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        connectToAprioritron();
+    }
+
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        disconnectFromAprioritron();
+    }
+
+    public void connectToAprioritron()
+    {
+        if (this.level == null || this.level.isClientSide) {
+            return;
+        }
+
+        try {
+            this.getTardis()
+                    .getUpgrade(AprioritronUpgrade.class)
+                    .ifPresent(aprioritron -> {
+                        aprioritron.attachInterface(this);
+                    });
+        }
+        catch (NotATardisException e) {
+            //ignored.
+        }
+    }
+
+    public void disconnectFromAprioritron()
+    {
+
+        if (this.level == null || this.level.isClientSide) {
+            return;
+        }
+
+        try {
+            this.getTardis()
+                    .getUpgrade(AprioritronUpgrade.class)
+                    .ifPresent(aprioritron -> {
+                        aprioritron.detachInterface(this);
+                    });
+        }
+        catch (NotATardisException e) {
+            //ignored.
+        }
+    }
 }
