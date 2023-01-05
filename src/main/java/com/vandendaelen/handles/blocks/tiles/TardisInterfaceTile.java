@@ -109,7 +109,17 @@ public class TardisInterfaceTile extends TileEntity{
     @Override
     public void onLoad() {
         super.onLoad();
+        connectToAprioritron();
+    }
 
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        disconnectFromAprioritron();
+    }
+
+    public void connectToAprioritron()
+    {
         if (this.level == null || this.level.isClientSide) {
             return;
         }
@@ -126,9 +136,8 @@ public class TardisInterfaceTile extends TileEntity{
         }
     }
 
-    @Override
-    public void setRemoved() {
-        super.setRemoved();
+    public void disconnectFromAprioritron()
+    {
 
         if (this.level == null || this.level.isClientSide) {
             return;

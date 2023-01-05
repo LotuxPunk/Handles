@@ -78,12 +78,14 @@ public class TardisInterfacePeripheral implements IDynamicPeripheral {
     public void attach(@Nonnull IComputerAccess computer) {
         IDynamicPeripheral.super.attach(computer);
         connectedComputers.add(computer);
+        tile.connectToAprioritron();
     }
 
     @Override
     public void detach(@Nonnull IComputerAccess computer) {
         IDynamicPeripheral.super.detach(computer);
         connectedComputers.remove(computer);
+        tile.disconnectFromAprioritron();
     }
 
     /**
