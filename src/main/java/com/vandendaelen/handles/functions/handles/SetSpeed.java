@@ -18,10 +18,10 @@ public class SetSpeed implements IFunction {
 
     @Override
     public MethodResult run(ConsoleTile console, IArguments args) throws LuaException {
-        final var throttleControl = FunctionHelper.getTardisControl(console, ThrottleControl.class);
-        final var handbrakeControl = FunctionHelper.getTardisControl(console, HandbrakeControl.class);
+        final ThrottleControl throttleControl = FunctionHelper.getTardisControl(console, ThrottleControl.class);
+        final HandbrakeControl handbrakeControl = FunctionHelper.getTardisControl(console, HandbrakeControl.class);
 
-        final var speed = args.getDouble(0);
+        final double speed = args.getDouble(0);
         throttleControl.setAmount((float)(speed));
 
         if (speed == 0 && console.isInFlight()) {
