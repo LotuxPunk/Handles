@@ -16,17 +16,17 @@ public class SetLightLevel implements IFunction {
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         int lightLevel = args.getInt(0);
 
-        if (lightLevel > 15) {
-            tardis.getInteriorManager().setLight(15);
-            return MethodResult.of(tardis.getInteriorManager().getLight());
+       final int MAX_LIGHT_LEVEL = 15
+       final int MIN_LIGHT_LEVEL = 0
+       
+        if (lightLevel > MAX_LIGHT_LEVEL) {
+            lightLevel = MAX_LIGHT_LEVEL
         }
-        else if (lightLevel < 0) {
-            tardis.getInteriorManager().setLight(0);
-            return MethodResult.of(tardis.getInteriorManager().getLight());
+        else if (lightLevel < MIN_LIGHT_LEVEL) {
+            lightLevel = MIN_LIGHT_LEVEL
         }
-
-        System.out.println("[Handles] " + args.getInt(0));
-        tardis.getInteriorManager().setLight(args.getInt(0));
-        return MethodResult.of();
+        
+        tardis.getInteriorManager().setLight(lightLevel);
+        return MethodResult.of(tardis.getInteriorManager().getLight());
     }
 }
