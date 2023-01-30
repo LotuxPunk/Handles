@@ -24,4 +24,8 @@ public class FunctionHelper {
     public static <T extends AbstractControl> T getTardisControl(ConsoleTile tardis, Class<T> clazz) throws IllegalArgumentException {
         return tardis.getControl(clazz).orElseThrow(() -> new IllegalArgumentException(clazz.getName() + " not found"));
     }
+
+    public static <T extends Subsystem> T getTardisSubsystem(ConsoleTile tardis, Class<T> clazz) throws IllegalArgumentException {
+        return tardis.getSubsystem(clazz).orElseThrow(() -> new IllegalArgumentException(clazz.getName() + " not found"));
+    }
 }

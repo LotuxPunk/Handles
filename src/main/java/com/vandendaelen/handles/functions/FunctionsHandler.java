@@ -56,7 +56,9 @@ public class FunctionsHandler {
                 new GetUpgradeStatus(),
                 new SetUpgradeStatus(),
                 new GetLightLevel(),
-                new SetLightLevel()
+                new SetLightLevel(),
+                new SetStabilizerStatus(),
+                new GetStabilizerStatus()
         );
     }
 
