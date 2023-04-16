@@ -12,7 +12,7 @@ import net.tardis.mod.upgrades.Upgrade;
 public class SetUpgradeStatus implements IFunction {
     @Override
     public String getName() {
-        return "setSubSystemStatus";
+        return "setUpgradeStatus";
     }
 
     @Override
